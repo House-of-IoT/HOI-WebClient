@@ -1,10 +1,32 @@
 .nova-listing {
     background-color: #151a21;
-    width: 45%;
-    height: 30%;
+    width: 33%;
+    height: 34%;
     position: relative;
-    margin-top: 10px;
-    margin-left: 28%;
+    margin-top: 3px;
+    margin-left: 34%;
     border-radius: 12px;
    
+}
+.nova-listing h4{
+    width: 20vw;
+    height: 10%;
+    position: relative;
+    left: 30%;
+    top: 5%;
+    font-size: 1.5vh;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+}
+.nova-listing h3{
+    position: relative;
+    top: 2vh;
+    left: 5vw;
+    padding-left: 10px;
+    font-size: 1.8vw;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color:#0b0e11;
+    width: 10vw;
+    border-radius: 12px;
+    color: #fd4d4d;
 }

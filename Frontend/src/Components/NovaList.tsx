@@ -2,9 +2,9 @@ import { type } from 'os';
 import React, { Component } from 'react';
 import '../Css/novalisting.css';
 type bot = {
-    messages_pending :[],
+    messages_pending :Object,
     status: boolean,
-    packets_pending :[],
+    packets_pending :Object,
     name:String
 }
 
@@ -17,10 +17,12 @@ export default class NovaList extends Component<bot,any > {
     render() {
         return (
             <div className = 'nova-listing'>
-                <h3 className = "name-listing">{ "Name:" +this.props.name}</h3>
-                <h4> Status: <h3 className = "inner-msg">{this.props.status}</h3></h4>
-                <h4>Messages Pending:  <h3 className = "inner-msg">{this.props.messages_pending}</h3></h4>
-                <h4>Packets held: <h3 className = "inner-msg">{this.props.packets_pending}</h3> </h4>
+                <h3 className = "name-listing">{ this.props.name}</h3>
+                
+                    <h4> {"Status:" + this.props.status}</h4>
+                    <h4>{"Messages Pending:" + this.props.messages_pending}</h4>
+                    <h4>{"Packets held:" + this.props.packets_pending}</h4>
+                
             </div>
         )
     }

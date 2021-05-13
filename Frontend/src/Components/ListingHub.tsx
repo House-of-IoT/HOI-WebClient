@@ -3,9 +3,9 @@ import NovaList from './NovaList';
 import '../Css/Listinghub.css';
 //nova'
 interface bot{
-    messages_pending :[],
+    messages_pending :Object,
     status: boolean,
-    packets_pending :[],
+    packets_pending :Object,
     name:String
 }
 
@@ -15,8 +15,8 @@ export default class ListingHub extends Component<{}, any , bot> {
     constructor(){
         super({});
         this.state = {
-            bots :[{message_pending : [1,2,3] , status : true  , packets_pending :[1] , name : "ok"},
-                   {message_pending : [1,2,3] , status : true  , packets_pending :[1] , name : "ok"}]
+            bots :[{messages_pending : 2 , status : true  , packets_pending :3 , name : "osdfsfsfsdfk"},
+                   {messages_pending : 2 , status : true  , packets_pending :3 , name : "ok"}]
         };
         
     }

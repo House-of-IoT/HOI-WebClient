@@ -5,10 +5,11 @@
     background-color: #0b0e11;
     position: relative;
     height: 82vh;
-    width: 50vw;
+    width: 55vw;
     padding-top: 10px;
     border-radius: 12px;
-    position: relative;left: 27%;
-    top: -20vh;
+    position: absolute;left: 19%;
+    top: 11%;
+    
 
 }

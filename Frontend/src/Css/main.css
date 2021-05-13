@@ -1,11 +1,12 @@
 .Main-Wrapper img{
-    width: 8.5%;
+    width: 7.5%;
     position: relative;
-    left:14%;
+    left:7%;
 }
 .Main-Wrapper h1{
     position: relative;
-    left: 13.5%;
+    left: 5.5%;
+    font-size: 1.6vw;
     top: -28px;
     color: #fff;
     font-family:monospace;
