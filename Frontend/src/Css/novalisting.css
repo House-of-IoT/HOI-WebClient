@@ -1,14 +1,16 @@
 .nova-listing {
-    background-color: #151a21;
+    background-color: #0b0e11;
     width: 33%;
-    height: 34%;
+    height: 39%;
     position: relative;
-    margin-top: 3px;
+    margin-top: 20px;
     margin-left: 34%;
     border-radius: 12px;
     overflow-y: visible;
+    border: solid 3px #fff;
    
 }
+
 .nova-listing button{
     background-color: #764dfd;
     color: #fff;

@@ -16,6 +16,7 @@ export default class ListingHub extends Component<{}, any , bot> {
         super({});
         this.state = {
             bots :[{messages_pending : 2 , status : true  , packets_pending :3 , name : "osdfsfsfsdfk"},
+                   {messages_pending : 2 , status : true  , packets_pending :3 , name : "ok"},
                    {messages_pending : 2 , status : true  , packets_pending :3 , name : "ok"}]
         };
         

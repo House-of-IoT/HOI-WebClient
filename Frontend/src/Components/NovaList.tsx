@@ -30,6 +30,7 @@ export default class NovaList extends Component<bot,any > {
                     <button>Alarm Mode</button>
                     <button>Say</button>
                     <button>Disable</button>
+            
             </div>
         )
     }

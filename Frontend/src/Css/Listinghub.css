@@ -10,6 +10,7 @@
     border-radius: 12px;
     position: absolute;left: 24%;
     top: 11%;
+    overflow-y: scroll;
     
 
 }
