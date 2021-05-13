@@ -9,6 +9,7 @@ export default class MainHub extends Component {
                 <img  src = {logo}></img>
                 <h1>House Of IoT</h1>
                 <ListingHub/>
+                <input id = "bot-search" placeholder = "Search By Name"></input>
                 
             </div>
         )

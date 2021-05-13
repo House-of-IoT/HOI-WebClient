@@ -3,6 +3,21 @@
     position: relative;
     left:7%;
 }
+#bot-search{
+    position: absolute;
+    top: 3%;
+    left: 41%;
+    border: none;
+    background-color: #0b0e11;
+    width: 24.3vw;
+    height: 5.0vh;
+    border-radius: 12px;
+}
+#bot-search::placeholder{
+    color: #fff;
+    position: relative;
+    left: 35%;
+}
 .Main-Wrapper h1{
     position: relative;
     left: 5.5%;

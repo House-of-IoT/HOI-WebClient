@@ -6,14 +6,26 @@
     margin-top: 3px;
     margin-left: 34%;
     border-radius: 12px;
+    overflow-y: visible;
    
+}
+.nova-listing button{
+    background-color: #764dfd;
+    color: #fff;
+    border: none;
+    border-radius:4px;
+    font-weight:  bolder;
+    margin-left: 12px;
+    height: 10%;
+    position: relative;
+    top: -1%;
 }
 .nova-listing h4{
     width: 20vw;
     height: 10%;
     position: relative;
     left: 30%;
-    top: 5%;
+    top: -2%;
     font-size: 1.5vh;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #fff;
