@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import NovaList from './NovaList';
-
+import '../Css/Listinghub.css';
 //nova'
 interface bot{
     messages_pending :[],
@@ -15,7 +15,8 @@ export default class ListingHub extends Component<{}, any , bot> {
     constructor(){
         super({});
         this.state = {
-            bots :[{message_pending : [1,2,3] , status : true  , packets_pending :[1] , name : "ok"}]
+            bots :[{message_pending : [1,2,3] , status : true  , packets_pending :[1] , name : "ok"},
+                   {message_pending : [1,2,3] , status : true  , packets_pending :[1] , name : "ok"}]
         };
         
     }
@@ -25,15 +26,17 @@ export default class ListingHub extends Component<{}, any , bot> {
 
     render() {
         return (
-            <div id = "Nova-List-Hub">
-                <p>
+            <div id = "List-Hub">
+                
                     {this.state.bots.map((data:bot)=>{
                         return (
                             <NovaList   { ...data}/>
                         )
                     })}
+                
+                
 
-                </p>
+                
 
                 
             </div>
