@@ -11,6 +11,11 @@
     position: absolute;left: 24%;
     top: 11%;
     overflow-y: scroll;
+
     
 
+}
+#List-Hub::-webkit-scrollbar {
+    width: 10px;
+    color:#fff;
 }
