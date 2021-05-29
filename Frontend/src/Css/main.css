@@ -6,7 +6,7 @@
 #bot-search{
     position: absolute;
     top: 3%;
-    left: 37%;
+    left: 40%;
     border: none;
     background-color: #493197;
     padding-left: 1%;
@@ -31,4 +31,34 @@
     color: #fff;
     font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
 
+}
+
+#connections{
+    width: 12vw;
+    height: 65vh;
+    left: 5%;
+    border-radius: 12px;
+    top: 28%;
+    position: absolute;
+    overflow-y:hidden;
+    padding-left: 1%;
+    background-color: #242c37;
+}
+#connection-header{
+    width: 100%;
+    background-color: #1a2029;
+    position: relative;
+    left: -5%;
+    border-radius: 12px;
+    text-align: center;
+    padding-bottom: 3%;
+    color:#fff;
+}
+#add-connections{
+    background:none;
+    border: none;
+    color: #724fe6;
+    font-weight: 700;
+    font-size: 1.2em;
+    
 }

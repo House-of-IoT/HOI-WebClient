@@ -2,9 +2,7 @@
     background-color: #0b0e11;
     width: 33%;
     height: 39%;
-    position: relative;
-    margin-top: 20px;
-    margin-left: 34%;
+    position: absolute;
     border-radius: 12px;
     overflow-y: visible;
     border: solid 2px rgb(126, 126, 126);
