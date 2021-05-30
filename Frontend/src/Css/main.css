@@ -62,3 +62,6 @@
     font-size: 1.2em;
     
 }
+#add-connections:hover{
+opacity: .5;
+}
