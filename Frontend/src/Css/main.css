@@ -142,3 +142,31 @@ opacity: .5;
     top: -60px;
     left: 130px;
 }
+#config-handler{
+    background-color: #1a2029;
+    position:absolute;
+    width: 15%;
+    height: 20%;
+    left: 82%;
+     padding: 1%;
+     border-radius: 12px;
+    top: 37%;
+}
+.config-buttons{
+    background-color: #fd4d4d;
+    border-radius: 4px;
+    margin-left: 6%;
+    padding: 5.3%;
+    padding-bottom: 10%;
+    position: relative;
+    top: -5%;
+    height: 20%;
+    border: none;
+    color: #fff;
+}
+#remove-current-config{
+    opacity: 0.5;
+}
+#remove-current-config:hover{
+    opacity: 1;
+}

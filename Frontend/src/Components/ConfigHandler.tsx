@@ -5,9 +5,9 @@ export default class ConfigHandler extends Component {
         return (
             <div id = "config-handler">
                 <h1>Manage Configuration</h1>
-                <button>Save</button>
-                <button>Insert New</button>
-                <button>Remove</button>
+                <button className = "config-buttons">Save</button>
+                <button className = "config-buttons">Insert New</button>
+                <button  id= "remove-current-config"className = "config-buttons">Remove</button>
                
             </div>
         )
