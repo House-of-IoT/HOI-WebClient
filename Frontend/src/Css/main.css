@@ -150,7 +150,7 @@ opacity: .5;
     left: 82%;
      padding: 1%;
      border-radius: 12px;
-    top: 37%;
+    top: 41%;
 }
 .config-buttons{
     background-color: #fd4d4d;
@@ -159,7 +159,7 @@ opacity: .5;
     padding: 5.3%;
     padding-bottom: 10%;
     position: relative;
-    top: -5%;
+    top: -2%;
     height: 20%;
     border: none;
     color: #fff;
@@ -169,4 +169,18 @@ opacity: .5;
 }
 #remove-current-config:hover{
     opacity: 1;
+}
+#get-involved{
+    background-color: #1a2029;
+    position:absolute;
+    width: 15%;
+    height: 20%;
+    padding: 1%;
+    border-radius: 12px;
+    position: absolute;
+    left: 82%;
+    top: 70%;
+}
+#get-involved img{
+    width: 70px;
 }

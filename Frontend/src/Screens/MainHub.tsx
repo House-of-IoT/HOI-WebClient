@@ -5,6 +5,7 @@ import ListingHub from '../Components/ListingHub';
 import Connections from '../Components/ConnectionsList';
 import SnapShot from '../Components/SnapShot';
 import ConfigHandler from '../Components/ConfigHandler';
+import GetInvolved from '../Components/GetInvolved';
 export default class MainHub extends Component<any,any> {
 
 
@@ -30,6 +31,7 @@ export default class MainHub extends Component<any,any> {
                 <Connections connections = {this.state.connections}/>
                 <SnapShot bots = {this.state.bots}  types = {this.state.types}/>
                 <ConfigHandler/>
+                <GetInvolved/>
             </div>
         )
     }
