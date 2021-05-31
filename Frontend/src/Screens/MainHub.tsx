@@ -3,6 +3,7 @@ import logo from '../Img/bot.png';
 import '../Css/main.css';
 import ListingHub from '../Components/ListingHub';
 import Connections from '../Components/ConnectionsList';
+import SnapShot from '../Components/SnapShot';
 export default class MainHub extends Component<any,any> {
 
 
@@ -13,7 +14,9 @@ export default class MainHub extends Component<any,any> {
             connections : [
                 { name : "Ralph Server"},
                 { name : "General"}
-            ]
+            ],
+            types : new Set(),
+            bots : 0
         }    
     }
     render() {
@@ -24,6 +27,7 @@ export default class MainHub extends Component<any,any> {
                 <ListingHub/>
                 <input id = "bot-search" placeholder = "Search By Name"></input>
                 <Connections connections = {this.state.connections}/>
+                <SnapShot bots = {this.state.bots}  types = {this.state.types}/>
             </div>
         )
     }

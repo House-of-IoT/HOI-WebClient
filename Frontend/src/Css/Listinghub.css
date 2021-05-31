@@ -8,9 +8,6 @@
     position: absolute;left: 25%;
     top: 11%;
     overflow-y: scroll;
-
-
-
 }
 #List-Hub::-webkit-scrollbar {
     width: 10px;

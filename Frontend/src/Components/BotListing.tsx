@@ -1,9 +1,5 @@
 import { type } from 'os';
 import React, { Component } from 'react';
-import '../Css/botlisting.css';
-import alarm from '../Img/alarm.png'; 
-import camera from '../Img/camera.png';
-import sound from '../Img/sound.png';
 import HomeMonitor from './HomeMonitor';
 import ReedSwitch from './ReedSwitch';
 
