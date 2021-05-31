@@ -183,4 +183,6 @@ opacity: .5;
 }
 #get-involved img{
     width: 70px;
+    position: relative;
+    top: -10%;
 }
