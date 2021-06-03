@@ -7,6 +7,7 @@ import SnapShot from '../Components/SnapShot';
 import ConfigHandler from '../Components/ConfigHandler';
 import GetInvolved from '../Components/GetInvolved';
 import RemovalConfirmPopup from '../Components/RemovalConfirmPopup';
+import NewConnectionPopup from '../Components/NewConnectionPopup';
 export default class MainHub extends Component<any,any> {
 
 
@@ -19,8 +20,10 @@ export default class MainHub extends Component<any,any> {
                 { name : "General"}
             ],
             types : new Set(),
-            bots : 0
+            bots : 0,
+            removal_showing: false
         }    
+        this.setState = this.setState.bind(this);
     }
     render() {
         return (
@@ -33,7 +36,8 @@ export default class MainHub extends Component<any,any> {
                 <SnapShot bots = {this.state.bots}  types = {this.state.types}/>
                 <ConfigHandler/>
                 <GetInvolved/>
-                <RemovalConfirmPopup/>
+                <RemovalConfirmPopup state = {this.state.removal_showing} set = {this.setState}/>
+                <NewConnectionPopup/>
             </div>
         )
     }

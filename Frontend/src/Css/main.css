@@ -193,7 +193,7 @@ opacity: .5;
     left: -0.1%;
     width: 100%;
     height: 100%;
-    background-color: #00000085;
+    background-color: #000000d0;
     justify-self: center;
     justify-content: center;
     
@@ -206,7 +206,6 @@ opacity: .5;
     height: 30%;
     left: 40%;
     top: 20%;
-    border: 2px solid #fd4d4d;
     justify-self: center;
     position: relative;
 }
@@ -223,4 +222,51 @@ opacity: .5;
     left: 11%;
     border: none;
     color: #fff;
+}
+
+#new-connection h2{
+    color: #fff;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    position: relative;
+    left: 17%;
+}
+#new-connection input{
+    width: 70%;
+    height: 15%;
+    border-radius: 4px;
+    border: none;
+    margin-top: 2%;
+    position: relative;
+    left: 14%;
+}
+#new-connection::placeholder{
+    font-size: large;
+    font-weight: bold;
+}
+
+#new-connection button{
+    background-color: #fd4d4d;
+    border-radius: 4px;
+    top: 2%;
+    left: 20%;
+    padding: 5.3%;
+    padding-bottom: 10%;
+    position: relative;
+    height: 10%;
+    width: 60%;
+    border: none;
+    color: #fff;
+}
+#new-connection{
+    background-color :#1a2029;
+    border-radius: 12px;
+    padding: 1%;
+    width: 20%;
+    height: 30%;
+    left: 40%;
+    top: 20%;
+   
+    justify-self: center;
+    position: relative;
+
 }
