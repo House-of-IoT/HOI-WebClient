@@ -21,7 +21,8 @@ export default class MainHub extends Component<any,any> {
             ],
             types : new Set(),
             bots : 0,
-            removal_showing: false
+            removal_showing: false,
+            new_showing : false
         }    
         this.setState = this.setState.bind(this);
     }
@@ -37,7 +38,7 @@ export default class MainHub extends Component<any,any> {
                 <ConfigHandler/>
                 <GetInvolved/>
                 <RemovalConfirmPopup state = {this.state.removal_showing} set = {this.setState}/>
-                <NewConnectionPopup/>
+                <NewConnectionPopup state = {this.state.new_showing} set = {this.setState} />
             </div>
         )
     }

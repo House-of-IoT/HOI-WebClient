@@ -1,5 +1,4 @@
 #List-Hub{
-    background-color: #242c37;
     position: relative;
     height: 82vh;
     width: 55vw;
@@ -7,9 +6,26 @@
     border-radius: 12px;
     position: absolute;left: 25%;
     top: 11%;
-    overflow-y: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 #List-Hub::-webkit-scrollbar {
     width: 10px;
     color:#fff;
 } 
+#empty-placeholder{
+   
+    display: block;
+    width: 50%;
+    margin: auto ;
+    position: relative;
+    top: 15%;
+    left: -5%;
+}
+#empty-placeholder-text{
+    color: #fff;
+    font-size: 1.9em;
+    position: relative;
+    top: 25%;
+    left: 34%;
+}
