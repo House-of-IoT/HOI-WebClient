@@ -24,13 +24,7 @@ export default class ListingHub extends Component<{}, any> {
                             return (
                                 <BotList{...data}/>
                             )
-                        })}
-                    
-                    
-
-                    
-
-                    
+                        })} 
                 </div>
             )   
                 }

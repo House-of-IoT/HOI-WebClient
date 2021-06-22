@@ -8,11 +8,16 @@ import ConfigHandler from '../Components/ConfigHandler';
 import GetInvolved from '../Components/GetInvolved';
 import RemovalConfirmPopup from '../Components/RemovalConfirmPopup';
 import NewConnectionPopup from '../Components/NewConnectionPopup';
+import { AudioHandler } from '../Functionality/audio';
+
 export default class MainHub extends Component<any,any> {
 
+    audio_handler : AudioHandler;
+    state : any;
 
     constructor(){
         super({});
+        this.audio_handler = new AudioHandler();
         this.state = {
             //list of objects , but for now just mock data
             connections : [
@@ -26,7 +31,13 @@ export default class MainHub extends Component<any,any> {
         }    
         this.setState = this.setState.bind(this);
     }
+    
+    componentDidMount(){
+        this.audio_handler.play()
+ 
+    }
     render() {
+        
         return (
             <div className = "Main-Wrapper">
                 <img  src = {logo}></img>
