@@ -1,10 +1,21 @@
+import { timingSafeEqual } from "crypto";
 import CryptoJS from "crypto-js";
 
 export class Client{
  
     connections : Map<string,WebSocket>
     connection_keys : Map <string,any>
+    private_connection_keys : Map<string,any>
+    server_passwords : Map<string,string>
+    auth_status : Map<string,string>
+    name_and_type : string //json string
 
+
+
+    constructor(name_and_type:string){
+        this.name_and_type = name_and_type;
+
+    }
     setup_connection(connectionString:string , name:string , key:string): boolean{
         try{
             this.connections.set(name,new WebSocket(connectionString))
@@ -17,11 +28,66 @@ export class Client{
         }
     }
 
-    send_server_message(server_name:string, message:string){
+    send_server_message(server_name:string, message:string): boolean{
+        if(this.has_initial_and_private_requirements(server_name)){
+            try{
+                let public_key: string = this.connection_keys.get(server_name);
+                let private_key: string = this.private_connection_keys.get(server_name);
+                let connection: WebSocket = this.connections.get(server_name);
+                let level_one_encrypted_data = this.encrypt(message,public_key);
+                let level_two_encrypted_data = this.encrypt(level_one_encrypted_data,private_key);
+                connection.send(level_two_encrypted_data);
+                return true;
+            }
+            catch{
+                return false;
+            }
+        }
+    }
+
+    gather_private_key(server_name:string){
+        if(this.has_initial_requirements(server_name)){
+            let public_key = this.connection_keys.get(server_name);
+            let connection: WebSocket= this.connections.get(server_name);
+            connection.onmessage = (message)=>{this.gather_private_callback(message,public_key,server_name)}
+        }
+    }
+    gather_private_callback(message:MessageEvent<any>,public_key:string,server_name:string){
+            let decrypted_private_key = this.decrypt(message.data,public_key);
+            this.private_connection_keys.set(server_name,decrypted_private_key);
+    }
+
+    authenticate(server_name:string){
+        if(this.has_initial_and_private_requirements(server_name)){
+            if(this.server_passwords.has(server_name)){
+                let password = this.server_passwords.get(server_name);
+                this.send_server_message(server_name,password);
+                this.send_server_message(server_name,this.name_and_type)
+            }
+        }    
+    }
+
+    // connection and public key
+    has_initial_requirements(server_name:string){
+        if(this.connections.has(server_name) && this.connection_keys.has(server_name)){
+            return true;
+        }
+        else{
+            return false
+        }
+    }
+
+    has_initial_and_private_requirements(server_name:string){
+        if(this.has_initial_requirements(server_name) && this.private_connection_keys.has(server_name)){
+            return true;
+        }
+        else{
+            return false;
+        }
 
     }
 
-    encrypt(plaintext:string , key:string){
+    encrypt(plaintext:string , key:string):string{
         var encrypted_b64 = CryptoJS.AES.encrypt(plaintext, key);
         return encrypted_b64;
     }
