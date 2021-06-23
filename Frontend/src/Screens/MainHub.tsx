@@ -9,11 +9,13 @@ import GetInvolved from '../Components/GetInvolved';
 import RemovalConfirmPopup from '../Components/RemovalConfirmPopup';
 import NewConnectionPopup from '../Components/NewConnectionPopup';
 import { AudioHandler } from '../Functionality/audio';
+import { Client } from '../Functionality/client';
 
 export default class MainHub extends Component<any,any> {
 
     audio_handler : AudioHandler;
     state : any;
+    client : Client;
 
     constructor(){
         super({});
@@ -30,11 +32,11 @@ export default class MainHub extends Component<any,any> {
             new_showing : false
         }    
         this.setState = this.setState.bind(this);
+        this.client = new Client();
     }
     
     componentDidMount(){
         this.audio_handler.play()
- 
     }
     render() {
         
