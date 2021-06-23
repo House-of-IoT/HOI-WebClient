@@ -10,8 +10,6 @@ export class Client{
     auth_status : Map<string,string>
     name_and_type : string //json string
 
-
-
     constructor(name_and_type:string){
         this.name_and_type = name_and_type;
 
@@ -19,8 +17,9 @@ export class Client{
     setup_connection(connectionString:string , name:string , key:string): boolean{
         try{
             this.connections.set(name,new WebSocket(connectionString))
-            let crypto_key = CryptoJS.enc.Utf8.parse('okwerw'); 
+            let crypto_key = CryptoJS.enc.Utf8.parse(key); 
             this.connection_keys.set(name,crypto_key)
+            this.auth_status.set(name,"unknown");
             return true;
         }
         catch{
@@ -52,6 +51,7 @@ export class Client{
             connection.onmessage = (message)=>{this.gather_private_callback(message,public_key,server_name)}
         }
     }
+
     gather_private_callback(message:MessageEvent<any>,public_key:string,server_name:string){
             let decrypted_private_key = this.decrypt(message.data,public_key);
             this.private_connection_keys.set(server_name,decrypted_private_key);
@@ -61,6 +61,8 @@ export class Client{
         if(this.has_initial_and_private_requirements(server_name)){
             if(this.server_passwords.has(server_name)){
                 let password = this.server_passwords.get(server_name);
+                let connection:WebSocket = this.connections.get(server_name);
+                connection.onmessage = (message)=>{this.check_auth_response_and_update_status(server_name ,message.data)}
                 this.send_server_message(server_name,password);
                 this.send_server_message(server_name,this.name_and_type)
             }
@@ -84,6 +86,26 @@ export class Client{
         else{
             return false;
         }
+    }
+
+    check_auth_response_and_update_status(server_name:string,message:string){
+        let response = this.double_decrypt(server_name, message);
+        if(response == "success"){
+            this.auth_status.set(server_name,"good");
+        }
+        else{
+            this.auth_status.set(server_name,"bad");
+        }
+    }
+
+    double_decrypt(server_name:string , message:string):string{
+        if(this.has_initial_and_private_requirements(server_name)){
+            let public_key = this.connection_keys.get(server_name);
+            let private_key = this.private_connection_keys.get(server_name);
+            let single_decrypt = this.decrypt(message,public_key);
+            let double_decrypt = this.decrypt(single_decrypt,private_key);
+            return double_decrypt;
+        }
 
     }
 
@@ -97,6 +119,5 @@ export class Client{
         let output_plaintext = bytes.toString(CryptoJS.enc.Utf8);
         return output_plaintext;
     }
-
 
 }
