@@ -1,0 +1,40 @@
+.reed-switch{
+    background-color: #242c37;
+    justify-content: center;
+    height: 30vh;
+    width: 15vw;
+    border-radius: 12px;
+}
+.reed-switch h1{
+    position: relative;
+    left: 35%;
+    top: -5%;
+}
+.reed-switch h3{
+    position: relative;
+    top: 5%;
+    left: 23%;
+    color:rgb(156, 156, 156);
+    font-weight: bold;
+    height: 10%;
+ 
+}
+.reed-switch button{
+    height: 10%;
+    position: relative;
+    top: 10%;
+    left:29%;
+    width: 40%;
+    height: 20%;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+}
+.home-monitor{
+    background-color: #242c37;
+    justify-content: center;
+    height: 30vh;
+    width: 15vw;
+    border-radius: 12px;
+}
