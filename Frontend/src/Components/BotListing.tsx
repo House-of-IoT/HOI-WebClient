@@ -18,7 +18,11 @@ export default class BotList extends Component<any,any > {
             return (<HomeMonitor data = {this.props.bot}/>);
         }
         else if(type == "reed_switch"){
-            return (<ReedSwitch/>);
+            return (
+            <ReedSwitch  
+                state = {this.props.bot.state} 
+                active_status = {this.props.bot.active_status}
+                device_name = {this.props.bot.device_name}/>);
         }
         else if (type == "ralph"){
             return (<Ralph/>);

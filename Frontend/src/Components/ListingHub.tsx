@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import BotList from './BotListing';
+import '../Css/bottypes.css';
 import '../Css/Listinghub.css';
 import look from "../Img/look.svg";
 export default class ListingHub extends Component<any, any> {

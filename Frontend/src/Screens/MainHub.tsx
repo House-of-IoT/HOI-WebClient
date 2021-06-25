@@ -43,7 +43,10 @@ export default class MainHub extends Component<any,any> {
             <div className = "Main-Wrapper">
                 <img  src = {logo}></img>
                 <h1>House Of IoT</h1>
-                <ListingHub bots = {[{type:"reed_switch"},{type:"home_monitor"},{type:"ralph"} , {type:"motion_detection_camera"}]}/>
+                <ListingHub bots = {[
+                    {type:"reed_switch",state:true , active_status:true, device_name:"backdoor"},
+                    {type:"home_monitor"},
+                    {type:"ralph"}]}/>
                 <input id = "bot-search" placeholder = "Search By Name"></input>
                 <Connections connections = {this.state.connections}/>
                 <SnapShot bots = {this.state.bots}  types = {this.state.types}/>
