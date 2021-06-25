@@ -2,9 +2,12 @@
     position: relative;
     height: 82vh;
     width: 55vw;
+    display: grid;
     padding-top: 10px;
     border-radius: 12px;
     position: absolute;left: 25%;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
     top: 11%;
     overflow-x: hidden;
     overflow-y: auto;

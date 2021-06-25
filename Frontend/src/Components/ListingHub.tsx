@@ -2,12 +2,11 @@ import React, { Component } from 'react'
 import BotList from './BotListing';
 import '../Css/Listinghub.css';
 import look from "../Img/look.svg";
-export default class ListingHub extends Component<{}, any> {
+export default class ListingHub extends Component<any, any> {
 
     constructor(){
         super({});
         this.state = {
-            bots :[]
         };
         
     }
@@ -16,13 +15,13 @@ export default class ListingHub extends Component<{}, any> {
     }
 
     render() {
-        if(this.state.bots.length > 0){
+        if(this.props.bots.length > 0){
             return (
                 <div id = "List-Hub">
                     
-                        {this.state.bots.map((data:any)=>{
+                        {this.props.bots.map((data:any)=>{
                             return (
-                                <BotList{...data}/>
+                                <BotList bot = {data}/>
                             )
                         })} 
                 </div>
