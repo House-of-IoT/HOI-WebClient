@@ -64,7 +64,7 @@ export class Client{
                 let connection:WebSocket = this.connections.get(server_name);
                 connection.onmessage = (message)=>{this.check_auth_response_and_update_status(server_name ,message.data)}
                 this.send_server_message(server_name,password);
-                this.send_server_message(server_name,this.name_and_type)
+                this.send_server_message(server_name,this.name_and_type);
             }
         }    
     }
@@ -98,6 +98,10 @@ export class Client{
         }
     }
 
+    begin_gathering_periodic_data(data:string){
+        let periodic_data = JSON.parse(data);
+        console.log(Object.keys(periodic_data));
+    }
     double_decrypt(server_name:string , message:string):string{
         if(this.has_initial_and_private_requirements(server_name)){
             let public_key = this.connection_keys.get(server_name);
@@ -106,7 +110,6 @@ export class Client{
             let double_decrypt = this.decrypt(single_decrypt,private_key);
             return double_decrypt;
         }
-
     }
 
     encrypt(plaintext:string , key:string):string{
