@@ -44,9 +44,11 @@ export default class MainHub extends Component<any,any> {
                 <img  src = {logo}></img>
                 <h1>House Of IoT</h1>
                 <ListingHub bots = {[
-                    {type:"reed_switch",state:true , active_status:true, device_name:"backdoor"},
-                    {type:"home_monitor" , device_name : "home_monitor"},
-                    {type:"ralph" , active_status:true,device_name :"ralph_home_2"}]}/>
+                    {type:"reed_switch",state:true , active_status:true, device_name:"backdoor" , server:"test"},
+                    {type:"home_monitor" , device_name : "home_monitor" , server:"test"},
+                    {type:"ralph" , active_status:true,device_name :"ralph_home_2" , server:"test"},
+                    {type:"ralph" , active_status:false,device_name :"ralph_home_3" , server:"test"},
+                    {type:"gas_fire_smoke" , active_status:true,device_name :"heating_room" , server:"test"}]}/>
                 <input id = "bot-search" placeholder = "Search By Name"></input>
                 <Connections connections = {this.state.connections}/>
                 <SnapShot bots = {this.state.bots}  types = {this.state.types}/>

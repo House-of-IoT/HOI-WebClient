@@ -4,13 +4,10 @@ import HomeMonitor from './HomeMonitor';
 import ReedSwitch from './ReedSwitch';
 import Ralph from './Ralph';
 import MotionDetectionCamera from './MotionDetectionCamera';
+import GasFireSmoke from './GasFireSmoke';
 
 
 export default class BotList extends Component<any,any > {
-    constructor(props:any){
-        super(props);
-        
-    }
 
     render() {
         let type  = this.props.bot["type"]
@@ -26,6 +23,9 @@ export default class BotList extends Component<any,any > {
         }
         else if (type == "ralph"){
             return (<Ralph active_status = {this.props.bot.active_status} device_name = {this.props.bot.device_name}/>);
+        }
+        else if (type == "gas_fire_smoke"){
+            return(<GasFireSmoke device_name = {this.props.bot.device_name} active_status = {this.props.bot.active_status}/>)
         }
         else{
             return (<MotionDetectionCamera/>)

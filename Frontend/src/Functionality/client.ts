@@ -4,8 +4,6 @@ import CryptoJS from "crypto-js";
 export class Client{
  
     connections : Map<string,WebSocket>
-    connection_keys : Map <string,any>
-    private_connection_keys : Map<string,any>
     server_passwords : Map<string,string>
     auth_status : Map<string,string>
     name_and_type : string //json string
@@ -13,6 +11,15 @@ export class Client{
     constructor(name_and_type:string){
         this.name_and_type = name_and_type;
 
+    }
+
+    setup_connection(server_name:string):boolean{
+        if (this.connections.has(server_name)){
+            return false
+        }
+        else{
+            
+        }
     }
 
 }

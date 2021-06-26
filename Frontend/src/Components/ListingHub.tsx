@@ -5,12 +5,6 @@ import '../Css/Listinghub.css';
 import look from "../Img/look.svg";
 export default class ListingHub extends Component<any, any> {
 
-    constructor(){
-        super({});
-        this.state = {
-        };
-        
-    }
     componentDidMount(){
             
     }
@@ -19,10 +13,9 @@ export default class ListingHub extends Component<any, any> {
         if(this.props.bots.length > 0){
             return (
                 <div id = "List-Hub">
-                    
                         {this.props.bots.map((data:any)=>{
                             return (
-                                <BotList bot = {data}/>
+                                <BotList key = {data.device_name+data.server} bot = {data}/>
                             )
                         })} 
                 </div>
