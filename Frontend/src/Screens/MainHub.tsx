@@ -46,7 +46,7 @@ export default class MainHub extends Component<any,any> {
                 <ListingHub bots = {[
                     {type:"reed_switch",state:true , active_status:true, device_name:"backdoor"},
                     {type:"home_monitor" , device_name : "home_monitor"},
-                    {type:"ralph"}]}/>
+                    {type:"ralph" , active_status:true,device_name :"ralph_home_2"}]}/>
                 <input id = "bot-search" placeholder = "Search By Name"></input>
                 <Connections connections = {this.state.connections}/>
                 <SnapShot bots = {this.state.bots}  types = {this.state.types}/>

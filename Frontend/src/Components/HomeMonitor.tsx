@@ -10,6 +10,7 @@ export default class HomeMonitor extends Component<any,any> {
                 <h4>Average Frame Rate : 60fps</h4>
                 <h4>Average Cpu Usage(24h) :10.3% </h4>
                 <button>View Live</button>    
+                <button>View History</button>
             </div>
         )
     }

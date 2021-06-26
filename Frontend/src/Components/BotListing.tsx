@@ -25,7 +25,7 @@ export default class BotList extends Component<any,any > {
                 device_name = {this.props.bot.device_name}/>);
         }
         else if (type == "ralph"){
-            return (<Ralph/>);
+            return (<Ralph active_status = {this.props.bot.active_status} device_name = {this.props.bot.device_name}/>);
         }
         else{
             return (<MotionDetectionCamera/>)
