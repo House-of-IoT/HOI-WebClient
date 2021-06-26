@@ -15,7 +15,7 @@ export default class BotList extends Component<any,any > {
     render() {
         let type  = this.props.bot["type"]
         if( type == "home_monitor"){
-            return (<HomeMonitor data = {this.props.bot}/>);
+            return (<HomeMonitor data = {this.props.bot} device_name = {this.props.bot.device_name}/>);
         }
         else if(type == "reed_switch"){
             return (

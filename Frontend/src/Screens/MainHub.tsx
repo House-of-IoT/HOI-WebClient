@@ -45,7 +45,7 @@ export default class MainHub extends Component<any,any> {
                 <h1>House Of IoT</h1>
                 <ListingHub bots = {[
                     {type:"reed_switch",state:true , active_status:true, device_name:"backdoor"},
-                    {type:"home_monitor"},
+                    {type:"home_monitor" , device_name : "home_monitor"},
                     {type:"ralph"}]}/>
                 <input id = "bot-search" placeholder = "Search By Name"></input>
                 <Connections connections = {this.state.connections}/>
