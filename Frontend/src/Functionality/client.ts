@@ -47,9 +47,11 @@ export class Client{
     }
 
     handle_auth_response(event:MessageEvent){
+        console.log(event.data);
         if(event.data == "success"){
             this.auth_status.set(this.current_server_trying_to_auth,"success");
             this.begin_gathering_bot_data(this.current_server_trying_to_auth);
+           
         }
         else{
             this.auth_status.set(this.current_server_trying_to_auth,"failure")
