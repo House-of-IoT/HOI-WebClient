@@ -17,6 +17,7 @@ export default class MainHub extends Component<any,any> {
     state : any;
     client : Client;
 
+
     constructor(){
         super({});
         this.audio_handler = new AudioHandler();
@@ -29,7 +30,9 @@ export default class MainHub extends Component<any,any> {
             types : new Set(),
             bots : 0,
             removal_showing: false,
-            new_showing : false
+            new_showing : false,
+            selected_bots : [],//when a server is selected these will be the main bots
+            server_bot_strings : new Map() // all passive bot data from one server stored in one string.
         }    
         this.setState = this.setState.bind(this);
     }
