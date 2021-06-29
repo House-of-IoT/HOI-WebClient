@@ -10,13 +10,15 @@ import RemovalConfirmPopup from '../Components/RemovalConfirmPopup';
 import NewConnectionPopup from '../Components/NewConnectionPopup';
 import { AudioHandler } from '../Functionality/audio';
 import { Client } from '../Functionality/client';
+import { Test } from '../Functionality/clienttesting';
+import { Bare } from '../Functionality/test';
 
 export default class MainHub extends Component<any,any> {
 
     audio_handler : AudioHandler;
     state : any;
-    client : Client;
-
+    client : Bare;
+    test:Test
 
     constructor(){
         super({});
@@ -35,10 +37,13 @@ export default class MainHub extends Component<any,any> {
             server_bot_strings : new Map() // all passive bot data from one server stored in one string.
         }    
         this.setState = this.setState.bind(this);
+        this.test = new Test();
     }
     
     componentDidMount(){
         this.audio_handler.play()
+        this.test.auth();
+
     }
     render() {
         

@@ -19,7 +19,7 @@ protocol of communication between the client/server , which is :
 
 */
 
-class Test{
+export class Test{
     client:Client;
     name_and_type:string;
     password:string;
@@ -32,8 +32,16 @@ class Test{
         this.server_name = "test";
     }
 
-    test_auth(){
-        this.client.setup_connection
+    auth(){
+        this.client.set_name_and_type(this.name_and_type);
+        let result = this.client.setup_connection("test",'ws://localhost:50223',this.password);
+        assert.strictEqual(result,true);
+    }
+
+    failed_auth(){
+        this.client.set_name_and_type(this.name_and_type);
+        let result = this.client.setup_connection("test",'ws://localhost:50223',this.password+"");
+        assert.strictEqual(result,false);
     }
 
 }
