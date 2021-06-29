@@ -11,13 +11,12 @@ import NewConnectionPopup from '../Components/NewConnectionPopup';
 import { AudioHandler } from '../Functionality/audio';
 import { Client } from '../Functionality/client';
 import { Test } from '../Functionality/clienttesting';
-import { Bare } from '../Functionality/test';
 
 export default class MainHub extends Component<any,any> {
 
     audio_handler : AudioHandler;
     state : any;
-    client : Bare;
+    client:Client
     test:Test
 
     constructor(){

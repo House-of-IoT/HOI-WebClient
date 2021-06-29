@@ -10,7 +10,7 @@ export class Client{
     current_server_trying_to_auth :string
     server_status : Map<string,Boolean>
     set_bot_state:any
-    passive_data_interval_ids:Map<string,string>
+    passive_data_interval_ids:Map<string,NodeJS.Timeout>
 
     constructor(name_and_type:string){
         this.name_and_type = name_and_type;
@@ -18,7 +18,7 @@ export class Client{
         this.connection_strings = new Map<string,string>();
         this.auth_status = new Map<string,string>();
         this.server_status = new Map<string,Boolean>();
-        this.passive_data_interval_ids = new Map<string,string>();
+        this.passive_data_interval_ids = new Map<string,NodeJS.Timeout>();
     }
 
     setup_connection(server_name:string,connectionString:string,password:string):boolean{
@@ -82,6 +82,7 @@ export class Client{
                    ()=>{
                        connection.send("passive_data")
                    },3000);
+                this.passive_data_interval_ids.set(server_name,intervalId);
                connection.onmessage = (event)=>{this.gather_bot_data(event)};
             }
             else{

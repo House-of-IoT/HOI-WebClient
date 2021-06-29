@@ -24,24 +24,50 @@ export class Test{
     name_and_type:string;
     password:string;
     server_name:string;
+    connection_string:string
 
     constructor(){
         this.name_and_type = JSON.stringify({"name":"client_web" , "type":"non-bot"});
         this.password = "";
         this.client = new Client(this.name_and_type);
         this.server_name = "test";
+        this.connection_string = 'ws://localhost:50223';
     }
 
     auth(){
         this.client.set_name_and_type(this.name_and_type);
-        let result = this.client.setup_connection("test",'ws://localhost:50223',this.password);
+        let result = this.client.setup_connection("test",this.connection_string,this.password);
         assert.strictEqual(result,true);
     }
 
     failed_auth(){
         this.client.set_name_and_type(this.name_and_type);
-        let result = this.client.setup_connection("test",'ws://localhost:50223',this.password+"");
+        let result = this.client.setup_connection("test",this.connection_string,this.password+"");
         assert.strictEqual(result,false);
+    }
+
+    tables_are_correct_and_metadata_exist(){
+        //this test assumes auth passes
+        this.auth();
+        setTimeout(() => {
+            let connection_exist = this.client.connections.has(this.server_name);
+            let connection_string_exist = this.client.connection_strings.has(this.connection_string);
+            let auth_status = this.client.auth_status.get(this.server_name);
+            let interval_exist = this.client.passive_data_interval_ids.has(this.server_name);
+            assert.strictEqual(this.client.current_server_trying_to_auth,this.server_name);
+            assert.strictEqual(connection_exist,true);
+            assert.strictEqual(connection_string_exist,true);
+            assert.strictEqual(auth_status,"success");
+            assert.strictEqual(interval_exist,true);
+        }, 5000);
+
+    }
+    connection_remains_alive_after_auth(){
+        this.auth();
+        setTimeout(()=>{
+            let connection = this.client.connections.get(this.server_name);
+            assert.strictEqual(connection.readyState, WebSocket.OPEN);
+        },5000)
     }
 
 }
