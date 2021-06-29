@@ -17,6 +17,9 @@ protocol of communication between the client/server , which is :
 3.check server response
 4.begin general sequence
 
+
+since these tests are network oriented , there are a lot of assumptions in the below tests,
+like there will be no connection interrupts, the password matches the server password and etc.
 */
 
 export class Test{
@@ -46,7 +49,7 @@ export class Test{
         assert.strictEqual(result,false);
     }
 
-    tables_are_correct_and_metadata_exist(){
+    tables_are_correct_and_metadata_exist_passed_auth(){
         //this test assumes auth passes
         this.auth();
         setTimeout(() => {
@@ -60,14 +63,35 @@ export class Test{
             assert.strictEqual(auth_status,"success");
             assert.strictEqual(interval_exist,true);
         }, 5000);
+    }
+
+    tables_are_correct_and_metadata_exist_failed_auth(){
+        //this test assumes auth fails
+        this.auth();
+        setTimeout(() => {
+            let connection_exist = this.client.connections.has(this.server_name);
+            let connection_string_exist = this.client.connection_strings.has(this.connection_string);
+            let auth_status = this.client.auth_status.get(this.server_name);
+            let interval_exist = this.client.passive_data_interval_ids.has(this.server_name);
+            assert.strictEqual(this.client.current_server_trying_to_auth,this.server_name);
+            assert.strictEqual(connection_exist,false);
+            assert.strictEqual(connection_string_exist,false);
+            assert.strictEqual(auth_status,"failure");
+            assert.strictEqual(interval_exist,false);
+        }, 5000);
 
     }
+
     connection_remains_alive_after_auth(){
         this.auth();
         setTimeout(()=>{
             let connection = this.client.connections.get(this.server_name);
             assert.strictEqual(connection.readyState, WebSocket.OPEN);
         },5000)
+    }
+
+    non_assertive_trigger_rate_limit(){ 
+        setInterval(()=>{this.failed_auth},5000);
     }
 
 }
