@@ -33,19 +33,22 @@ export default class MainHub extends Component<any,any> {
             removal_showing: false,
             new_showing : false,
             selected_bots : [],//when a server is selected these will be the main bots
-            server_bot_strings : new Map() // all passive bot data from one server stored in one string.
+            server_bot_strings : new Map(), // all passive bot data from one server stored in one string.
+            successful_action_showing:false,
+            failed_action_showing:false,
+            failed_action_message:"",
+            successful_action_message:"",
         }    
         this.setState = this.setState.bind(this);
         this.test = new Test();
     }
     
     componentDidMount(){
-        this.audio_handler.play()
+        this.audio_handler.play();
         this.test.auth();
 
     }
     render() {
-        
         return (
             <div className = "Main-Wrapper">
                 <img  src = {logo}></img>

@@ -95,12 +95,10 @@ export class Client{
 
         }
         else if(response.action == "disconnect"){
-            
+
         }
     }
     
-
-
     handle_auth_response(event:MessageEvent){
         if(event.data == "success"){
             console.log("passed auth");
