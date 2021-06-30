@@ -1,3 +1,5 @@
+import { BasicResponse } from "./BasicResponse";
+
 export class Client{
  
     connections : Map<string,WebSocket>
@@ -55,34 +57,46 @@ export class Client{
 
         }
     }
+
     request_bot_action(server_name:string,bot_name:string,action:string){
         try{
             if(this.auth_status.has(server_name) && this.auth_status.get(server_name) =="success"){
-
+                let connection = this.connections.get(server_name);
+                this.route_bot_action(connection,action,bot_name);
+            }
+            else{
+                throw new Error("issue with executing action");
             }
         }
-        catch{
-
+        catch(e){
+            console.log(e);
         }
     }
 
-    route_bot_action(connection:WebSocket, action:string){
+    route_bot_action(connection:WebSocket, action:string,bot_name:string){
         if(action == "deactivate" || action == "activate"){
-            
+            connection.onmessage = ()=>{this.handle_basic_action_request_response};
+            connection.send(action);   
+            connection.send(bot_name);
         }
     }
+
     handle_basic_action_request_response(event:MessageEvent){
-        let data = JSON.parse(event.data)
-        if(data.response == "success"){
-            
-        }
-        else{
-
-        }
+        let data: BasicResponse= JSON.parse(event.data);
+        this.update_ui_after_action_response(data);
     }
 
-    update_ui_after_success_response(){
+    update_ui_after_action_response(response:BasicResponse){
+        if(response.action == "activate"){
 
+        }
+
+        else if(response.action == "deactivate"){
+
+        }
+        else if(response.action == "disconnect"){
+            
+        }
     }
     
 
