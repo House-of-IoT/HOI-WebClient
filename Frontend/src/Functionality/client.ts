@@ -61,6 +61,11 @@ export class Client{
     request_bot_action(server_name:string,bot_name:string,action:string){
         try{
             if(this.auth_status.has(server_name) && this.auth_status.get(server_name) =="success"){
+                //clear and delete the server interval timeout that we stored
+                let interval_id = this.passive_data_interval_ids.get(server_name)
+                clearInterval(interval_id);
+                this.passive_data_interval_ids.delete(server_name);
+                //make the request
                 let connection = this.connections.get(server_name);
                 this.route_bot_action(connection,action,bot_name);
             }
@@ -157,8 +162,6 @@ export class Client{
             this.connections.delete(this.current_server_trying_to_auth);
             this.connection_strings.delete(this.current_server_trying_to_auth);
         }
-        
-    
     }
 
     gather_bot_data(event:MessageEvent){
