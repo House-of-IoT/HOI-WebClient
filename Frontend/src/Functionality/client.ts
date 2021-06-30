@@ -88,15 +88,18 @@ export class Client{
 
     update_ui_after_action_response(response:BasicResponse){
         if(response.action == "activate"){
-            
-
+            this.change_response_component_state(response,
+                " has been successfully activated" , " failed to activate");
         }
 
         else if(response.action == "deactivate"){
-
+            this.change_response_component_state(response,
+                " has been successfully deactivated" , " failed to deactivate");
         }
-        else if(response.action == "disconnect"){
 
+        else if(response.action == "disconnect"){
+            this.change_response_component_state(response,
+                " has been successfully disconnected" , " failed to disconnect");
         }
     }
 
@@ -108,6 +111,7 @@ export class Client{
                     says that ${response.bot_name}`+ success_message})
             this.set_parent_state({successful_action_showing:true});
         }
+
         else{
             this.set_parent_state(
                 {
