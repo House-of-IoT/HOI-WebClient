@@ -8,7 +8,7 @@ export class Client{
     name_and_type : string //json string
     current_server_trying_to_auth :string
     server_status : Map<string,Boolean>
-    set_bot_state:any
+    set_parent_state:any
     passive_data_interval_ids:Map<string,NodeJS.Timeout>
     current_bot_for_action : string
 
@@ -88,6 +88,7 @@ export class Client{
 
     update_ui_after_action_response(response:BasicResponse){
         if(response.action == "activate"){
+            
 
         }
 
@@ -96,6 +97,23 @@ export class Client{
         }
         else if(response.action == "disconnect"){
 
+        }
+    }
+
+    change_response_component_state(response:BasicResponse,success_message:string , failure_message:string){
+        if(response.status == "success"){
+            this.set_parent_state(
+                {
+                    successful_action_message:`${response.server_name}
+                    says that ${response.bot_name}`+ success_message})
+            this.set_parent_state({successful_action_showing:true});
+        }
+        else{
+            this.set_parent_state(
+                {
+                    failed_action_message:`${response.server_name}
+                    says that ${response.bot_name}`+ failure_message})
+            this.set_parent_state({failed_action_showing:true});
         }
     }
     
@@ -149,7 +167,7 @@ export class Client{
             }
             else{
                 //overwrite the old bot string string.
-                this.set_bot_state(prevState => {
+                this.set_parent_state(prevState => {
                     let previous = Object.assign({}, prevState);
                     previous[server_name] = bot_string;                 
                     return previous;
@@ -175,7 +193,7 @@ export class Client{
         this.name_and_type = name_and_type
     }
 
-    define_bot_state(fun:any){
-        this.set_bot_state = fun;
+    define_parent_state(fun:any){
+        this.set_parent_state = fun;
     }
 }
