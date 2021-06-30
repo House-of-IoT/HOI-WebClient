@@ -1,6 +1,3 @@
-import { timingSafeEqual } from "crypto";
-import CryptoJS from "crypto-js";
-
 export class Client{
  
     connections : Map<string,WebSocket>
@@ -11,6 +8,7 @@ export class Client{
     server_status : Map<string,Boolean>
     set_bot_state:any
     passive_data_interval_ids:Map<string,NodeJS.Timeout>
+    current_bot_for_action : string
 
     constructor(name_and_type:string){
         this.name_and_type = name_and_type;
@@ -57,6 +55,37 @@ export class Client{
 
         }
     }
+    request_bot_action(server_name:string,bot_name:string,action:string){
+        try{
+            if(this.auth_status.has(server_name) && this.auth_status.get(server_name) =="success"){
+
+            }
+        }
+        catch{
+
+        }
+    }
+
+    route_bot_action(connection:WebSocket, action:string){
+        if(action == "deactivate" || action == "activate"){
+            
+        }
+    }
+    handle_basic_action_request_response(event:MessageEvent){
+        let data = JSON.parse(event.data)
+        if(data.response == "success"){
+            
+        }
+        else{
+
+        }
+    }
+
+    update_ui_after_success_response(){
+
+    }
+    
+
 
     handle_auth_response(event:MessageEvent){
         if(event.data == "success"){

@@ -79,7 +79,6 @@ export class Test{
             assert.strictEqual(auth_status,"failure");
             assert.strictEqual(interval_exist,false);
         }, 5000);
-
     }
 
     connection_remains_alive_after_auth(){
