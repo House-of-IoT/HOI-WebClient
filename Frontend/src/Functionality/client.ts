@@ -46,6 +46,7 @@ export class Client{
                 this.current_server_trying_to_auth = server_name; 
                 connection.send(password);
                 connection.send(this.name_and_type);
+                connection.send(server_name);
             }
             else{
                 throw new Error("Can't locate Credentials");
@@ -54,7 +55,6 @@ export class Client{
         catch{
             console.log("exception in authentication");
             //display popup
-
         }
     }
 
