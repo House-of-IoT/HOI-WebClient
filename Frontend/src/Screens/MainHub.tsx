@@ -45,7 +45,7 @@ export default class MainHub extends Component<any,any> {
     
     componentDidMount(){
         this.audio_handler.play();
-        this.test.auth();
+        this.test.test_bot_disconnect();
 
     }
     render() {

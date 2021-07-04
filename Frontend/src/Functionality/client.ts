@@ -79,16 +79,21 @@ export class Client{
     }
 
     route_bot_action(connection:WebSocket, action:string,bot_name:string){
-        if(action == "deactivate" || action == "activate"){
-            connection.onmessage = ()=>{this.handle_basic_action_request_response};
+         console.log("here")
+        if(action == "deactivate" || action == "activate" || action == "disconnect"){
+            connection.onmessage = (event)=>{this.handle_basic_action_request_response(event,true)};
+            connection.send("bot_control");
             connection.send(action);   
             connection.send(bot_name);
         }
     }
 
-    handle_basic_action_request_response(event:MessageEvent){
+    handle_basic_action_request_response(event:MessageEvent,test:boolean){
         let data: BasicResponse= JSON.parse(event.data);
-        this.update_ui_after_action_response(data);
+        console.log(data)
+        if(!test){
+            this.update_ui_after_action_response(data);
+        }
     }
 
     update_ui_after_action_response(response:BasicResponse){
@@ -109,6 +114,7 @@ export class Client{
     }
 
     change_response_component_state(response:BasicResponse,success_message:string , failure_message:string){
+        console.log(response.status);
         if(response.status == "success"){
             this.set_parent_state(
                 {
@@ -116,7 +122,13 @@ export class Client{
                     says that ${response.bot_name}`+ success_message})
             this.set_parent_state({successful_action_showing:true});
         }
-
+        else if(response.status == "timeout"){
+            this.set_parent_state(
+                {
+                    failed_action_message:`The request to ${response.server_name}
+                     timed-out`})
+            this.set_parent_state({failed_action_showing:true});
+        }
         else{
             this.set_parent_state(
                 {
@@ -173,12 +185,13 @@ export class Client{
                 throw new Error("issue");
             }
             else{
+                console.log(bot_string)
                 //overwrite the old bot string string.
-                this.set_parent_state(prevState => {
-                    let previous = Object.assign({}, prevState);
-                    previous[server_name] = bot_string;                 
-                    return previous;
-                  })
+                //this.set_parent_state(prevState => {
+                  //  let previous = Object.assign({}, prevState);
+                   // previous[server_name] = bot_string;                 
+                   // return previous;
+                 // })
             }
         }
         catch{

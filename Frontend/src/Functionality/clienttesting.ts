@@ -49,6 +49,24 @@ export class Test{
         assert.strictEqual(result,false);
     }
 
+    test_bot_deactivate_and_activate(){
+        this.auth();
+        setTimeout(()=>{
+            this.client.request_bot_action("test","test","deactivate");
+            setTimeout(()=>{
+                this.client.request_bot_action("test","test","activate")
+            },5000)
+
+        },5000)
+    }
+
+    test_bot_disconnect(){
+        this.auth();
+        setTimeout(()=>{
+            this.client.request_bot_action("test","test","disconnect");
+        },5000)
+    }
+
     tables_are_correct_and_metadata_exist_passed_auth(){
         //this test assumes auth passes
         this.auth();
@@ -90,7 +108,7 @@ export class Test{
     }
 
     non_assertive_trigger_rate_limit(){ 
-        setInterval(()=>{this.failed_auth},5000);
+        setInterval(()=>{this.failed_auth()},5000);
     }
 
 }
