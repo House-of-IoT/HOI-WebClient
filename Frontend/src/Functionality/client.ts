@@ -79,7 +79,6 @@ export class Client{
     }
 
     route_bot_action(connection:WebSocket, action:string,bot_name:string){
-         console.log("here")
         if(action == "deactivate" || action == "activate" || action == "disconnect"){
             connection.onmessage = (event)=>{this.handle_basic_action_request_response(event,true)};
             connection.send("bot_control");
@@ -89,12 +88,14 @@ export class Client{
     }
 
     handle_basic_action_request_response(event:MessageEvent,test:boolean){
+        console.log(event.data)
         let data: BasicResponse= JSON.parse(event.data);
         console.log(data)
         if(!test){
             this.update_ui_after_action_response(data);
         }
     }
+
 
     update_ui_after_action_response(response:BasicResponse){
         if(response.action == "activate"){
@@ -198,6 +199,10 @@ export class Client{
             //alert the 
             console.log("no bot data found");
         }
+    }
+
+    gather_list_of_deactivated_bots(server_name:string){
+        
     }
 
     has_credentials(server_name:string):boolean{

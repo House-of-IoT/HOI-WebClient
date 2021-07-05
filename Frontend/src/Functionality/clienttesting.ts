@@ -1,7 +1,6 @@
 import { Client } from "./client";
 import assert from "assert";
 
-
 /* 
 This test class tests the protocol/responses 
 between the client/server.
@@ -28,13 +27,15 @@ export class Test{
     password:string;
     server_name:string;
     connection_string:string
-
-    constructor(){
+  
+    constructor(state_set){
         this.name_and_type = JSON.stringify({"name":"client_web" , "type":"non-bot"});
         this.password = "";
         this.client = new Client(this.name_and_type);
         this.server_name = "test";
         this.connection_string = 'ws://localhost:50223';
+        setTimeout(()=>{state_set({bots :9})},5000)
+        this.client.define_parent_state(state_set)
     }
 
     auth(){
@@ -110,5 +111,4 @@ export class Test{
     non_assertive_trigger_rate_limit(){ 
         setInterval(()=>{this.failed_auth()},5000);
     }
-
 }
