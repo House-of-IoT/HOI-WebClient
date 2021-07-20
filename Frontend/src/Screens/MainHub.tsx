@@ -33,8 +33,9 @@ export default class MainHub extends Component<any,any> {
             bots : 0,
             removal_showing: false,
             new_showing : false,
+            selected_server: null,
             selected_bots : [],//when a server is selected these will be the main bots
-            server_bot_strings : new Map(), // all passive bot data from one server stored in one string.
+            server_bot_strings : new Map<string,string>(), // all passive bot data from one server stored in one string.
             successful_action_showing:false,
             failed_action_showing:false,
             //mock values, not really the messages

@@ -192,16 +192,19 @@ export class Client{
             else{
                 console.log(bot_string)
                 //overwrite the old bot string string.
-                //this.set_parent_state(prevState => {
-                  //  let previous = Object.assign({}, prevState);
-                   // previous[server_name] = bot_string;                 
-                   // return previous;
-                 // })
+                this.set_parent_state(prevState => {
+                    let previous = Object.assign({}, prevState);
+                    previous.server_bot_strings.set(server_name, bot_string);
+                    if(server_name == previous.selected_server){
+                        previous.selected_bots = bot_object.bots;
+                    }                 
+                    return previous;
+                })
             }
         }
         catch{
             //alert the 
-            console.log("no bot data found");
+            console.log("Issue gathering bot data!");
         }
     }
 
