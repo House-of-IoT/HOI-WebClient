@@ -46,6 +46,7 @@ export default class MainHub extends Component<any,any> {
     
     componentDidMount(){
         this.audio_handler.play();
+        this.client.define_parent_state(this.setState);
     }
 
     render() {

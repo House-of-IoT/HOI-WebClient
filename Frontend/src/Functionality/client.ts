@@ -88,10 +88,15 @@ export class Client{
 
     handle_basic_action_request_response(event:MessageEvent,test:boolean){
         console.log(event.data)
-        let data: BasicResponse= JSON.parse(event.data);
-        console.log(data)
-        if(!test){
-            this.update_ui_after_action_response(data);
+        try{
+            let data: BasicResponse= JSON.parse(event.data);
+            console.log(data)
+            if(!test){
+                this.update_ui_after_action_response(data);
+            }
+        }
+        catch{
+            alert("got invalid data from server");
         }
     }
 
