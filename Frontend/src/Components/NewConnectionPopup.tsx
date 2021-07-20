@@ -20,7 +20,9 @@ export default class NewConnectionPopup extends Component<any,any> {
                 alert("A connection by this name already exists!");
             }
             else{
-                //this.props.client.setup_connection()
+                // change to wss for ssl(this is only for testing now so it is ws)
+                let connection_string = `ws://${this.state.host}:${this.state.port}`;
+                this.props.client.setup_connection(this.state.server_name,connection_string);
             }
         
         }
