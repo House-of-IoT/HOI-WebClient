@@ -5,7 +5,7 @@ export default class ConnectionListing extends Component<any,any> {
         return (
             <div className ="connection-listing">
                 
-                <h3>{this.props.connection.name}</h3>
+                <h3>{this.props.connection}</h3>
                 <div className = "dot"></div>
             </div>
         )

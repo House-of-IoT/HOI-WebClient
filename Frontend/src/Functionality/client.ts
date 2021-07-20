@@ -29,6 +29,14 @@ export class Client{
             connection.onopen = ()=>{
                 this.authenticate(server_name,password);
             }
+            connection.onerror = ()=>{
+                this.set_parent_state(
+                    {failed_action_showing:true,failed_action_message:"Issue with connection, please verify that your connection is fine!"});
+                    if(this.connections.has(server_name)){
+                        this.connections.delete(server_name);
+                        this.connection_strings.delete(server_name);
+                    }
+            }
             connection.onmessage = (event)=>{this.handle_auth_response(event)};
             this.connections.set(server_name,connection);
             this.connection_strings.set(server_name,connectionString);
@@ -53,7 +61,7 @@ export class Client{
         }
         catch{
             console.log("exception in authentication");
-            //display popup
+            this.set_parent_state({failed_action_showing:true,failed_action_message:"Issue with authenticating!"});
         }
     }
 
@@ -147,8 +155,9 @@ export class Client{
         if(event.data == "success"){
             console.log("passed auth");
             this.auth_status.set(this.current_server_trying_to_auth,"success");
+            this.set_parent_state({connections:this.connections.keys()});
+            this.set_parent_state({success_action_showing:true,success_action_message:"Successfully Authenticated!"});
             this.begin_gathering_bot_data(this.current_server_trying_to_auth);
-           
         }
         else{
             console.log("failed auth");
@@ -178,6 +187,7 @@ export class Client{
             this.auth_status.set(server_name,"failure");
             this.connections.delete(this.current_server_trying_to_auth);
             this.connection_strings.delete(this.current_server_trying_to_auth);
+            this.set_parent_state({connections:this.connections.keys()});
         }
     }
 

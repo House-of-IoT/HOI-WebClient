@@ -25,10 +25,7 @@ export default class MainHub extends Component<any,any> {
         this.audio_handler = new AudioHandler();
         this.state = {
             //list of objects , but for now just mock data
-            connections : [
-                { name : "Ralph Server"},
-                { name : "General"}
-            ],
+            connection_names : [],
             types : new Set(),
             bots : 0,
             removal_showing: false,
@@ -57,19 +54,14 @@ export default class MainHub extends Component<any,any> {
             <div className = "Main-Wrapper">
                 <img  src = {logo}></img>
                 <h1>House Of IoT</h1>
-                <ListingHub bots = {[
-                    {type:"reed_switch",state:true , active_status:true, device_name:"backdoor" , server:"test"},
-                    {type:"home_monitor" , device_name : "home_monitor" , server:"test"},
-                    {type:"ralph" , active_status:true,device_name :"ralph_home_2" , server:"test"},
-                    {type:"ralph" , active_status:false,device_name :"ralph_home_3" , server:"test"},
-                    {type:"gas_fire_smoke" , active_status:true,device_name :"heating_room" , server:"test"}]}/>
+                <ListingHub bots = {this.state.selected_bots}/>
                 <input id = "bot-search" placeholder = "Search By Name"></input>
-                <Connections set = {this.setState} connections = {this.state.connections}/>
+                <Connections set = {this.setState} connections = {this.state.connection_names}/>
                 <SnapShot bots = {this.state.bots}  types = {this.state.types}/>
                 <ConfigHandler/>
                 <GetInvolved/>
                 <RemovalConfirmPopup state = {this.state.removal_showing} set = {this.setState}/>
-                <NewConnectionPopup state = {this.state.new_showing} set = {this.setState} />
+                <NewConnectionPopup state = {this.state.new_showing} set = {this.setState} client = {this.client} />
                 <ServerStatus id = "success-action" 
                     text = {this.state.successful_action_message} 
                     status = "Success" 

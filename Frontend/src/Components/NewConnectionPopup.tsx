@@ -13,6 +13,7 @@ export default class NewConnectionPopup extends Component<any,any> {
 
     }
     check_fields_and_try_to_setup_connection(){
+        this.props.set({new_showing:false})
         if(this.state.port.length == 0 || this.state.host.length < 7){
             alert("Please make sure that the credentials are correct!");
         }
@@ -51,7 +52,8 @@ export default class NewConnectionPopup extends Component<any,any> {
                     <input placeholder = "Password" onInput = 
                         {
                             (event:React.FormEvent<HTMLInputElement>)=>{this.setState({password:event.currentTarget.value})}}></input>
-                    <button id = "connect-button" >Connect</button>
+
+                    <button id = "connect-button" onClick = {()=>{this.check_fields_and_try_to_setup_connection()}} >Connect</button>
                     <button id = "close-new-connection" onClick = {()=>{this.props.set({new_showing:false})}}>X</button>
                 </div>
                 
