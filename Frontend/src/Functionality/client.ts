@@ -156,8 +156,8 @@ export class Client{
         if(event.data == "success"){
             console.log("passed auth");
             this.auth_status.set(this.current_server_trying_to_auth,"success");
-            this.set_parent_state({connections:this.connections.keys()});
-            this.set_parent_state({success_action_showing:true,success_action_message:"Successfully Authenticated!"});
+            this.set_parent_state({connection_names:Array.from(this.connections.keys())});
+            this.set_parent_state({successful_action_showing:true,successful_action_message:"Successfully Authenticated!"});
             this.begin_gathering_bot_data(this.current_server_trying_to_auth);
         }
         else{

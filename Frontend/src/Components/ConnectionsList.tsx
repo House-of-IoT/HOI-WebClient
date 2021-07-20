@@ -9,7 +9,7 @@ export default class Connections extends Component<any,any> {
                     Connections<button id = "add-connections" onClick = {()=>{this.props.set({new_showing:true})}}>+
                     </button> </h2>
                 {this.props.connections.map(connection => {
-                    return <ConnectionListing connection= {connection} />
+                    return <ConnectionListing connection= {connection} set = {this.props.set} />
                 })}
                 
             </div>

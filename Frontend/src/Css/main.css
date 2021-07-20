@@ -72,6 +72,9 @@
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 }
+.connection-listing:hover{
+    opacity: 0.5;
+}
 .connection-listing h3{
     position: relative;
     color: #fff;
