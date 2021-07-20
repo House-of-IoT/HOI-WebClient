@@ -26,7 +26,7 @@ export class Test{
     constructor(state_set){
         this.name_and_type = JSON.stringify({"name":"client_web" , "type":"non-bot"});
         this.password = "";
-        this.client = new Client(this.name_and_type);
+        this.client = new Client();
         this.server_name = "test";
         this.connection_string = 'ws://localhost:50223';
         setTimeout(()=>{state_set({bots :9})},5000)
@@ -34,13 +34,13 @@ export class Test{
     }
 
     auth(){
-        this.client.set_name_and_type(this.name_and_type);
+        this.client.set_name_and_type(this.server_name,this.name_and_type);
         let result = this.client.setup_connection("test",this.connection_string,this.password);
         assert.strictEqual(result,true);
     }
 
     failed_auth(){
-        this.client.set_name_and_type(this.name_and_type);
+        this.client.set_name_and_type(this.server_name,this.name_and_type);
         let result = this.client.setup_connection("test",this.connection_string,this.password+"");
         assert.strictEqual(result,false);
     }

@@ -7,6 +7,7 @@ export default class NewConnectionPopup extends Component<any,any> {
             host:"",
             port:"",
             password:"",
+            display_name:"",
             server_name:""
         }
 
@@ -22,7 +23,7 @@ export default class NewConnectionPopup extends Component<any,any> {
             else{
                 // change to wss for ssl(this is only for testing now so it is ws)
                 let connection_string = `ws://${this.state.host}:${this.state.port}`;
-                this.props.client.setup_connection(this.state.server_name,connection_string);
+                this.props.client.setup_connection(this.state.server_name,connection_string,this.state.password);
             }
         
         }
@@ -36,6 +37,10 @@ export default class NewConnectionPopup extends Component<any,any> {
                     <input placeholder = "Server Name"onInput = 
                         {
                             (event:React.FormEvent<HTMLInputElement>)=>{this.setState({server_name:event.currentTarget.value})}}></input>
+
+                    <input placeholder = "Display Name(on server)"onInput = 
+                        {
+                            (event:React.FormEvent<HTMLInputElement>)=>{this.setState({display_name:event.currentTarget.value})}}></input>
 
                     <input placeholder = "Host"onInput = 
                         {

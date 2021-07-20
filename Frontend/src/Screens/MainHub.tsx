@@ -41,6 +41,7 @@ export default class MainHub extends Component<any,any> {
         }    
         this.setState = this.setState.bind(this);
         this.test = new Test(this.setState);
+        this.client = new Client();
     }
     
     componentDidMount(){

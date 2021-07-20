@@ -4,15 +4,15 @@ export class Client{
     connections : Map<string,WebSocket>
     connection_strings : Map<string,string>
     auth_status : Map<string,string>
-    name_and_type : string //json string
+    name_and_type : Map<string,string> //json string for value
     current_server_trying_to_auth :string
     server_status : Map<string,Boolean>
     set_parent_state:any
     passive_data_interval_ids:Map<string,NodeJS.Timeout>
     current_bot_for_action : string
+    
 
-    constructor(name_and_type:string){
-        this.name_and_type = name_and_type;
+    constructor(){
         this.connections = new Map<string,WebSocket>();
         this.connection_strings = new Map<string,string>();
         this.auth_status = new Map<string,string>();
@@ -44,7 +44,7 @@ export class Client{
                 this.auth_status.set(server_name,"unknown");
                 this.current_server_trying_to_auth = server_name; 
                 connection.send(password);
-                connection.send(this.name_and_type);
+                connection.send(this.name_and_type.get(server_name));
                 connection.send(server_name);
             }
             else{
@@ -213,8 +213,8 @@ export class Client{
         }
     }
 
-    set_name_and_type(name_and_type:string){
-        this.name_and_type = name_and_type
+    set_name_and_type(server_name:string,name_and_type:string){
+        this.name_and_type.set(server_name,name_and_type);
     }
 
     define_parent_state(fun:any){
