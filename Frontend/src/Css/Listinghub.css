@@ -19,17 +19,18 @@
 #empty-placeholder{
    
     display: block;
-    width: 50%;
+    width: 170%;
     margin: auto ;
+    overflow-y: hidden;
     position: relative;
-    top: 15%;
-    left: -5%;
+    top: -15%;
+    left: 50%;
 }
 #empty-placeholder-text{
     color: #fff;
     font-size: 1.9em;
     position: relative;
     font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
-    top: 25%;
-    left: 34%;
+    top: 75%;
+    left: -4%;
 }

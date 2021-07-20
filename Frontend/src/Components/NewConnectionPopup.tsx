@@ -24,6 +24,7 @@ export default class NewConnectionPopup extends Component<any,any> {
             else{
                 // change to wss for ssl(this is only for testing now so it is ws)
                 let connection_string = `ws://${this.state.host}:${this.state.port}`;
+                this.props.client.set_name_and_type(this.state.server_name,JSON.stringify({name:this.state.display_name,type:"non-bot"}));
                 this.props.client.setup_connection(this.state.server_name,connection_string,this.state.password);
             }
         

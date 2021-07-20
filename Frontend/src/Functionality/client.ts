@@ -17,6 +17,7 @@ export class Client{
         this.connection_strings = new Map<string,string>();
         this.auth_status = new Map<string,string>();
         this.server_status = new Map<string,Boolean>();
+        this.name_and_type =  new Map<string,string>();
         this.passive_data_interval_ids = new Map<string,NodeJS.Timeout>();
     }
 
