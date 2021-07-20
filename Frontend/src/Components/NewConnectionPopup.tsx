@@ -9,7 +9,8 @@ export default class NewConnectionPopup extends Component<any,any> {
                     <input placeholder = "Ip"></input>
                     <input placeholder = "Port"></input>
                     <input placeholder = "Password"></input>
-                    <button>Connect</button>
+                    <button id = "connect-button">Connect</button>
+                    <button id = "close-new-connection" onClick = {()=>{this.props.set({new_showing:false})}}>X</button>
                 </div>
                 
             </div>

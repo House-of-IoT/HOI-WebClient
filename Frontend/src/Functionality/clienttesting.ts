@@ -1,7 +1,6 @@
 import { Client } from "./client";
 import assert from "assert";
 
-
 /* 
 This test class tests the protocol/responses 
 between the client/server.
@@ -19,7 +18,7 @@ protocol of communication between the client/server , which is :
 
 */
 
-class Test{
+export class CommunicationTest{
     client:Client;
     name_and_type:string;
     password:string;
@@ -33,7 +32,9 @@ class Test{
     }
 
     test_auth(){
-        this.client.setup_connection
+        this.client.setup_connection(this.server_name,'ws://localhost:50223');
+        this.client.set_name_and_type(this.name_and_type);
+        this.client.authenticate(this.server_name,this.password);
     }
 
 }

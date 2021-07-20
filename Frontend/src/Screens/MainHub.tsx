@@ -10,12 +10,15 @@ import RemovalConfirmPopup from '../Components/RemovalConfirmPopup';
 import NewConnectionPopup from '../Components/NewConnectionPopup';
 import { AudioHandler } from '../Functionality/audio';
 import { Client } from '../Functionality/client';
+import { Bare } from '../Functionality/bare';
+import { CommunicationTest } from '../Functionality/clienttesting';
 
 export default class MainHub extends Component<any,any> {
 
     audio_handler : AudioHandler;
     state : any;
     client : Client;
+    communication_test : Bare
 
 
     constructor(){
@@ -35,6 +38,7 @@ export default class MainHub extends Component<any,any> {
             server_bot_strings : new Map() // all passive bot data from one server stored in one string.
         }    
         this.setState = this.setState.bind(this);
+        this.communication_test = new Bare();
     }
     
     componentDidMount(){
@@ -53,7 +57,7 @@ export default class MainHub extends Component<any,any> {
                     {type:"ralph" , active_status:false,device_name :"ralph_home_3" , server:"test"},
                     {type:"gas_fire_smoke" , active_status:true,device_name :"heating_room" , server:"test"}]}/>
                 <input id = "bot-search" placeholder = "Search By Name"></input>
-                <Connections connections = {this.state.connections}/>
+                <Connections set = {this.setState} connections = {this.state.connections}/>
                 <SnapShot bots = {this.state.bots}  types = {this.state.types}/>
                 <ConfigHandler/>
                 <GetInvolved/>

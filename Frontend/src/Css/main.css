@@ -228,7 +228,8 @@ opacity: .5;
     color: #fff;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     position: relative;
-    left: 17%;
+    left: 22%;
+    top: 5%;
 }
 #new-connection input{
     width: 70%;
@@ -236,6 +237,7 @@ opacity: .5;
     border-radius: 4px;
     border: none;
     margin-top: 2%;
+    padding-left: 5%;
     position: relative;
     left: 14%;
 }
@@ -244,25 +246,35 @@ opacity: .5;
     font-weight: bold;
 }
 
-#new-connection button{
+#connect-button{
     background-color: #fd4d4d;
-    border-radius: 4px;
-    top: 2%;
-    left: 15%;
+    border-radius: 12px;
+    top: 8%;
+    left: 31%;
     padding: 5.3%;
     padding-bottom: 10%;
     position: relative;
     height: 10%;
-    width: 70%;
+    width: 40%;
     border: none;
     color: #fff;
+}
+#close-new-connection{
+    background :none;
+    color: white;
+    border: none;
+    font-size: 1.8em;
+    font-weight: 800;
+    position: relative;
+    top: -79%;
+    left: 55%;
 }
 #new-connection{
     background-color :#1a2029;
     border-radius: 12px;
     padding: 1%;
     width: 20%;
-    height: 30%;
+    height: 35%;
     left: 40%;
     top: 20%;
    

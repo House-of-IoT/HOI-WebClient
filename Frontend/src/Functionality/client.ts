@@ -1,3 +1,4 @@
+import { exception } from "console";
 import { timingSafeEqual } from "crypto";
 import CryptoJS from "crypto-js";
 
@@ -13,6 +14,10 @@ export class Client{
 
     constructor(name_and_type:string){
         this.name_and_type = name_and_type;
+        this.connections = new Map<string,WebSocket>();
+        this.connection_strings = new Map<string,string>();
+        this.auth_status = new Map<string,string>();
+        this.server_status = new Map<string,boolean>();
 
     }
 
@@ -21,37 +26,40 @@ export class Client{
             return false
         }
         else{
-            this.connections.set(server_name,new WebSocket(connectionString));
+            let connection = new WebSocket(connectionString);
+            connection.onopen = ()=>{}
+            connection.onclose = (event) =>{console.log(event.code )}
+            this.connections.set(server_name,connection);
             this.connection_strings.set(server_name,connectionString);
             return true;
         }
     }
 
     authenticate(server_name:string, password:string){
-        try{
+
+            console.log("authing...");
             if(this.has_credentials(server_name)){
                 let connection :WebSocket = this.connections.get(server_name);
+            if (connection.CLOSED){
+                    console.log("closed connection");
+                }
                 this.auth_status.set(server_name,"unknown");
                 this.current_server_trying_to_auth = server_name; 
-                connection.onmessage = this.handle_auth_response;
-                connection.send(password);
-                connection.send(this.name_and_type);
+                connection.onmessage = (event)=>{this.handle_auth_response(event)};
+                connection.send(this.name_and_type); 
             }
             else{
                 throw new Error("Can't locate Credentials");
             }
-        }
-        catch{
-            //display popup
-        }
+        
+
     }
 
     handle_auth_response(event:MessageEvent){
         console.log(event.data);
         if(event.data == "success"){
             this.auth_status.set(this.current_server_trying_to_auth,"success");
-            this.begin_gathering_bot_data(this.current_server_trying_to_auth);
-           
+            this.begin_gathering_bot_data(this.current_server_trying_to_auth);   
         }
         else{
             this.auth_status.set(this.current_server_trying_to_auth,"failure")
@@ -76,8 +84,6 @@ export class Client{
             this.connections.delete(this.current_server_trying_to_auth);
             this.connection_strings.delete(this.current_server_trying_to_auth);
         }
-        
-    
     }
 
     gather_bot_data(event:MessageEvent){
