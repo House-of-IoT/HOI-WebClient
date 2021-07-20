@@ -1,7 +1,6 @@
 import { BasicResponse } from "./BasicResponse";
 
 export class Client{
- 
     connections : Map<string,WebSocket>
     connection_strings : Map<string,string>
     auth_status : Map<string,string>
