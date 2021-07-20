@@ -11,6 +11,7 @@ import NewConnectionPopup from '../Components/NewConnectionPopup';
 import { AudioHandler } from '../Functionality/audio';
 import { Client } from '../Functionality/client';
 import { Test } from '../Functionality/clienttesting';
+import ServerStatus from '../Components/ServerStatus';
 
 export default class MainHub extends Component<any,any> {
 
@@ -37,7 +38,7 @@ export default class MainHub extends Component<any,any> {
             successful_action_showing:false,
             failed_action_showing:false,
             failed_action_message:"",
-            successful_action_message:"",
+            successful_action_message:"Server Responded with success to your authentication request",
         }    
         this.setState = this.setState.bind(this);
         this.test = new Test(this.setState);
@@ -67,6 +68,8 @@ export default class MainHub extends Component<any,any> {
                 <GetInvolved/>
                 <RemovalConfirmPopup state = {this.state.removal_showing} set = {this.setState}/>
                 <NewConnectionPopup state = {this.state.new_showing} set = {this.setState} />
+                <ServerStatus id = "success-action" text = {this.state.successful_action_message} status = "Success"/>
+
             </div>
         )
     }
