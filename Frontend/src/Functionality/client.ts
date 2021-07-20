@@ -79,21 +79,19 @@ export class Client{
 
     route_bot_action(connection:WebSocket, action:string,bot_name:string){
         if(action == "deactivate" || action == "activate" || action == "disconnect"){
-            connection.onmessage = (event)=>{this.handle_basic_action_request_response(event,true)};
+            connection.onmessage = (event)=>{this.handle_basic_action_request_response(event)};
             connection.send("bot_control");
             connection.send(action);   
             connection.send(bot_name);
         }
     }
 
-    handle_basic_action_request_response(event:MessageEvent,test:boolean){
+    handle_basic_action_request_response(event:MessageEvent){
         console.log(event.data)
         try{
             let data: BasicResponse= JSON.parse(event.data);
             console.log(data)
-            if(!test){
-                this.update_ui_after_action_response(data);
-            }
+            this.update_ui_after_action_response(data);
         }
         catch{
             alert("got invalid data from server");
@@ -141,6 +139,8 @@ export class Client{
                     says that ${response.bot_name}`+ failure_message})
             this.set_parent_state({failed_action_showing:true});
         }
+        //checks to see if we should gather passive data again and executes
+        this.check_and_begin_gathering_passive_data(response);
     }
     
     handle_auth_response(event:MessageEvent){
@@ -207,6 +207,24 @@ export class Client{
 
     gather_list_of_deactivated_bots(server_name:string){
         
+    }
+
+    check_and_begin_gathering_passive_data(response:BasicResponse){
+        switch(response.action){
+            case "activate":
+                this.begin_gathering_bot_data(response.server_name);
+                break;
+            case "deactivate":
+                this.begin_gathering_bot_data(response.server_name);
+                break;
+            case "disconnect":
+                this.begin_gathering_bot_data(response.server_name);
+                break;
+            default:
+                break;
+
+        }
+
     }
 
     has_credentials(server_name:string):boolean{
