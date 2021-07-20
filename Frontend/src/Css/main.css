@@ -321,6 +321,19 @@ opacity: .5;
     
    
 }
+#failed-action{
+    background-color :#1a2029;
+    border-radius: 12px;
+    padding: 1%;
+    width: 20%;
+    height: 35%;
+    left: 38%;
+    top: 20%;
+   
+    justify-self: center;
+    position: relative;
+}
+
 #success-action p{
     color: rgb(206, 206, 206);
     font-weight: 400;

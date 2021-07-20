@@ -37,8 +37,9 @@ export default class MainHub extends Component<any,any> {
             server_bot_strings : new Map(), // all passive bot data from one server stored in one string.
             successful_action_showing:false,
             failed_action_showing:false,
-            failed_action_message:"",
-            successful_action_message:"Server Responded with success to your authentication request",
+            //mock values, not really the messages
+            failed_action_message:"Server Responded with failure to your authentication request.",
+            successful_action_message:"Server Responded with success to your authentication request.",
         }    
         this.setState = this.setState.bind(this);
         this.test = new Test(this.setState);
@@ -68,7 +69,16 @@ export default class MainHub extends Component<any,any> {
                 <GetInvolved/>
                 <RemovalConfirmPopup state = {this.state.removal_showing} set = {this.setState}/>
                 <NewConnectionPopup state = {this.state.new_showing} set = {this.setState} />
-                <ServerStatus id = "success-action" text = {this.state.successful_action_message} status = "Success"/>
+                <ServerStatus id = "success-action" 
+                    text = {this.state.successful_action_message} 
+                    status = "Success" 
+                    set = {this.setState} 
+                    state = {this.state.successful_action_showing}/>
+                <ServerStatus id = "failed-action" 
+                    text = {this.state.failed_action_message} 
+                    status = "Failure" 
+                    set = {this.setState} 
+                    state = {this.state.failed_action_showing}/>
 
             </div>
         )
