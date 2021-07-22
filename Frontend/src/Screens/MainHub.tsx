@@ -36,16 +36,19 @@ export default class MainHub extends Component<any,any> {
             //mock values, not really the messages
             failed_action_message:"Server Responded with failure to your authentication request.",
             successful_action_message:"Server Responded with success to your authentication request.",
+            loading_file:false
         }    
         this.setState = this.setState.bind(this);
         this.test = new Test(this.setState);
         this.client = new Client();
     }
     
+
     componentDidMount(){
         this.audio_handler.play();
         this.client.define_parent_state(this.setState);
     }
+
 
     render() {
         return (
@@ -56,7 +59,7 @@ export default class MainHub extends Component<any,any> {
                 <input id = "bot-search" placeholder = "Search By Name"></input>
                 <Connections set = {this.setState} connections = {this.state.connection_names}/>
                 <SnapShot bots = {this.state.selected_bots}/>
-                <ConfigHandler/>
+                <ConfigHandler client = {this.client} set = {this.setState}/>
                 <GetInvolved/>
                 <RemovalConfirmPopup state = {this.state.removal_showing} set = {this.setState}/>
                 <NewConnectionPopup state = {this.state.new_showing} set = {this.setState} client = {this.client} />

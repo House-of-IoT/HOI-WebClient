@@ -378,3 +378,6 @@ opacity: .5;
     justify-self: center;
     position: relative;
 }
+#chosen-file{
+    display: none;
+}
