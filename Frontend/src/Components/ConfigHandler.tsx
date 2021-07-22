@@ -31,7 +31,6 @@ export default class ConfigHandler extends Component<any,any> {
                     var password = window.prompt(`Password for '${connection.server_name}:'` );
                     var name = window.prompt(`Name for ${connection.server_name}:`);
                     this.props.client.set_name_and_type( connection.server_name,JSON.stringify({name:name,type:"non-bot"}));
-
                     this.props.client.setup_connection(connection.server_name,connection.connection_string,password);
                 }
             }
@@ -40,7 +39,6 @@ export default class ConfigHandler extends Component<any,any> {
             }
         };
         reader.readAsText(file);
-       
     }
 
     create_new_config_file(){
