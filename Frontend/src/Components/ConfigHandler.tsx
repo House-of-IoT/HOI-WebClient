@@ -34,6 +34,16 @@ export default class ConfigHandler extends Component<any,any> {
        
     }
 
+    create_new_config_file(){
+        let server_names = Array.from(this.props.client.connections.keys());
+        let holder = {connections:[]}
+        for(var server_name of server_names){
+            let connection_string = this.props.client.connection_strings.get(server_name);
+            holder.connections.push({server_name:server_name,connection_string:connection_string});
+        }
+        this.exportToJson(holder);
+    }
+
     render() {
         return (
             <div id = "config-handler">
