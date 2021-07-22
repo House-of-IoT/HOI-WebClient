@@ -26,8 +26,6 @@ export default class MainHub extends Component<any,any> {
         this.state = {
             //list of objects , but for now just mock data
             connection_names : [],
-            types : new Set(),
-            bots : 0,
             removal_showing: false,
             new_showing : false,
             selected_server: null,
@@ -57,7 +55,7 @@ export default class MainHub extends Component<any,any> {
                 <ListingHub bots = {this.state.selected_bots}/>
                 <input id = "bot-search" placeholder = "Search By Name"></input>
                 <Connections set = {this.setState} connections = {this.state.connection_names}/>
-                <SnapShot bots = {this.state.bots}  types = {this.state.types}/>
+                <SnapShot bots = {this.state.selected_bots}/>
                 <ConfigHandler/>
                 <GetInvolved/>
                 <RemovalConfirmPopup state = {this.state.removal_showing} set = {this.setState}/>

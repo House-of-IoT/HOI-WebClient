@@ -32,10 +32,12 @@ export class Client{
             }
             connection.onerror = ()=>{
                 this.set_parent_state(
-                    {failed_action_showing:true,failed_action_message:"Issue with connection, please verify that your connection is fine!"});
+                    {failed_action_showing:true,failed_action_message:"Connection Closed!! If you didn't manually disconnect, please check your network connection."});
                     if(this.connections.has(server_name)){
                         this.connections.delete(server_name);
                         this.connection_strings.delete(server_name);
+                        this.set_parent_state({connection_names:Array.from(this.connections.keys())});
+                        this.set_parent_state({selected_bots:[]});
                     }
             }
             connection.onmessage = (event)=>{this.handle_auth_response(event)};
@@ -157,7 +159,7 @@ export class Client{
             console.log("passed auth");
             this.auth_status.set(this.current_server_trying_to_auth,"success");
             this.set_parent_state({connection_names:Array.from(this.connections.keys())});
-            this.set_parent_state({successful_action_showing:true,successful_action_message:"Successfully Authenticated!"});
+            this.set_parent_state({successful_action_showing:true,successful_action_message:"Successfully Authenticated! Select the server to see the bot(s) data!"});
             this.begin_gathering_bot_data(this.current_server_trying_to_auth);
         }
         else{
