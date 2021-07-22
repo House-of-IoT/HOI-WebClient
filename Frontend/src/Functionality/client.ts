@@ -22,10 +22,12 @@ export class Client{
     }
 
     setup_connection(server_name:string,connectionString:string,password:string):boolean{
+        console.log("connecting")
         if (this.connections.has(server_name)){
             return false
         }
         else{
+            console.log("connecting2")
             let connection = new WebSocket(connectionString);
             connection.onopen = ()=>{
                 this.authenticate(server_name,password);

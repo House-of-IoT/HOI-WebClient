@@ -23,11 +23,15 @@ export default class ConfigHandler extends Component<any,any> {
         this.props.set({loading_file:false});
         let file = event.target.files[0]
         const reader = new FileReader();
-        reader.onload = (event:any)=>{
+       
+        reader.onloadend = (event:any)=>{
             try{
-                let connections = JSON.parse(event.target.results);
+                let connections = JSON.parse(event.target.result);
                 for(var connection of connections.connections){
-                    var password = window.prompt(`Password for '${connection.server_name}:'` )
+                    var password = window.prompt(`Password for '${connection.server_name}:'` );
+                    var name = window.prompt(`Name for ${connection.server_name}:`);
+                    this.props.client.set_name_and_type( connection.server_name,JSON.stringify({name:name,type:"non-bot"}));
+
                     this.props.client.setup_connection(connection.server_name,connection.connection_string,password);
                 }
             }
