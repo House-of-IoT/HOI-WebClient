@@ -12,7 +12,7 @@ import { AudioHandler } from '../Functionality/audio';
 import { Client } from '../Functionality/client';
 import { Test } from '../Functionality/clienttesting';
 import ServerStatus from '../Components/ServerStatus';
-
+import Loading from '../Components/Loading';
 export default class MainHub extends Component<any,any> {
 
     audio_handler : AudioHandler;
@@ -36,7 +36,7 @@ export default class MainHub extends Component<any,any> {
             //mock values, not really the messages
             failed_action_message:"Server Responded with failure to your authentication request.",
             successful_action_message:"Server Responded with success to your authentication request.",
-            loading_file:false
+            loading_file:true
         }    
         this.setState = this.setState.bind(this);
         this.test = new Test(this.setState);
@@ -73,6 +73,7 @@ export default class MainHub extends Component<any,any> {
                     status = "Failure" 
                     set = {this.setState} 
                     state = {this.state.failed_action_showing}/>
+                <Loading state = {this.state.loading_file}/>
 
             </div>
         )

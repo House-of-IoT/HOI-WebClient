@@ -108,6 +108,15 @@
     }
 }  
 
+@keyframes rotation {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(50%);
+    }
+  }
+
 #add-connections{
     background:none;
     border: none;
@@ -380,4 +389,28 @@ opacity: .5;
 }
 #chosen-file{
     display: none;
+}
+
+#loading-wrapper{
+    background-color :#1a2029;
+    border-radius: 12px;
+    padding: 1%;
+    width: 20%;
+    height: 30%;
+    left: 38%;
+    top: 20%;
+   
+    justify-self: center;
+    position: relative;
+}
+
+#loading-wrapper h1{
+    position: relative;
+    left: 18%;
+}
+#loading-wrapper img{
+    width: 45%;
+    animation:  rotation 2s infinite linear;;
+    position: relative;
+    top: -5%;
 }
