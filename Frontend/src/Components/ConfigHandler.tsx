@@ -24,10 +24,15 @@ export default class ConfigHandler extends Component<any,any> {
         let file = event.target.files[0]
         const reader = new FileReader();
         reader.onload = (event:any)=>{
-            let connections = JSON.parse(event.target.results);
-            for(var connection of connections.connections){
-                var password = window.prompt(`Password for '${connection.server_name}:'` )
-                this.props.client.setup_connection(connection.server_name,connection.connection_string,password);
+            try{
+                let connections = JSON.parse(event.target.results);
+                for(var connection of connections.connections){
+                    var password = window.prompt(`Password for '${connection.server_name}:'` )
+                    this.props.client.setup_connection(connection.server_name,connection.connection_string,password);
+                }
+            }
+            catch{
+                this.props.set({failed_action_message:"Incorrectly formatted JSON!",failed_action_showing:true});
             }
         };
         reader.readAsText(file);
@@ -48,14 +53,14 @@ export default class ConfigHandler extends Component<any,any> {
         return (
             <div id = "config-handler">
                 <h1>Manage Configuration</h1>
-                <button className = "config-buttons">Save</button>
-                <button className = "config-buttons">Insert New</button>
+                <button className = "config-buttons" onClick = {()=>{this.create_new_config_file()}}>Save</button>
+                <button className = "config-buttons" onClick= {()=>{document.getElementById("chosen-file").click()}}>Insert New</button>
                 <button  id= "remove-current-config"className = "config-buttons">Remove</button>
                 <input 
                     type="file" 
                     id="chosen-file" 
                     name="chosen-file" 
-                    accept="audio/mp3" 
+                    accept="json" 
                     className="audio-selector" 
                     onClick= {()=>{this.props.set({loading_file:true})}}
                     onChange={(event)=>{this.connect_to_all(event)}}/>
