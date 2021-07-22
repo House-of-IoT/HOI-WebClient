@@ -162,6 +162,7 @@ export class Client{
         }
         else{
             console.log("failed auth");
+            this.set_parent_state({failed_action_showing:true,failed_action_message:"Failed Authetication!! Check Your Credentials."});
             this.auth_status.set(this.current_server_trying_to_auth,"failure")
             this.connections.get(this.current_server_trying_to_auth).close();
             this.connections.delete(this.current_server_trying_to_auth);
