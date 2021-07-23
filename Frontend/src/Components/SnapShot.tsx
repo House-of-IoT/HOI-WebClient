@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import greenicon  from "../Img/greenicon.png";
+import settings_image from '../Img/setting.png';
 export default class SnapShot extends Component<any,any> {
     render() {
         let types = new Set();
@@ -14,6 +15,10 @@ export default class SnapShot extends Component<any,any> {
              <h2>Total bots:{this.props.bots.length}</h2>
              <h2>Different types: {types.size}</h2>   
              <h3>{this.props.server}</h3>
+             <div id = "settings-button">
+                <img src = {settings_image}></img>
+                <h4>Edit Server Settings</h4>
+             </div>
             </div>
         )
     }

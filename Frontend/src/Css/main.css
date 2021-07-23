@@ -143,7 +143,7 @@ opacity: .5;
     color: rgb(71, 126, 9);
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     position: relative;
-    top: -73%;
+    top: -77%;
     left: 7%;
 }
 #snap-shot{
@@ -155,12 +155,33 @@ opacity: .5;
     left: 82%;
     top: 11%;
     padding: 1%;
+    overflow: hidden;
 }
 #icon-snapshot{
     width: 50%;
     position: relative;
     top: -38%;
     left: 60%;
+}
+#settings-button{
+    background-color: #3d485a;
+    width: 80%;
+    height: 20%;
+    position: relative;
+    top: -80%;
+    border-radius: 4px;
+}
+#settings-button img{
+    width: 18%;
+    position: relative;
+    top: 8%;
+    left: 2%;
+}
+#settings-button h4{
+    position: relative;
+    top: -133%;
+    color: #fff;
+    left: 20%;
 }
 #config-handler{
     background-color: #1a2029;
