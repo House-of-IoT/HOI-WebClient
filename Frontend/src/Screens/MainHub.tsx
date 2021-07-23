@@ -72,7 +72,7 @@ export default class MainHub extends Component<any,any> {
                     status = "Failure" 
                     set = {this.setState} 
                     state = {this.state.failed_action_showing}/>
-                <Loading state = {this.state.loading_file}/>
+                <Loading state = {this.state.loading_file} set = {this.setState}/>
 
             </div>
         )

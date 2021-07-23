@@ -65,6 +65,7 @@ export default class ConfigHandler extends Component<any,any> {
                     accept="json" 
                     className="audio-selector" 
                     onClick= {()=>{this.props.set({loading_file:true})}}
+                    onAbort = {()=>{this.props.set({loading_file:false})}}
                     onChange={(event)=>{this.connect_to_all(event)}}/>
             </div>
         )

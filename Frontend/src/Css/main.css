@@ -396,7 +396,7 @@ opacity: .5;
     border-radius: 12px;
     padding: 1%;
     width: 20%;
-    height: 30%;
+    height: 35%;
     left: 38%;
     top: 20%;
    
@@ -407,10 +407,28 @@ opacity: .5;
 #loading-wrapper h1{
     position: relative;
     left: 18%;
+    top: -5%;
 }
 #loading-wrapper img{
     width: 45%;
     animation:  rotation 2s infinite linear;;
     position: relative;
     top: -5%;
+}
+#loading-wrapper button{
+    background-color: #fd4d4d;
+    border-radius: 4px;
+    padding: 5.3%;
+    padding-bottom: 10%;
+    position: relative;
+    height: 5%;
+    width: 55%;
+    border: none;
+    top: 5%;
+    left: -21%;
+  
+    font-size: large;
+    font-weight: bold;
+    color: #fff;
+
 }
