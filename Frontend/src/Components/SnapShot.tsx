@@ -13,6 +13,7 @@ export default class SnapShot extends Component<any,any> {
              <h1>SnapShot <img id = "icon-snapshot" src = {greenicon}></img></h1>
              <h2>Total bots:{this.props.bots.length}</h2>
              <h2>Different types: {types.size}</h2>   
+             <h3>{this.props.server}</h3>
             </div>
         )
     }

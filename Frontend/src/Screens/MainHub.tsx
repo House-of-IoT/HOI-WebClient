@@ -12,6 +12,7 @@ import { AudioHandler } from '../Functionality/audio';
 import { Client } from '../Functionality/client';
 import { Test } from '../Functionality/clienttesting';
 import ServerStatus from '../Components/ServerStatus';
+import ServerSettingsBar from '../Components/ServerSettingsBar';
 import Loading from '../Components/Loading';
 export default class MainHub extends Component<any,any> {
 
@@ -28,7 +29,7 @@ export default class MainHub extends Component<any,any> {
             connection_names : [],
             removal_showing: false,
             new_showing : false,
-            selected_server: null,
+            selected_server: "No Server Selected",
             selected_bots : [],//when a server is selected these will be the main bots
             server_bot_strings : new Map<string,string>(), // all passive bot data from one server stored in one string.
             successful_action_showing:false,
@@ -57,7 +58,7 @@ export default class MainHub extends Component<any,any> {
                 <ListingHub bots = {this.state.selected_bots}/>
                 <input id = "bot-search" placeholder = "Search By Name"></input>
                 <Connections set = {this.setState} connections = {this.state.connection_names}/>
-                <SnapShot bots = {this.state.selected_bots}/>
+                <SnapShot bots = {this.state.selected_bots} server = {this.state.selected_server}/>
                 <ConfigHandler client = {this.client} set = {this.setState}/>
                 <GetInvolved/>
                 <RemovalConfirmPopup state = {this.state.removal_showing} set = {this.setState}/>
