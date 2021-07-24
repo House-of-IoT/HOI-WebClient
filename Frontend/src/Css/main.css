@@ -468,3 +468,52 @@ opacity: .5;
     top: -80%;
     left: 67%;
 }
+#settings-wrapper{
+    background-color :#1a2029;
+    border-radius: 12px;
+    padding: 1%;
+    width: 30%;
+    height: 55%;
+    left: 38%;
+    top: 20%;
+   
+    justify-self: center;
+    position: relative;
+}
+#settings-wrapper h2{
+    color: gray;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#settings-wrapper{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    text-decoration:dotted;
+}
+.settings-option{
+   
+    overflow-y: visible;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.settings-option button{
+    width: 20%;
+    height: 45px;
+    border: none;
+    position: relative;
+    font-weight: bold;
+    color: white;
+    top: -50px;
+    left: 75%;
+    background-color: #b33a3a;
+    border-radius: 4px;
+
+}
+#close-settings-dialog{
+    background:none;
+    border: none;
+    font-size: 2em;
+    font-weight: bold;
+    color: #fff;
+    position: relative;
+    top: -109%;
+    left: 96%;
+}

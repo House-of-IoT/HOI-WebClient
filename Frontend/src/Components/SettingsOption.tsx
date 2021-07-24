@@ -6,7 +6,7 @@ export default class SettingsOption extends Component<any,any> {
             <div className = 'settings-option'>
                 <h2>{this.props.status_type}</h2>
                 <button>{this.props.status}</button>
-                <hr></hr>
+            
             </div>
         )
     }

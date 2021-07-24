@@ -13,6 +13,7 @@ import { Client } from '../Functionality/client';
 import { Test } from '../Functionality/clienttesting';
 import ServerStatus from '../Components/ServerStatus';
 import ServerSettingsBar from '../Components/ServerSettingsBar';
+import ServerSettingsDialog from '../Components/ServerSettingsDialog';
 import Loading from '../Components/Loading';
 export default class MainHub extends Component<any,any> {
 
@@ -74,7 +75,12 @@ export default class MainHub extends Component<any,any> {
                     set = {this.setState} 
                     state = {this.state.failed_action_showing}/>
                 <Loading state = {this.state.loading_file} set = {this.setState}/>
-
+                <ServerSettingsDialog 
+                    state = {true}
+                    activating_status = {true}
+                    disconnecting_status = {true}
+                    viewing_status = {true}
+                    deactivating_status = {true}/>
             </div>
         )
     }
