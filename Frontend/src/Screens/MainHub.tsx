@@ -76,7 +76,7 @@ export default class MainHub extends Component<any,any> {
                     state = {this.state.failed_action_showing}/>
                 <Loading state = {this.state.loading_file} set = {this.setState}/>
                 <ServerSettingsDialog 
-                    state = {true}
+                    state = {false}
                     activating_status = {true}
                     disconnecting_status = {true}
                     viewing_status = {true}
