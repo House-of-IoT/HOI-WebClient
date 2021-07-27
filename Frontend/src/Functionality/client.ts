@@ -114,22 +114,22 @@ export class Client{
 
     update_ui_after_action_response(response:BasicResponse){
         if(response.action == "activate"){
-            this.change_response_component_state(response,
+            this.change_basic_response_component_state(response,
                 " has been successfully activated" , " failed to activate");
         }
 
         else if(response.action == "deactivate"){
-            this.change_response_component_state(response,
+            this.change_basic_response_component_state(response,
                 " has been successfully deactivated" , " failed to deactivate");
         }
 
         else if(response.action == "disconnect"){
-            this.change_response_component_state(response,
+            this.change_basic_response_component_state(response,
                 " has been successfully disconnected" , " failed to disconnect");
         }
     }
 
-    change_response_component_state(response:BasicResponse,success_message:string , failure_message:string){
+    change_basic_response_component_state(response:BasicResponse,success_message:string , failure_message:string){
         console.log(response.status);
         if(response.status == "success"){
             this.set_parent_state(
@@ -144,6 +144,10 @@ export class Client{
                     failed_action_message:`The request to ${response.server_name}
                      timed-out`})
             this.set_parent_state({failed_action_showing:true});
+        }
+        else if(response.status == "needs-admin-auth"){
+            this.prompt_and_send_admin_auth_password(response);
+            return;//prevent later passive_data_gathering
         }
         else{
             this.set_parent_state(
@@ -222,6 +226,12 @@ export class Client{
             //alert the 
             console.log("Issue gathering bot data!");
         }
+    }
+
+    prompt_and_send_admin_auth_password(old_response:BasicResponse){
+        let connection = this.connections.get(old_response.server_name);
+        let password :string= prompt(`${old_response.server_name} is requesting the admin password:`);
+        connection.send(password);
     }
 
     gather_list_of_deactivated_bots(server_name:string){
