@@ -42,9 +42,8 @@ export default class MainHub extends Component<any,any> {
             //mock values, not really the messages
             failed_action_message:"Server Responded with failure to your authentication request.",
             successful_action_message:"Server Responded with success to your authentication request.",
-       
-
         }    
+        
         this.setState = this.setState.bind(this);
         this.test = new Test(this.setState);
         this.client = new Client();
@@ -54,7 +53,6 @@ export default class MainHub extends Component<any,any> {
         this.audio_handler.play();
         this.client.define_parent_state(this.setState);
     }
-
 
     render() {
         return (
