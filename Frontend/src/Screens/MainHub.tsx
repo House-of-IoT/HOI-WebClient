@@ -36,14 +36,14 @@ export default class MainHub extends Component<any,any> {
             successful_action_showing:false,
             failed_action_showing:false,
             loading_file:false,
-            servers_deactivated_bots : new Map<string,Set<string>>(),
-            servers_devices : new Map<string,Set<string>>(),
-            servers_banned_ips : new Map<string,Set<string>>(),
+            servers_deactivated_bots : new Map<string,Array<string>>(),
+            servers_devices : new Map<string,Array<string>>(),
+            servers_banned_ips : new Map<string,Array<string>>(),
             //mock values, not really the messages
             failed_action_message:"Server Responded with failure to your authentication request.",
             successful_action_message:"Server Responded with success to your authentication request.",
         }    
-        
+
         this.setState = this.setState.bind(this);
         this.test = new Test(this.setState);
         this.client = new Client();

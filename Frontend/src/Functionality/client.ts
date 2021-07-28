@@ -269,7 +269,23 @@ export class Client{
         }
     }
 
-    populate_viewing_target(server_name:string,target:string){
+    populate_viewing_target_if_successful(server_name:string,response:BasicResponse){
+        if(response.status == "success"){
+            if (response.target == "banned-ips"){
+                this.set_parent_state((prev)=>{
+                    let new_data = prev;
+                    new_data.servers_banned_ips.set(server_name, response.target_value);
+                    return new_data;
+                    });
+            }
+            else if (response.target == "servers_devices"){
+                this.set_parent_state((prev)=>{
+                    let new_data = prev;
+                    new_data.servers_banned_ips.set(server_name, response.target_value);
+                    return new_data;
+                    });
+            }
+        }
         
     }
 
