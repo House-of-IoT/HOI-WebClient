@@ -91,6 +91,8 @@ export class Client{
             if(this.auth_status.has(server_name) && this.auth_status.get(server_name) =="success"){
                 this.clear_server_passive_interval(server_name);
                 let connection = this.connections.get(server_name);
+                connection.onmessage = (event)=>{this.handle_basic_action_request_response(event)};
+                connection.send(target);
             }
         }
         catch{
@@ -112,7 +114,7 @@ export class Client{
         try{
             let data: BasicResponse= JSON.parse(event.data);
             console.log(data)
-            this.update_ui_after_action_response(data);
+            this.update_ui_and_data_after_action_response(data);
         }
         catch{
             alert("got invalid data from server");
@@ -120,7 +122,7 @@ export class Client{
     }
 
 
-    update_ui_after_action_response(response:BasicResponse){
+    update_ui_and_data_after_action_response(response:BasicResponse){
         if(response.action == "activate"){
             this.change_basic_response_component_state(response,
                 " has been successfully activated" , " failed to activate");
@@ -134,6 +136,12 @@ export class Client{
         else if(response.action == "disconnect"){
             this.change_basic_response_component_state(response,
                 " has been successfully disconnected" , " failed to disconnect");
+        }
+        else if (response.action == "viewing"){
+            response.bot_name = "";
+            this.change_basic_response_component_state(response, 
+                " You have successfully gathered server state data!","You have failed gathering server state data!");
+            
         }
     }
 
@@ -242,10 +250,6 @@ export class Client{
         connection.send(password);
     }
 
-    gather_list_of_deactivated_bots(server_name:string){
-        
-    }
-
     check_and_begin_gathering_passive_data(response:BasicResponse){
         switch(response.action){
             case "activate":
@@ -257,11 +261,16 @@ export class Client{
             case "disconnect":
                 this.begin_gathering_bot_data(response.server_name);
                 break;
+            case "viewing":
+                this.begin_gathering_bot_data(response.server_name);
+                break;
             default:
                 break;
-
         }
+    }
 
+    populate_viewing_target(server_name:string,target:string){
+        
     }
 
     has_credentials(server_name:string):boolean{
@@ -272,7 +281,6 @@ export class Client{
             return false;
         }
     }
-
     set_name_and_type(server_name:string,name_and_type:string){
         this.name_and_type.set(server_name,name_and_type);
     }

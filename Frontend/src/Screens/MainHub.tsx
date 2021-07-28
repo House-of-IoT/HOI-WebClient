@@ -35,10 +35,15 @@ export default class MainHub extends Component<any,any> {
             server_bot_strings : new Map<string,string>(), // all passive bot data from one server stored in one string.
             successful_action_showing:false,
             failed_action_showing:false,
+            loading_file:false,
+            servers_deactivated_bots : new Map<string,Set<string>>(),
+            servers_devices : new Map<string,Set<string>>(),
+            servers_banned_ips : new Map<string,Set<string>>(),
             //mock values, not really the messages
             failed_action_message:"Server Responded with failure to your authentication request.",
             successful_action_message:"Server Responded with success to your authentication request.",
-            loading_file:false
+       
+
         }    
         this.setState = this.setState.bind(this);
         this.test = new Test(this.setState);
