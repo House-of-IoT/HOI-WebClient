@@ -3,4 +3,6 @@ export type  BasicResponse = {
     action:string
     status:string
     bot_name:string
+    target:any
+    target_value:any
 }

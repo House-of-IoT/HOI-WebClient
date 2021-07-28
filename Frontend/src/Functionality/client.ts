@@ -73,11 +73,7 @@ export class Client{
     request_bot_action(server_name:string,bot_name:string,action:string){
         try{
             if(this.auth_status.has(server_name) && this.auth_status.get(server_name) =="success"){
-                //clear and delete the server interval timeout that we stored
-                let interval_id = this.passive_data_interval_ids.get(server_name)
-                clearInterval(interval_id);
-                this.passive_data_interval_ids.delete(server_name);
-                //make the request
+                this.clear_server_passive_interval(server_name);
                 let connection = this.connections.get(server_name);
                 this.route_bot_action(connection,action,bot_name);
             }
@@ -87,6 +83,18 @@ export class Client{
         }
         catch(e){
             console.log(e);
+        }
+    }
+
+    request_server_state(server_name:string,target:string){
+        try{
+            if(this.auth_status.has(server_name) && this.auth_status.get(server_name) =="success"){
+                this.clear_server_passive_interval(server_name);
+                let connection = this.connections.get(server_name);
+            }
+        }
+        catch{
+
         }
     }
 
@@ -271,5 +279,12 @@ export class Client{
 
     define_parent_state(fun:any){
         this.set_parent_state = fun;
+    }
+
+    clear_server_passive_interval(server_name:string){
+        //clear and delete the server interval timeout that we stored
+        let interval_id = this.passive_data_interval_ids.get(server_name)
+        clearInterval(interval_id);
+        this.passive_data_interval_ids.delete(server_name);
     }
 }
