@@ -272,21 +272,23 @@ export class Client{
     populate_viewing_target_if_successful(server_name:string,response:BasicResponse){
         if(response.status == "success"){
             if (response.target == "banned-ips"){
-                this.set_parent_state((prev)=>{
-                    let new_data = prev;
-                    new_data.servers_banned_ips.set(server_name, response.target_value);
-                    return new_data;
-                    });
+                this.set_viewing_state(server_name,"servers_banned_ips",response.target_value);
             }
             else if (response.target == "servers_devices"){
-                this.set_parent_state((prev)=>{
-                    let new_data = prev;
-                    new_data.servers_banned_ips.set(server_name, response.target_value);
-                    return new_data;
-                    });
+                this.set_viewing_state(server_name,"servers_devices",response.target_value);
             }
-        }
-        
+            else{
+                this.set_viewing_state(server_name,"servers_deactivated_bots",response.target_value);
+            }
+        }   
+    }
+    
+    set_viewing_state(server_name:string,data_key:string,target_value:any){
+        this.set_parent_state((prev)=>{
+            let new_data = prev;
+            new_data[data_key].set(server_name, target_value);
+            return new_data;
+            });
     }
 
     has_credentials(server_name:string):boolean{
