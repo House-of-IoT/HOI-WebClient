@@ -10,7 +10,6 @@ export class Client{
     set_parent_state:any
     passive_data_interval_ids:Map<string,NodeJS.Timeout>
     current_bot_for_action : string
-    
 
     constructor(){
         this.connections = new Map<string,WebSocket>();
@@ -88,15 +87,15 @@ export class Client{
 
     request_server_state(server_name:string,target:string){
         try{
-            if(this.auth_status.has(server_name) && this.auth_status.get(server_name) =="success"){
+            if(this.auth_status.has(server_name) && this.auth_status.get(server_name) == "success"){
                 this.clear_server_passive_interval(server_name);
                 let connection = this.connections.get(server_name);
                 connection.onmessage = (event)=>{this.handle_basic_action_request_response(event)};
                 connection.send(target);
             }
         }
-        catch{
-
+        catch(e){
+            console.log(e);
         }
     }
 
@@ -121,7 +120,6 @@ export class Client{
         }
     }
 
-
     update_ui_and_data_after_action_response(response:BasicResponse){
         if(response.action == "activate"){
             this.change_basic_response_component_state(response,
@@ -141,7 +139,14 @@ export class Client{
             response.bot_name = "";
             this.change_basic_response_component_state(response, 
                 " You have successfully gathered server state data!","You have failed gathering server state data!");
-            
+            if(response.status == "needs-admin-auth"){
+                this.prompt_and_send_admin_auth_password(response);
+            }
+            else{
+                //still could be timeout so we check if successful   
+                this.populate_viewing_target_if_successful(response);
+            }
+  
         }
     }
 
@@ -162,7 +167,6 @@ export class Client{
             this.set_parent_state({failed_action_showing:true});
         }
         else if(response.status == "needs-admin-auth"){
-            this.prompt_and_send_admin_auth_password(response);
             return;//prevent later passive_data_gathering
         }
         else{
@@ -247,7 +251,7 @@ export class Client{
     prompt_and_send_admin_auth_password(old_response:BasicResponse){
         let connection = this.connections.get(old_response.server_name);
         let password :string= prompt(`${old_response.server_name} is requesting the admin password:`);
-        connection.send(password);
+        connection.send(password);  
     }
 
     check_and_begin_gathering_passive_data(response:BasicResponse){
@@ -269,23 +273,25 @@ export class Client{
         }
     }
 
-    populate_viewing_target_if_successful(server_name:string,response:BasicResponse){
+    populate_viewing_target_if_successful(response:BasicResponse){
         if(response.status == "success"){
+            console.log(response.target_value);
+            console.log(response.target);
             if (response.target == "banned-ips"){
-                this.set_viewing_state(server_name,"servers_banned_ips",response.target_value);
+                this.set_viewing_state(response.server_name,"servers_banned_ips",response.target_value);
             }
             else if (response.target == "servers_devices"){
-                this.set_viewing_state(server_name,"servers_devices",response.target_value);
+                this.set_viewing_state(response.server_name,"servers_devices",response.target_value);
             }
             else{
-                this.set_viewing_state(server_name,"servers_deactivated_bots",response.target_value);
+                this.set_viewing_state(response.server_name,"servers_deactivated_bots",response.target_value);
             }
         }   
     }
     
     set_viewing_state(server_name:string,data_key:string,target_value:any){
         this.set_parent_state((prev)=>{
-            let new_data = prev;
+            let new_data = Object.assign({}, prev);;
             new_data[data_key].set(server_name, target_value);
             return new_data;
             });
