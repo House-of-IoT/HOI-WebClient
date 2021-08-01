@@ -1,8 +1,8 @@
 import React, { Component, FormEventHandler } from 'react'
 
 export default class NewConnectionPopup extends Component<any,any> {
-    constructor(){
-        super({});
+    constructor(props:{}){
+        super(props);
         this.state = {
             host:"",
             port:"",

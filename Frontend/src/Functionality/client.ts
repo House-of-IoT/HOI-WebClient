@@ -87,16 +87,22 @@ export class Client{
 
     request_server_state(server_name:string,target:string){
         try{
+            console.log("requesting server state...")
             if(this.auth_status.has(server_name) && this.auth_status.get(server_name) == "success"){
+                console.log("requesting server state2...")
                 this.clear_server_passive_interval(server_name);
                 let connection = this.connections.get(server_name);
                 connection.onmessage = (event)=>{this.handle_basic_action_request_response(event)};
                 connection.send(target);
+                console.log("requesting server state3...")
+            }
+            else{
+                console.log("issue with requirements");
             }
         }
         catch(e){
             console.log(e);
-        }
+        } 
     }
 
     route_bot_action(connection:WebSocket, action:string,bot_name:string){
@@ -109,6 +115,7 @@ export class Client{
     }
 
     handle_basic_action_request_response(event:MessageEvent){
+        console.log("handling");
         console.log(event.data)
         try{
             let data: BasicResponse= JSON.parse(event.data);
@@ -121,6 +128,7 @@ export class Client{
     }
 
     update_ui_and_data_after_action_response(response:BasicResponse){
+        console.log(response);
         if(response.action == "activate"){
             this.change_basic_response_component_state(response,
                 " has been successfully activated" , " failed to activate");

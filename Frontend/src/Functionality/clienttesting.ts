@@ -1,5 +1,6 @@
 import { Client } from "./client";
 import assert from "assert";
+import { waitForElementToBeRemoved } from "@testing-library/react";
 
 /* 
 This test class tests the protocol/responses 
@@ -22,15 +23,16 @@ export class Test{
     password:string;
     server_name:string;
     connection_string:string
+    parent_state:any
   
-    constructor(state_set){
+    constructor(state_set,parent_state){
         this.name_and_type = JSON.stringify({"name":"client_web" , "type":"non-bot"});
         this.password = "";
         this.client = new Client();
         this.server_name = "test";
-        this.connection_string = 'ws://localhost:50223';
-        setTimeout(()=>{state_set({bots :9})},5000)
-        this.client.define_parent_state(state_set)
+        this.connection_string = 'ws://192.168.1.109:50223';
+        this.client.define_parent_state(state_set);
+        this.parent_state = parent_state;
     }
 
     auth(){
@@ -101,6 +103,20 @@ export class Test{
             let connection = this.client.connections.get(this.server_name);
             assert.strictEqual(connection.readyState, WebSocket.OPEN);
         },5000)
+    }
+
+    //assumes that only the client is connected
+    test_viewing_devices(target:string){
+        this.auth();
+        setTimeout(() => {
+            this.client.request_server_state(this.server_name,target);
+            setTimeout(() => {
+                console.log(this.parent_state);
+                let target_value =
+                 this.parent_state.servers_devices.get(this.server_name)
+                assert.strictEqual(JSON.parse(target_value)["client_web"],"non-bot");
+            }, 10000);
+        }, 5000);
     }
 
     non_assertive_trigger_rate_limit(){ 

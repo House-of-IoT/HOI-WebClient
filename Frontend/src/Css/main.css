@@ -517,3 +517,23 @@ opacity: .5;
     top: -109%;
     left: 96%;
 }
+.infared{
+    background-color: #242c37;
+    justify-content: center;
+    height: 30vh;
+    width: 15vw;
+    border-radius: 12px;
+
+}
+.infared button{
+    color: #fff;
+    height: 18%;
+    width: 50%;
+    font-size: large;
+    font-weight: 800;
+    border: none;
+    border-radius: 4px;
+    position: relative;
+    left: 20%;
+    top: 15%;
+}

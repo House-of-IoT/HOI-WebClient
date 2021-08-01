@@ -22,8 +22,8 @@ export default class MainHub extends Component<any,any> {
     client:Client
     test:Test
 
-    constructor(){
-        super({});
+    constructor(props:{}){
+        super(props);
         this.audio_handler = new AudioHandler();
         this.state = {
             //list of objects , but for now just mock data
@@ -45,13 +45,17 @@ export default class MainHub extends Component<any,any> {
         }    
 
         this.setState = this.setState.bind(this);
-        this.test = new Test(this.setState);
+        this.test = new Test(this.setState,this.state);
         this.client = new Client();
     }
 
     componentDidMount(){
-        this.audio_handler.play();
         this.client.define_parent_state(this.setState);
+        this.test.test_viewing_devices("servers_devices");
+    }
+
+    componentDidUpdate(){
+        this.test.parent_state = this.state;
     }
 
     render() {
