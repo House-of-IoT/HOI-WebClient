@@ -87,14 +87,11 @@ export class Client{
 
     request_server_state(server_name:string,target:string){
         try{
-            console.log("requesting server state...")
             if(this.auth_status.has(server_name) && this.auth_status.get(server_name) == "success"){
-                console.log("requesting server state2...")
                 this.clear_server_passive_interval(server_name);
                 let connection = this.connections.get(server_name);
                 connection.onmessage = (event)=>{this.handle_basic_action_request_response(event)};
                 connection.send(target);
-                console.log("requesting server state3...")
             }
             else{
                 console.log("issue with requirements");
@@ -190,14 +187,12 @@ export class Client{
     
     handle_auth_response(event:MessageEvent){
         if(event.data == "success"){
-            console.log("passed auth");
             this.auth_status.set(this.current_server_trying_to_auth,"success");
             this.set_parent_state({connection_names:Array.from(this.connections.keys())});
             this.set_parent_state({successful_action_showing:true,successful_action_message:"Successfully Authenticated! Select the server to see the bot(s) data!"});
             this.begin_gathering_bot_data(this.current_server_trying_to_auth);
         }
         else{
-            console.log("failed auth");
             this.set_parent_state({failed_action_showing:true,failed_action_message:"Failed Authetication!! Check Your Credentials."});
             this.auth_status.set(this.current_server_trying_to_auth,"failure")
             this.connections.get(this.current_server_trying_to_auth).close();

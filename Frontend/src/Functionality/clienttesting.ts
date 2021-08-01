@@ -105,17 +105,41 @@ export class Test{
         },5000)
     }
 
-    //assumes that only the client is connected
-    test_viewing_devices(target:string){
+    test_if_only_one_connected_to_server(){
         this.auth();
+        this.viewing_devices_map("servers_devices","client_web","non-bot",this.parent_state.servers_devices);
+    }
+
+    // assumes a bot named test is connected
+    test_viewing_deactivated_bot(){
+        this.auth();
+        setTimeout(() => {
+            this.client.request_bot_action(this.server_name,"test","deactivate");
+            this.viewing_devices_array("servers_deactivated_bots","test",this.parent_state.servers_deactivated_bots);
+        }, 5000);
+    }    
+
+    //assumes you are authenticated first before calling this test
+    viewing_devices_map(target:string,expected_name:string,expected_type:string,map:any){
         setTimeout(() => {
             this.client.request_server_state(this.server_name,target);
             setTimeout(() => {
                 console.log(this.parent_state);
-                let target_value =
-                 this.parent_state.servers_devices.get(this.server_name)
-                assert.strictEqual(JSON.parse(target_value)["client_web"],"non-bot");
+                let target_value = map.get(this.server_name)
+                assert.strictEqual(JSON.parse(target_value)[expected_name],expected_type);
             }, 10000);
+        }, 5000);
+    }
+
+    //assumes you are authenticated first before calling this test
+    viewing_devices_array(target:string,expected_name:string,map:any){
+        setTimeout(() => {
+            this.client.request_server_state(this.server_name,target);
+            setTimeout(() => {
+                console.log(this.parent_state);
+                let target_value = map.get(this.server_name)
+                assert.strictEqual(target_value.includes(expected_name),true);
+            }, 15000);
         }, 5000);
     }
 

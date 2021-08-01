@@ -37,7 +37,7 @@ export default class MainHub extends Component<any,any> {
             failed_action_showing:false,
             loading_file:false,
             servers_deactivated_bots : new Map<string,Array<string>>(),
-            servers_devices : new Map<string,Array<string>>(),
+            servers_devices : new Map<string,string>(),
             servers_banned_ips : new Map<string,Array<string>>(),
             //mock values, not really the messages
             failed_action_message:"Server Responded with failure to your authentication request.",
@@ -51,7 +51,7 @@ export default class MainHub extends Component<any,any> {
 
     componentDidMount(){
         this.client.define_parent_state(this.setState);
-        this.test.test_viewing_devices("servers_devices");
+        this.test.test_viewing_deactivated_bot();
     }
 
     componentDidUpdate(){
