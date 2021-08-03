@@ -21,12 +21,10 @@ export class Client{
     }
 
     setup_connection(server_name:string,connectionString:string,password:string):boolean{
-        console.log("connecting")
         if (this.connections.has(server_name)){
             return false
         }
         else{
-            console.log("connecting2")
             let connection = new WebSocket(connectionString);
             connection.onopen = ()=>{
                 this.authenticate(server_name,password);
@@ -70,49 +68,34 @@ export class Client{
     }
 
     request_bot_action(server_name:string,bot_name:string,action:string){
-        try{
-            if(this.auth_status.has(server_name) && this.auth_status.get(server_name) =="success"){
-                this.clear_server_passive_interval(server_name);
-                let connection = this.connections.get(server_name);
-                this.route_bot_action(connection,action,bot_name);
-            }
-            else{
-                throw new Error("issue with executing action");
-            }
-        }
-        catch(e){
-            console.log(e);
-        }
+        this.route_bot_action(server_name,action,bot_name);
     }
 
     request_server_state(server_name:string,target:string){
-        try{
-            if(this.auth_status.has(server_name) && this.auth_status.get(server_name) == "success"){
-                this.clear_server_passive_interval(server_name);
-                let connection = this.connections.get(server_name);
-                connection.onmessage = (event)=>{this.handle_basic_action_request_response(event)};
-                connection.send(target);
-            }
-            else{
-                console.log("issue with requirements");
-            }
-        }
-        catch(e){
-            console.log(e);
-        } 
+        this.execute_message_protocol(server_name,(connection){
+            connection.send(target);
+        })
     }
 
-    route_bot_action(connection:WebSocket, action:string,bot_name:string){
+    request_server_config_change(server_name:string, request:string, new_bool:Boolean){
+        let bool_to_string = String(Number(new_bool));
+        this.execute_message_protocol(server_name,(connection)=>{
+            connection.send(request);
+            connection.send(bool_to_string);
+        });
+    }
+
+    route_bot_action(server_name:string, action:string,bot_name:string){
         if(action == "deactivate" || action == "activate" || action == "disconnect"){
-            connection.onmessage = (event)=>{this.handle_basic_action_request_response(event)};
-            connection.send("bot_control");
-            connection.send(action);   
-            connection.send(bot_name);
+            this.execute_message_protocol(server_name,(connection)=>{
+                connection.send("bot_control");
+                connection.send(action);   
+                connection.send(bot_name);
+            })
         }
     }
 
     handle_basic_action_request_response(event:MessageEvent){
-        console.log("handling");
         console.log(event.data)
         try{
             let data: BasicResponse= JSON.parse(event.data);
@@ -300,6 +283,20 @@ export class Client{
             });
     }
 
+    execute_message_protocol(server_name:string,callback:any){
+        try{
+            if(this.auth_status.has(server_name) && this.auth_status.get(server_name) == "success"){
+                this.clear_server_passive_interval(server_name);
+                let connection = this.connections.get(server_name);
+                connection.onmessage =  (event)=>{this.handle_basic_action_request_response(event)};
+                callback(connection);
+            }
+        }
+        catch(e){
+            console.log(e);
+        }
+    }
+    
     has_credentials(server_name:string):boolean{
         if(this.connections.has(server_name) && this.name_and_type != null){
             return true;

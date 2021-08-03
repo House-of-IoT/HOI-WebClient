@@ -51,11 +51,11 @@ export default class MainHub extends Component<any,any> {
 
     componentDidMount(){
         this.client.define_parent_state(this.setState);
-        this.test.test_viewing_deactivated_bot();
+        //this.test.test_viewing_deactivated_bot();
     }
 
     componentDidUpdate(){
-        this.test.parent_state = this.state;
+       // this.test.parent_state = this.state;
     }
 
     render() {
