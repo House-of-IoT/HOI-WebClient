@@ -51,7 +51,7 @@ export default class MainHub extends Component<any,any> {
 
     componentDidMount(){
         this.client.define_parent_state(this.setState);
-        //this.test.test_viewing_deactivated_bot();
+        this.test.test_bot_deactivate_and_activate();
     }
 
     componentDidUpdate(){

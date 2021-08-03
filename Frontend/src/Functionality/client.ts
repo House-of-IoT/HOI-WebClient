@@ -72,7 +72,7 @@ export class Client{
     }
 
     request_server_state(server_name:string,target:string){
-        this.execute_message_protocol(server_name,(connection){
+        this.execute_message_protocol(server_name,(connection)=>{
             connection.send(target);
         })
     }
@@ -109,7 +109,10 @@ export class Client{
 
     update_ui_and_data_after_action_response(response:BasicResponse){
         console.log(response);
-        if(response.action == "activate"){
+        if(response.status == "needs-admin-auth"){
+            this.prompt_and_send_admin_auth_password(response);
+        }
+        else if(response.action == "activate"){
             this.change_basic_response_component_state(response,
                 " has been successfully activated" , " failed to activate");
         }
@@ -127,15 +130,9 @@ export class Client{
             response.bot_name = "";
             this.change_basic_response_component_state(response, 
                 " You have successfully gathered server state data!","You have failed gathering server state data!");
-            if(response.status == "needs-admin-auth"){
-                this.prompt_and_send_admin_auth_password(response);
-            }
-            else{
-                //still could be timeout so we check if successful   
-                this.populate_viewing_target_if_successful(response);
-            }
-  
+            this.populate_viewing_target_if_successful(response);
         }
+   
     }
 
     change_basic_response_component_state(response:BasicResponse,success_message:string , failure_message:string){
@@ -296,7 +293,7 @@ export class Client{
             console.log(e);
         }
     }
-    
+
     has_credentials(server_name:string):boolean{
         if(this.connections.has(server_name) && this.name_and_type != null){
             return true;
