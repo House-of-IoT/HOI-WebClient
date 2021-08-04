@@ -71,7 +71,7 @@ export class Client{
         this.route_bot_action(server_name,action,bot_name);
     }
 
-    request_server_state(server_name:string,target:string){
+    request_server_state_or_config(server_name:string,target:string){
         this.execute_message_protocol(server_name,(connection)=>{
             connection.send(target);
         })
@@ -223,7 +223,6 @@ export class Client{
             }
         }
         catch{
-            //alert the 
             console.log("Issue gathering bot data!");
         }
     }

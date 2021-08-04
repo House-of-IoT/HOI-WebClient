@@ -5,8 +5,13 @@ import { waitForElementToBeRemoved } from "@testing-library/react";
 /* 
 This test class tests the protocol/responses 
 between the client/server.
+
+This test class assumes that the server you are connecting to
+has the same settings as the HOI-GeneralServer
+
 This test class assumes that the HOI-GeneralServer
 is hosted locally at 'ws://localhost:50223'.
+
 This test class assumes that the GeneralServer/Client follows the normal
 protocol of communication between the client/server , which is :
 1.Send password for general server
@@ -104,46 +109,58 @@ export class Test{
             assert.strictEqual(connection.readyState, WebSocket.OPEN);
         },5000)
     }
-
+    //assumes that we have constant server state updates
     test_if_only_one_connected_to_server(){
         this.auth();
-        this.viewing_devices_map("servers_devices","client_web","non-bot",this.parent_state.servers_devices);
+        this.viewing_server_state_map("servers_devices","client_web","non-bot",this.parent_state.servers_devices);
     }
 
-    // assumes a bot named test is connected
+    // assumes a bot named test is connected and we have constant server state updates
     test_viewing_deactivated_bot(){
         this.auth();
         setTimeout(() => {
             this.client.request_bot_action(this.server_name,"test","deactivate");
-            this.viewing_devices_array("servers_deactivated_bots","test",this.parent_state.servers_deactivated_bots);
+            this.viewing_server_state_array("servers_deactivated_bots","test",this.parent_state.servers_deactivated_bots);
         }, 5000);
     }    
 
     //assumes you are authenticated first before calling this test
-    viewing_devices_map(target:string,expected_name:string,expected_type:string,map:any){
+    viewing_server_state_map(target:string,expected_value:string,expected_type:string,map:any){
         setTimeout(() => {
-            this.client.request_server_state(this.server_name,target);
+            this.client.request_server_state_or_config(this.server_name,target);
             setTimeout(() => {
-                console.log(this.parent_state);
                 let target_value = map.get(this.server_name)
-                assert.strictEqual(JSON.parse(target_value)[expected_name],expected_type);
+                assert.strictEqual(JSON.parse(target_value)[expected_value],expected_type);
             }, 10000);
         }, 5000);
     }
 
     //assumes you are authenticated first before calling this test
-    viewing_devices_array(target:string,expected_name:string,map:any){
+    viewing_server_state_array(target:string,expected_value:string,map:any){
         setTimeout(() => {
-            this.client.request_server_state(this.server_name,target);
+            this.client.request_server_state_or_config(this.server_name,target);
             setTimeout(() => {
-                console.log(this.parent_state);
                 let target_value = map.get(this.server_name)
-                assert.strictEqual(target_value.includes(expected_name),true);
+                assert.strictEqual(target_value.includes(expected_value),true);
+            }, 15000);
+        }, 5000);
+    }
+
+    viewing_server_config(){
+        this.auth();
+        setTimeout(() => {
+            this.client.request_server_state_or_config(this.server_name,"server_config");
+            setTimeout(() => {
+                let target_value = JSON.parse(this.parent_state.servers_configs.get(this.server_name));
+                assert.strictEqual(target_value["disconnecting"],false);
+                assert.strictEqual(target_value["activating"],true);
+                assert.strictEqual(target_value["deactivating"],false);
+                assert.strictEqual(target_value["viewing"],true);
             }, 15000);
         }, 5000);
     }
 
     non_assertive_trigger_rate_limit(){ 
-        setInterval(()=>{this.failed_auth()},5000);
+        setInterval(()=>{this.failed_auth()},5000); 
     }
 }
