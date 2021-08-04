@@ -116,12 +116,10 @@ export class Client{
             this.change_basic_response_component_state(response,
                 " has been successfully activated" , " failed to activate");
         }
-
         else if(response.action == "deactivate"){
             this.change_basic_response_component_state(response,
                 " has been successfully deactivated" , " failed to deactivate");
         }
-
         else if(response.action == "disconnect"){
             this.change_basic_response_component_state(response,
                 " has been successfully disconnected" , " failed to disconnect");
@@ -132,7 +130,6 @@ export class Client{
                 " You have successfully gathered server state data!","You have failed gathering server state data!");
             this.populate_viewing_target_if_successful(response);
         }
-   
     }
 
     change_basic_response_component_state(response:BasicResponse,success_message:string , failure_message:string){
@@ -265,6 +262,9 @@ export class Client{
             }
             else if (response.target == "servers_devices"){
                 this.set_viewing_state(response.server_name,"servers_devices",response.target_value);
+            }
+            else if (response.target == "server_config"){
+                this.set_viewing_state(response.server_name,"servers_configs",response.target_value);
             }
             else{
                 this.set_viewing_state(response.server_name,"servers_deactivated_bots",response.target_value);
