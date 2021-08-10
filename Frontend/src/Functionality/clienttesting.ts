@@ -160,11 +160,16 @@ export class Test{
         }, 5000);
     }
 
-    viewing_server_contacts(){
+    viewing_and_editing_server_contacts(){
+        this.auth();
         setTimeout(() => {
-            this.client.request_server_edit(this.server_name,"add-contact","+17728920191");
+            this.client.request_server_edit(this.server_name,"add-contact",JSON.stringify({"name":"test","number":"+17769392019"}));
             setTimeout(() => {
                 this.client.request_server_state_or_config(this.server_name,"contact_list")
+                setTimeout(() => {
+                    let target_value = JSON.parse(this.parent_state.servers_contacts.get(this.server_name));
+                    assert.strictEqual(target_value["test"],"+17769392019")
+                }, 5000);
             }, 10000);
         }, 5000);
     }
@@ -177,7 +182,6 @@ export class Test{
         }, 5000);
     }
 
-    editing_server_contacts
 
     non_assertive_trigger_rate_limit(){ 
         setInterval(()=>{this.failed_auth()},5000); 
