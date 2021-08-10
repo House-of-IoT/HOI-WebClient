@@ -1,6 +1,5 @@
 import { Client } from "./client";
 import assert from "assert";
-import { waitForElementToBeRemoved } from "@testing-library/react";
 
 /* 
 This test class tests the protocol/responses 
