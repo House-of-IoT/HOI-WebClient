@@ -77,12 +77,16 @@ export class Client{
         })
     }
 
+    request_server_edit(server_name:string,request:string,value:string){
+        this.execute_message_protocol(server_name,(connection)=>{
+            connection.send(request)
+            connection.send(value)
+        })
+    }
+    
     request_server_config_change(server_name:string, request:string, new_bool:Boolean){
         let bool_to_string = String(Number(new_bool));
-        this.execute_message_protocol(server_name,(connection)=>{
-            connection.send(request);
-            connection.send(bool_to_string);
-        });
+        this.request_server_edit(server_name,request,bool_to_string);
     }
 
     route_bot_action(server_name:string, action:string,bot_name:string){
@@ -130,6 +134,9 @@ export class Client{
                 " You have successfully gathered server state data!","You have failed gathering server state data!");
             this.populate_viewing_target_if_successful(response);
         }
+        else if (response.action == "editing"){
+            this.change_basic_response_component_state(response,"You have successfully edited the server!", "You have failed to edit the server's state");
+        }
     }
 
     change_basic_response_component_state(response:BasicResponse,success_message:string , failure_message:string){
@@ -147,9 +154,6 @@ export class Client{
                     failed_action_message:`The request to ${response.server_name}
                      timed-out`})
             this.set_parent_state({failed_action_showing:true});
-        }
-        else if(response.status == "needs-admin-auth"){
-            return;//prevent later passive_data_gathering
         }
         else{
             this.set_parent_state(

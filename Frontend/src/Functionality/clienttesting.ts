@@ -146,18 +146,22 @@ export class Test{
         }, 5000);
     }
 
-    viewing_server_config(){
+    viewing_server_config(disconnecting:boolean,activating:boolean,deactivating:boolean,viewing:boolean){
         this.auth();
         setTimeout(() => {
             this.client.request_server_state_or_config(this.server_name,"server_config");
             setTimeout(() => {
                 let target_value = JSON.parse(this.parent_state.servers_configs.get(this.server_name));
-                assert.strictEqual(target_value["disconnecting"],false);
-                assert.strictEqual(target_value["activating"],true);
-                assert.strictEqual(target_value["deactivating"],false);
-                assert.strictEqual(target_value["viewing"],true);
+                assert.strictEqual(target_value["disconnecting"],disconnecting);
+                assert.strictEqual(target_value["activating"],activating);
+                assert.strictEqual(target_value["deactivating"],deactivating);
+                assert.strictEqual(target_value["viewing"],viewing);
             }, 15000);
         }, 5000);
+    }
+
+    editing_server_config(){
+        
     }
 
     non_assertive_trigger_rate_limit(){ 
