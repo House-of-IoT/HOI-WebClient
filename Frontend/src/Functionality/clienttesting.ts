@@ -146,8 +146,8 @@ export class Test{
         }, 5000);
     }
 
+    //assumes you are authenticated first before calling this test
     viewing_server_config(disconnecting:boolean,activating:boolean,deactivating:boolean,viewing:boolean){
-        this.auth();
         setTimeout(() => {
             this.client.request_server_state_or_config(this.server_name,"server_config");
             setTimeout(() => {
@@ -160,9 +160,24 @@ export class Test{
         }, 5000);
     }
 
-    editing_server_config(){
-        
+    viewing_server_contacts(){
+        setTimeout(() => {
+            this.client.request_server_edit(this.server_name,"add-contact","+17728920191");
+            setTimeout(() => {
+                this.client.request_server_state_or_config(this.server_name,"contact_list")
+            }, 10000);
+        }, 5000);
     }
+
+    editing_server_config(){
+        this.auth();
+        setTimeout(() => {
+            this.client.request_server_config_change(this.server_name,"change_config_deactivating",true);
+            this.viewing_server_config(false,true,true,true)
+        }, 5000);
+    }
+
+    editing_server_contacts
 
     non_assertive_trigger_rate_limit(){ 
         setInterval(()=>{this.failed_auth()},5000); 

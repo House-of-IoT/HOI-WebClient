@@ -83,7 +83,7 @@ export class Client{
             connection.send(value)
         })
     }
-    
+
     request_server_config_change(server_name:string, request:string, new_bool:Boolean){
         let bool_to_string = String(Number(new_bool));
         this.request_server_edit(server_name,request,bool_to_string);
@@ -268,6 +268,9 @@ export class Client{
             }
             else if (response.target == "server_config"){
                 this.set_viewing_state(response.server_name,"servers_configs",response.target_value);
+            }
+            else if (response.target =="contact_list"){
+                this.set_viewing_state(response.server_name,"servers_contacts",response.target_value)
             }
             else{
                 this.set_viewing_state(response.server_name,"servers_deactivated_bots",response.target_value);
