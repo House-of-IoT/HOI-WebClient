@@ -171,6 +171,11 @@ opacity: .5;
     top: -80%;
     border-radius: 4px;
 }
+
+#settings-button:hover{
+    opacity: 0.5;
+}
+
 #settings-button img{
     width: 18%;
     position: relative;
@@ -468,6 +473,8 @@ opacity: .5;
     top: -80%;
     left: 67%;
 }
+
+
 #settings-wrapper{
     background-color :#1a2029;
     border-radius: 12px;

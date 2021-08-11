@@ -35,7 +35,7 @@ export default class MainHub extends Component<any,any> {
             server_bot_strings : new Map<string,string>(), // all passive bot data from one server stored in one string.
             successful_action_showing:false,
             failed_action_showing:false,
-            loading_file:false,
+            loading_content:false,
             servers_deactivated_bots : new Map<string,Array<string>>(),
             servers_devices : new Map<string,string>(),
             servers_banned_ips : new Map<string,Array<string>>(),
@@ -53,11 +53,12 @@ export default class MainHub extends Component<any,any> {
 
     componentDidMount(){
         this.client.define_parent_state(this.setState);
+        this.test.editing_server_config();
     }
 
     componentDidUpdate(){
        // required for testing server state (line below)
-       // this.test.parent_state = this.state;
+        this.test.parent_state = this.state;
     }
 
     render() {

@@ -275,6 +275,8 @@ export class Client{
             else{
                 this.set_viewing_state(response.server_name,"servers_deactivated_bots",response.target_value);
             }
+            this.set_parent_state({loading_content:false});
+
         }   
     }
     
