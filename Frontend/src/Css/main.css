@@ -538,3 +538,23 @@ opacity: .5;
     left: 20%;
     top: 15%;
 }
+
+#state-viewer-inner{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    position: relative;
+    height: 75%;
+    top:-20% ;
+}
+#state-viewer-inner button{
+    border: none;
+    background-color: #724fe6;
+    border-radius: 4px;
+    position: relative;
+    margin-top: 10%;
+    margin-left: 10%;
+    padding: 5%;
+    color: #fff; 
+    font-weight: 800;
+    height: 80%;
+}
