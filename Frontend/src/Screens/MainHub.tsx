@@ -12,9 +12,9 @@ import { AudioHandler } from '../Functionality/audio';
 import { Client } from '../Functionality/client';
 import { Test } from '../Functionality/clienttesting';
 import ServerStatus from '../Components/ServerStatus';
-import ServerSettingsBar from '../Components/ServerSettingsBar';
 import ServerSettingsDialog from '../Components/ServerSettingsDialog';
 import Loading from '../Components/Loading';
+import BasicStateListPopup from '../Components/BasicStateListPopup';
 export default class MainHub extends Component<any,any> {
 
     audio_handler : AudioHandler;
@@ -26,21 +26,23 @@ export default class MainHub extends Component<any,any> {
         super(props);
         this.audio_handler = new AudioHandler();
         this.state = {
-            //list of objects , but for now just mock data
             connection_names : [],
             removal_showing: false,
             new_showing : false,
             selected_server: "No Server Selected",
-            selected_bots : [],//when a server is selected these will be the main bots
-            server_bot_strings : new Map<string,string>(), // all passive bot data from one server stored in one string.
+            selected_bots : [],
+            server_bot_strings : new Map<string,string>(), 
             successful_action_showing:false,
             failed_action_showing:false,
             loading_content:false,
+            basic_state_showing:false,
             server_settings_showing:false,
             servers_deactivated_bots : new Map<string,Array<string>>(),
             servers_devices : new Map<string,string>(),
             servers_banned_ips : new Map<string,Array<string>>(),
             servers_configs : new Map<string,string>(),
+            type_of_basic_state : "",
+            basic_state_data : "",
             servers_contacts :new Map<string,string>(),
             //mock values, not really the messages
             failed_action_message:"Server Responded with failure to your authentication request.",
@@ -96,6 +98,11 @@ export default class MainHub extends Component<any,any> {
                     client = {this.client}
                     set = {this.setState} 
                     selected_server = {this.state.selected_server}/>
+                <BasicStateListPopup
+                    state= {this.state.basic_state_showing}
+                    data = {this.state.basic_state_data}
+                    type = {this.state.type_of_basic_state}
+                    set = {this.setState}/>
                     
             </div>
         )
