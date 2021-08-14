@@ -265,21 +265,15 @@ export class Client{
             console.log(response.target);
 
             this.set_parent_state({loading_content:false});
-            if (response.target == "banned-ips"){
-                this.set_viewing_state(response.server_name,"servers_banned_ips",response.target_value);
-            }
-            else if (response.target == "servers_devices"){
-                this.set_viewing_state(response.server_name,"servers_devices",response.target_value);
+            if (response.target == "banned-ips" || response.target == "servers_devices"){
+                this.set_parent_state({basic_state_data:response.target_value,basic_state_showing:true})
             }
             else if (response.target == "server_config"){
                 this.set_viewing_state(response.server_name,"servers_configs",response.target_value);
                 this.set_parent_state({server_settings_showing:true});
             }
-            else if (response.target =="contact_list"){
-                this.set_viewing_state(response.server_name,"servers_contacts",response.target_value)
-            }
             else{
-                this.set_viewing_state(response.server_name,"servers_deactivated_bots",response.target_value);
+            
             }
         }   
     }

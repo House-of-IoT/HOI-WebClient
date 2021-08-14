@@ -15,8 +15,8 @@ import ServerStatus from '../Components/ServerStatus';
 import ServerSettingsDialog from '../Components/ServerSettingsDialog';
 import Loading from '../Components/Loading';
 import BasicStateListPopup from '../Components/BasicStateListPopup';
-export default class MainHub extends Component<any,any> {
 
+export default class MainHub extends Component<any,any> {
     audio_handler : AudioHandler;
     state : any;
     client:Client
@@ -37,9 +37,6 @@ export default class MainHub extends Component<any,any> {
             loading_content:false,
             basic_state_showing:false,
             server_settings_showing:false,
-            servers_deactivated_bots : new Map<string,Array<string>>(),
-            servers_devices : new Map<string,string>(),
-            servers_banned_ips : new Map<string,Array<string>>(),
             servers_configs : new Map<string,string>(),
             type_of_basic_state : "",
             basic_state_data : "",
@@ -103,7 +100,6 @@ export default class MainHub extends Component<any,any> {
                     data = {this.state.basic_state_data}
                     type = {this.state.type_of_basic_state}
                     set = {this.setState}/>
-                    
             </div>
         )
     }
