@@ -20,9 +20,6 @@ export default class SnapShot extends Component<any,any> {
                     this.props.set_parent_state({loading_content:true});
                     this.props.client.request_server_state_or_config(this.props.parent_state.selected_server,"server_config");
                 }
-                
-
-
              }}>
                 <img src = {settings_image}></img>
                 <h4>Edit Server Settings</h4>

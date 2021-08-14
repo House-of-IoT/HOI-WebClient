@@ -92,7 +92,11 @@ export default class MainHub extends Component<any,any> {
                 <Loading state = {this.state.loading_file} set = {this.setState}/>
                 <ServerSettingsDialog 
                     state = {this.state.server_settings_showing}
-                    config = {this.state.servers_configs.get(this.state.selected_server)}/>
+                    config = {this.state.servers_configs.get(this.state.selected_server)}
+                    client = {this.client}
+                    set = {this.setState} 
+                    selected_server = {this.state.selected_server}/>
+                    
             </div>
         )
     }

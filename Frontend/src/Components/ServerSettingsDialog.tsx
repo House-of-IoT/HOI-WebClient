@@ -10,10 +10,30 @@ export default class ServerSettingsDialog extends Component<any,any> {
                     <div id = "settings-wrapper">
                         <h1>Configure Server Settings</h1>
                         <h3>Requires Administrator Status:</h3>
-                        <SettingsOption status_type ="Deactivating" status = {String(config["disconnecting"])}/>
-                        <SettingsOption status_type ="Activating" status = {String(config["activating"])}/>
-                        <SettingsOption status_type ="Disconnecting" status = {String(config["deactivating"])}/>
-                        <SettingsOption status_type ="Viewing State" status = {String(config["viewing"])}/>
+                        <SettingsOption 
+                            set = {this.props.set} 
+                            client = {this.props.client} 
+                            status_type ="Deactivating" 
+                            status = {String(config["disconnecting"])}
+                            selected_server = {this.props.selected_server}/>
+                        <SettingsOption 
+                            set = {this.props.set} 
+                            client = {this.props.client}  
+                            status_type ="Activating" 
+                            status = {String(config["activating"])}
+                            selected_server = {this.props.selected_server}/>
+                        <SettingsOption 
+                            set = {this.props.set} 
+                            client = {this.props.client}  
+                            status_type ="Disconnecting" 
+                            status = {String(config["deactivating"])}
+                            selected_server = {this.props.selected_server}/>
+                        <SettingsOption 
+                            set = {this.props.set} 
+                            client = {this.props.client}  
+                            status_type ="Viewing State" 
+                            status = {String(config["viewing"])}
+                            selected_server = {this.props.selected_server}/>
                         <button id = "close-settings-dialog">X</button>
 
                     </div>
