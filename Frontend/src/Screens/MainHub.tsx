@@ -69,7 +69,12 @@ export default class MainHub extends Component<any,any> {
                 <ListingHub bots = {this.state.selected_bots}/>
                 <input id = "bot-search" placeholder = "Search By Name"></input>
                 <Connections set = {this.setState} connections = {this.state.connection_names}/>
-                <SnapShot bots = {this.state.selected_bots} server = {this.state.selected_server}/>
+                <SnapShot 
+                    bots = {this.state.selected_bots} 
+                    set_parent_state = {this.setState} 
+                    parent_state = {this.state} 
+                    server = {this.state.selected_server}
+                    client = {this.client}/>
                 <ConfigHandler client = {this.client} set = {this.setState}/>
                 <GetInvolved/>
                 <RemovalConfirmPopup state = {this.state.removal_showing} set = {this.setState}/>
