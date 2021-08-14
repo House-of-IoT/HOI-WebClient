@@ -87,6 +87,8 @@ export class Client{
 
     request_server_config_change(server_name:string, request:string, new_bool:Boolean){
         let bool_to_string = String(Number(new_bool));
+        console.log(bool_to_string);
+        console.log("new: "+new_bool)
         this.request_server_edit(server_name,request,bool_to_string);
     }
 

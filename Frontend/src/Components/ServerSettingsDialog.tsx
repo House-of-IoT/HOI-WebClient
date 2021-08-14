@@ -11,30 +11,34 @@ export default class ServerSettingsDialog extends Component<any,any> {
                         <h1>Configure Server Settings</h1>
                         <h3>Requires Administrator Status:</h3>
                         <SettingsOption 
-                            set = {this.props.set} 
+                            key = "Deactivating" 
+                            set = {this.props.set}
                             client = {this.props.client} 
                             status_type ="Deactivating" 
                             status = {String(config["disconnecting"])}
                             selected_server = {this.props.selected_server}/>
                         <SettingsOption 
+                            key = "Activating"
                             set = {this.props.set} 
                             client = {this.props.client}  
                             status_type ="Activating" 
                             status = {String(config["activating"])}
                             selected_server = {this.props.selected_server}/>
                         <SettingsOption 
+                            key = "Disconnecting"
                             set = {this.props.set} 
                             client = {this.props.client}  
                             status_type ="Disconnecting" 
                             status = {String(config["deactivating"])}
                             selected_server = {this.props.selected_server}/>
                         <SettingsOption 
+                            key = "Viewing State"
                             set = {this.props.set} 
                             client = {this.props.client}  
                             status_type ="Viewing State" 
                             status = {String(config["viewing"])}
                             selected_server = {this.props.selected_server}/>
-                        <button id = "close-settings-dialog">X</button>
+                        <button id = "close-settings-dialog" onClick = {()=>{this.props.set({server_settings_showing:false})}}>X</button>
 
                     </div>
             
