@@ -5,9 +5,13 @@ export default class StateViewer extends Component {
     render() {
         return (
             <div id= "state-viewer">
-                <h1>Want to get involved?</h1>
-                <img src = {discord}></img>
-                <img src = {github}></img>
+                <h1>State Viewer</h1>
+                <div id = "state-viewer-inner">
+                    <button>Deactivated Bots</button>
+                    <button>All Devices</button>
+                    <button>Notification Contacts</button>
+                    <button>Banned Ips</button>
+                </div>
             </div>
         )
     }
