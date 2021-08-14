@@ -15,7 +15,7 @@ export default class ServerSettingsDialog extends Component<any,any> {
                             set = {this.props.set}
                             client = {this.props.client} 
                             status_type ="Deactivating" 
-                            status = {String(config["disconnecting"])}
+                            status = {String(config["deactivating"])}
                             selected_server = {this.props.selected_server}/>
                         <SettingsOption 
                             key = "Activating"
@@ -29,7 +29,7 @@ export default class ServerSettingsDialog extends Component<any,any> {
                             set = {this.props.set} 
                             client = {this.props.client}  
                             status_type ="Disconnecting" 
-                            status = {String(config["deactivating"])}
+                            status = {String(config["disconnecting"])}
                             selected_server = {this.props.selected_server}/>
                         <SettingsOption 
                             key = "Viewing State"
