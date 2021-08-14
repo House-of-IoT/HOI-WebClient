@@ -36,6 +36,7 @@ export default class MainHub extends Component<any,any> {
             successful_action_showing:false,
             failed_action_showing:false,
             loading_content:false,
+            server_settings_showing:false,
             servers_deactivated_bots : new Map<string,Array<string>>(),
             servers_devices : new Map<string,string>(),
             servers_banned_ips : new Map<string,Array<string>>(),
@@ -53,12 +54,11 @@ export default class MainHub extends Component<any,any> {
 
     componentDidMount(){
         this.client.define_parent_state(this.setState);
-        this.test.editing_server_config();
     }
 
     componentDidUpdate(){
        // required for testing server state (line below)
-        this.test.parent_state = this.state;
+       // this.test.parent_state = this.state;
     }
 
     render() {
@@ -86,11 +86,8 @@ export default class MainHub extends Component<any,any> {
                     state = {this.state.failed_action_showing}/>
                 <Loading state = {this.state.loading_file} set = {this.setState}/>
                 <ServerSettingsDialog 
-                    state = {false}
-                    activating_status = {true}
-                    disconnecting_status = {true}
-                    viewing_status = {true}
-                    deactivating_status = {true}/>
+                    state = {this.state.server_settings_showing}
+                    config = {this.state.servers_configs.get(this.state.selected_server)}/>
             </div>
         )
     }

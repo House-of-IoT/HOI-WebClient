@@ -1,3 +1,4 @@
+import { timingSafeEqual } from "crypto";
 import { BasicResponse } from "./BasicResponse";
 
 export class Client{
@@ -260,6 +261,8 @@ export class Client{
         if(response.status == "success"){
             console.log(response.target_value);
             console.log(response.target);
+
+            this.set_parent_state({loading_content:false});
             if (response.target == "banned-ips"){
                 this.set_viewing_state(response.server_name,"servers_banned_ips",response.target_value);
             }
@@ -268,6 +271,7 @@ export class Client{
             }
             else if (response.target == "server_config"){
                 this.set_viewing_state(response.server_name,"servers_configs",response.target_value);
+                this.set_parent_state({server_settings_showing:true});
             }
             else if (response.target =="contact_list"){
                 this.set_viewing_state(response.server_name,"servers_contacts",response.target_value)
@@ -275,8 +279,6 @@ export class Client{
             else{
                 this.set_viewing_state(response.server_name,"servers_deactivated_bots",response.target_value);
             }
-            this.set_parent_state({loading_content:false});
-
         }   
     }
     
