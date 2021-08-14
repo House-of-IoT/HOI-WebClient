@@ -5,7 +5,7 @@ import ListingHub from '../Components/ListingHub';
 import Connections from '../Components/ConnectionsList';
 import SnapShot from '../Components/SnapShot';
 import ConfigHandler from '../Components/ConfigHandler';
-import GetInvolved from '../Components/GetInvolved';
+import StateViewer from '../Components/StateViewer';
 import RemovalConfirmPopup from '../Components/RemovalConfirmPopup';
 import NewConnectionPopup from '../Components/NewConnectionPopup';
 import { AudioHandler } from '../Functionality/audio';
@@ -76,7 +76,7 @@ export default class MainHub extends Component<any,any> {
                     server = {this.state.selected_server}
                     client = {this.client}/>
                 <ConfigHandler client = {this.client} set = {this.setState}/>
-                <GetInvolved/>
+                <StateViewer/>
                 <RemovalConfirmPopup state = {this.state.removal_showing} set = {this.setState}/>
                 <NewConnectionPopup state = {this.state.new_showing} set = {this.setState} client = {this.client} />
                 <ServerStatus id = "success-action" 

@@ -216,7 +216,7 @@ opacity: .5;
 #remove-current-config:hover{
     opacity: 1;
 }
-#get-involved{
+#state-viewer{
     background-color: #1a2029;
     position:absolute;
     width: 15%;
@@ -227,12 +227,6 @@ opacity: .5;
     left: 82%;
     top: 70%;
 }
-#get-involved img{
-    width: 70px;
-    position: relative;
-    top: -10%;
-}
-
 .popup-wrapper{
     position: absolute;
     top: 1%;
