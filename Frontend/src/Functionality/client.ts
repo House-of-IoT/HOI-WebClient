@@ -1,3 +1,4 @@
+import { Console } from "console";
 import { timingSafeEqual } from "crypto";
 import { BasicResponse } from "./BasicResponse";
 
@@ -265,7 +266,7 @@ export class Client{
             console.log(response.target);
 
             this.set_parent_state({loading_content:false});
-            if (response.target == "banned-ips" || response.target == "servers_devices"){
+            if (response.target == "servers_banned_ips" || response.target == "servers_devices" || response.target == "servers_deactivated_bots"){
                 this.set_parent_state({basic_state_data:response.target_value,basic_state_showing:true})
             }
             else if (response.target == "server_config"){

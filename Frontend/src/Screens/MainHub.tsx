@@ -75,7 +75,7 @@ export default class MainHub extends Component<any,any> {
                     server = {this.state.selected_server}
                     client = {this.client}/>
                 <ConfigHandler client = {this.client} set = {this.setState}/>
-                <StateViewer/>
+                <StateViewer set = {this.setState} client = {this.client} selected_server = {this.state.selected_server}/>
                 <RemovalConfirmPopup state = {this.state.removal_showing} set = {this.setState}/>
                 <NewConnectionPopup state = {this.state.new_showing} set = {this.setState} client = {this.client} />
                 <ServerStatus id = "success-action" 
@@ -88,7 +88,7 @@ export default class MainHub extends Component<any,any> {
                     status = "Failure" 
                     set = {this.setState} 
                     state = {this.state.failed_action_showing}/>
-                <Loading state = {this.state.loading_file} set = {this.setState}/>
+                <Loading state = {this.state.loading_file} set = {this.setState} selected_server = {this.state.selected_server}/>
                 <ServerSettingsDialog 
                     state = {this.state.server_settings_showing}
                     config = {this.state.servers_configs.get(this.state.selected_server)}

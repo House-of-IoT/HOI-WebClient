@@ -34,7 +34,7 @@ export default class BasicStateListPopup extends Component<any,any> {
         return (
             <div id = "basic-state-list" className = "popup-wrapper" 
             style = {{display:(this.props.state? "block":"none")}}>
-                <h1>{this.props.name}</h1>
+                <h1>{this.props.type}</h1>
                 <div id = "basic-state-data">
                     {this.map_elements()}
                 </div>
