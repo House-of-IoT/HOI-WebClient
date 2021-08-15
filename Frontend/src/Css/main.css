@@ -558,3 +558,15 @@ opacity: .5;
     font-weight: 800;
     height: 80%;
 }
+#basic-state-list{
+    background-color :#1a2029;
+    border-radius: 12px;
+    padding: 1%;
+    width: 20%;
+    height: 45%;
+    left: 38%;
+    top: 20%;
+   
+    justify-self: center;
+    position: relative;
+}
