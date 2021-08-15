@@ -570,3 +570,27 @@ opacity: .5;
     justify-self: center;
     position: relative;
 }
+.basic-state-listing{
+    background-color :#0c0e11;
+    border-radius: 4px;
+    padding: 2%;
+    margin-top: 5%;
+    overflow: hidden;
+    position: relative;
+    height: 6vh;
+}
+.basic-state-listing h1{
+    position: relative;
+ top:-29%;
+}
+
+#basic-state-list button{
+    background :none;
+    color: white;
+    border: none;
+    font-size: 1.8em;
+    font-weight: 800;
+    position: relative;
+    top: -21%;
+    left: 95%;
+}

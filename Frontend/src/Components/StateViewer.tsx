@@ -4,7 +4,7 @@ export default class StateViewer extends Component<any,any> {
 
     begin_request(type_of_basic_state:string, target_string:string){
         if(this.props.selected_server != "No Server Selected"){
-            this.props.set({type_of_basic_state:type_of_basic_state,loading_content:true});
+            this.props.set({type_of_basic_state:type_of_basic_state,loading_content:true,basic_state_data:""});
             this.props.client.request_server_state_or_config(this.props.selected_server, target_string);
         }
     }
