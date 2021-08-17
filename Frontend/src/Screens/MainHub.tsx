@@ -100,7 +100,8 @@ export default class MainHub extends Component<any,any> {
                     data = {this.state.basic_state_data}
                     type = {this.state.type_of_basic_state}
                     set = {this.setState}
-                    client = {this.client}/>
+                    client = {this.client}
+                    selected_server = {this.state.selected_server}/>
             </div>
         )
     }

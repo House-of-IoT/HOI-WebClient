@@ -6,7 +6,10 @@ export default class BasicStateListing extends Component<any,any> {
             return (
                 <div className = "basic-state-listing">
                     <h1>{this.props.data}</h1>
-                    <button className = "basic-state-listing-button">Activate</button>
+                    <button onClick = {()=>{
+                        this.props.set({basic_state_showing:false})
+                        this.props.client.request_bot_action(this.props.selected_server,this.props.data,"activate");
+                    }} className = "basic-state-listing-button">Activate</button>
                 </div>
             )
         }

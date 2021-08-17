@@ -52,7 +52,12 @@ export default class BasicStateListPopup extends Component<any,any> {
                         <button  id = "close-basic-state" onClick = {()=>{this.props.set({basic_state_showing:false})}}>X</button>
                         <div id = "basic-state-data">
                             {   data.map((data_string:any)=>{
-                                return(  <BasicStateListing type = {this.props.type} client = {this.props.client} data = {data_string}/>);
+                                return(  <BasicStateListing 
+                                            type = {this.props.type} 
+                                            client = {this.props.client} 
+                                            set = {this.props.set} 
+                                            data = {data_string}
+                                            selected_server = {this.props.selected_server}/>);
                             })
                               }
                         </div>
