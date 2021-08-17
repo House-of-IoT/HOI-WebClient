@@ -9,7 +9,7 @@ export default class ReedSwitch extends Component<any,any> {
                 <h3>{this.props.device_name}(Reed Switch)</h3>
                 <h3>Server:Home</h3>
                 <button  onClick={()=>{
-                    
+                    this.props.client.request_bot_action(this.props.selected_server,this.props.device_name,"deactivate");
 
 
                 }} style = {{backgroundColor:"red"}}>
