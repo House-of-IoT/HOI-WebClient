@@ -583,8 +583,7 @@ opacity: .5;
     position: relative;
  top:-29%;
 }
-
-#basic-state-list button{
+#close-basic-state{
     background :none;
     color: white;
     border: none;
@@ -593,4 +592,18 @@ opacity: .5;
     position: relative;
     top: -21%;
     left: 95%;
+}
+.basic-state-listing-button{
+    position: relative;
+    top: -122%;
+    font-size: 0.7em;
+    font-weight: 700;
+    left: 75%;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    background-color:green;
+    height: 60%;
+    width: 20%;
+    
 }

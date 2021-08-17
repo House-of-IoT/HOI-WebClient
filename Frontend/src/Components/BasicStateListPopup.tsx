@@ -36,7 +36,7 @@ export default class BasicStateListPopup extends Component<any,any> {
             style = {{display:(this.props.state? "block":"none")}}>
                 <div id = "basic-state-list" > 
                     <h1>{this.props.type}</h1>
-                    <button onClick = {()=>{this.props.set({basic_state_showing:false})}}>X</button>
+                    <button  id = "close-basic-state" onClick = {()=>{this.props.set({basic_state_showing:false})}}>X</button>
                     <div id = "basic-state-data">
                         <h1>No Data!</h1>
                     </div>
@@ -49,10 +49,10 @@ export default class BasicStateListPopup extends Component<any,any> {
                 style = {{display:(this.props.state? "block":"none")}}>
                     <div id = "basic-state-list" > 
                         <h1>{this.props.type}</h1>
-                        <button onClick = {()=>{this.props.set({basic_state_showing:false})}}>X</button>
+                        <button  id = "close-basic-state" onClick = {()=>{this.props.set({basic_state_showing:false})}}>X</button>
                         <div id = "basic-state-data">
                             {   data.map((data_string:any)=>{
-                                return(  <BasicStateListing data = {data_string}/>);
+                                return(  <BasicStateListing type = {this.props.type} client = {this.props.client} data = {data_string}/>);
                             })
                               }
                         </div>
