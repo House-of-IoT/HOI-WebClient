@@ -201,7 +201,8 @@ export class Client{
                 throw new Error("Issue");
             }
         }
-        catch{
+        catch(e){
+            console.log(e);
             this.auth_status.set(server_name,"failure");
             this.connections.delete(this.current_server_trying_to_auth);
             this.connection_strings.delete(this.current_server_trying_to_auth);
@@ -213,6 +214,7 @@ export class Client{
         try{
             let bot_string = event.data;
             let bot_object = JSON.parse(bot_string);
+            console.log(bot_string)
             let server_name = bot_object["server_name"] ;
             if(server_name == null){
                 throw new Error("issue");

@@ -15,7 +15,7 @@ export default class ListingHub extends Component<any, any> {
                 <div id = "List-Hub">
                         {this.props.bots.map((data:any)=>{
                             return (
-                                <BotList key = {data.device_name+data.server} bot = {data}/>
+                                <BotList selected_server = {this.props.selected_server} key = {data.device_name+data.server} bot = {data}/>
                             )
                         })} 
                 </div>

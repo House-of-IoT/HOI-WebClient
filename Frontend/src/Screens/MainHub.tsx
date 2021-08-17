@@ -65,7 +65,7 @@ export default class MainHub extends Component<any,any> {
             <div className = "Main-Wrapper">
                 <img  src = {logo}></img>
                 <h1>House Of IoT</h1>
-                <ListingHub bots = {this.state.selected_bots}/>
+                <ListingHub selected_server = {this.state.selected_server} client = {this.client} bots = {this.state.selected_bots}/>
                 <input id = "bot-search" placeholder = "Search By Name"></input>
                 <Connections set = {this.setState} connections = {this.state.connection_names}/>
                 <SnapShot 
