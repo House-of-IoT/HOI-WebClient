@@ -19,7 +19,7 @@ export default class BotList extends Component<any,any > {
             return (
             <ReedSwitch  
                 client = {this.props.client}
-                state = {this.props.bot.state} 
+                state = {this.props.bot["open_status"]} 
                 selected_server = {this.props.selected_server}
                 active_status = {this.props.bot.active_status}
                 device_name = {this.props.bot.device_name}/>);

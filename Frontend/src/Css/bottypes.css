@@ -10,6 +10,7 @@
     font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
     left: 35%;
     top: -5%;
+    
 }
 .reed-switch h3{
     position: relative;
@@ -19,6 +20,7 @@
     color:rgb(156, 156, 156);
     font-weight: bold;
     height: 10%;
+    font-size: medium;
  
 }
 .reed-switch button{
