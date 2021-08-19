@@ -275,6 +275,9 @@ export class Client{
                 this.set_viewing_state(response.server_name,"servers_configs",response.target_value);
                 this.set_parent_state({server_settings_showing:true});
             }
+            else if(response.target == "contact_list"){
+                this.set_parent_state({servers_contacts:response.target_value,server_contacts_showing:true})
+            }
             else{
             
             }

@@ -37,10 +37,11 @@ export default class MainHub extends Component<any,any> {
             loading_content:false,
             basic_state_showing:false,
             server_settings_showing:false,
+            server_contacts_showing:false,
             servers_configs : new Map<string,string>(),
             type_of_basic_state : "",
             basic_state_data : "",
-            servers_contacts :new Map<string,string>(),
+            servers_contacts :"",
             //mock values, not really the messages
             failed_action_message:"Server Responded with failure to your authentication request.",
             successful_action_message:"Server Responded with success to your authentication request.",
