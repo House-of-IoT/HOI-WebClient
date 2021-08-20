@@ -11,7 +11,7 @@ export default class ContactsPopup extends Component<any,any> {
                 <div className = "popup-wrapper" style = {{display:(this.props.state? "block":"none")}}>
                     <div id = "contact-popup">
                         <h1>Notification Contacts</h1>
-                        <button  id = "close-basic-state" onClick = {()=>{this.props.set({servers_contacts_showing:false})}}>X</button>
+                        <button  id = "close-contact-state" onClick = {()=>{this.props.set({server_contacts_showing:false})}}>X</button>
                         <div id = "contact-listing-wrapper">
                             <img src = {look}></img>
                             <h2>No Data</h2>
@@ -29,7 +29,7 @@ export default class ContactsPopup extends Component<any,any> {
                 <div className = "popup-wrapper" style = {{display:(this.props.state? "block":"none")}}>
                     <div id = "contact-popup">
                         <h1>Notification Contacts</h1>
-                        <button  id = "close-contact-state" onClick = {()=>{this.props.set({servers_contacts_showing:false})}}>X</button>
+                        <button  id = "close-contact-state" onClick = {()=>{this.props.set({server_contacts_showing:false})}}>X</button>
                         <div id = "contact-listing-wrapper">
                             {keys.map((key:any)=>{
                                 return(<ContactsListing data = {`${key}(${parsed_data[key]})`} />);
