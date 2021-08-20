@@ -1,4 +1,4 @@
-export type  BasicResponse = {
+export type  BasicResponse = { 
     server_name:string
     action:string
     status:string

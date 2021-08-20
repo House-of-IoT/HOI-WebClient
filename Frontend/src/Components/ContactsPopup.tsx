@@ -3,9 +3,10 @@ import ContactsListing from './ContactsListing';
 
 export default class ContactsPopup extends Component<any,any> {
     render() {
-        if(this.props.data == null){
-            return (
-                <div className = "popup-wrapper">
+
+        if(this.props.data == "" || JSON.parse(this.props.data).Length == 0){
+            return ( 
+                <div className = "popup-wrapper" style = {{display:(this.props.state? "block":"none")}}>
                     <div id = "contact-popup">
                         <h1>Notification Contacts</h1>
                         <div id = "contact-listing-wrapper">
@@ -19,7 +20,7 @@ export default class ContactsPopup extends Component<any,any> {
         else{
             let data  = JSON.parse(this.props.data);
             return (
-                <div className = "popup-wrapper">
+                <div className = "popup-wrapper" style = {{display:(this.props.state? "block":"none")}}>
                     <div id = "contact-popup">
                         <h1>Notification Contacts</h1>
                         <div id = "contact-listing-wrapper">

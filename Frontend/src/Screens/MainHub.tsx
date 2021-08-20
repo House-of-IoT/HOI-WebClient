@@ -15,6 +15,7 @@ import ServerStatus from '../Components/ServerStatus';
 import ServerSettingsDialog from '../Components/ServerSettingsDialog';
 import Loading from '../Components/Loading';
 import BasicStateListPopup from '../Components/BasicStateListPopup';
+import ContactsPopup from '../Components/ContactsPopup';
 
 export default class MainHub extends Component<any,any> {
     audio_handler : AudioHandler;
@@ -103,6 +104,11 @@ export default class MainHub extends Component<any,any> {
                     set = {this.setState}
                     client = {this.client}
                     selected_server = {this.state.selected_server}/>
+                <ContactsPopup
+                    state = {this.state.server_contacts_showing}
+                    data = {this.state.servers_contacts}
+                    selected_server = {this.state.selected_server}
+                />
             </div>
         )
     }
