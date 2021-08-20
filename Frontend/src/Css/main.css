@@ -583,7 +583,7 @@ opacity: .5;
     position: relative;
  top:-29%;
 }
-#close-basic-state,#close-contact-state{
+#close-basic-state,#close-contact-state,#close-add-contact{
     background :none;
     color: white;
     border: none;
@@ -641,5 +641,50 @@ opacity: .5;
     position: relative;
     top: -2vh;
     left: 19%;
+    border-radius: 4px;
+}
+
+#add-contact-inputs input{
+
+    width: 70%;
+    height: 11%;
+    border-radius: 4px;
+    border: none;
+    margin-top: 2%;
+    padding-left: 5%;
+    position: relative;
+    left: 11%;
+
+}
+#add-contact-inputs{
+    background-color :#1a2029;
+    border-radius: 12px;
+    padding: 1%;
+    width: 20%;
+    height: 45%;
+    left: 38%;
+    top: 20%;
+   
+    justify-self: center;
+    position: relative;
+}
+
+#add-contact-inputs h1{
+    top: -15%;
+    width: 84%;
+}
+#close-add-contact{
+    top: -2%;
+}
+#confirm-add-contact{
+    border: none;
+    color: #fff;
+    background-color: #fd4d4d;
+    width: 14.95vw;
+    height: 4vh;
+    font-weight: 600;
+    position: relative;
+    top: -2vh;
+    left: 41.3%;
     border-radius: 4px;
 }

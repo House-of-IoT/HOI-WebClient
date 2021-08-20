@@ -16,6 +16,7 @@ import ServerSettingsDialog from '../Components/ServerSettingsDialog';
 import Loading from '../Components/Loading';
 import BasicStateListPopup from '../Components/BasicStateListPopup';
 import ContactsPopup from '../Components/ContactsPopup';
+import AddContactPopup from '../Components/AddContactPopup';
 
 export default class MainHub extends Component<any,any> {
     audio_handler : AudioHandler;
@@ -39,6 +40,7 @@ export default class MainHub extends Component<any,any> {
             basic_state_showing:false,
             server_settings_showing:false,
             server_contacts_showing:false,
+            add_contacts_showing:false,
             servers_configs : new Map<string,string>(),
             type_of_basic_state : "",
             basic_state_data : "",
@@ -109,6 +111,12 @@ export default class MainHub extends Component<any,any> {
                     data = {this.state.servers_contacts}
                     selected_server = {this.state.selected_server}
                     set = {this.setState}
+                />
+                <AddContactPopup
+                    state ={this.state.add_contacts_showing}
+                    selected_server = {this.state.selected_server}
+                    set = {this.setState}
+                    client = {this.client}
                 />
             </div>
         )

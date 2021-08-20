@@ -15,8 +15,8 @@ export default class ContactsPopup extends Component<any,any> {
                         <div id = "contact-listing-wrapper">
                             <img src = {look}></img>
                             <h2>No Data</h2>
-                            <button id = "add-contact-button">Add</button>
                         </div>
+                        <button id = "add-contact-button" onClick ={()=>{this.props.set({server_contacts_showing:false, add_contacts_showing:true})}}>Add</button>
                         
                     </div>
                 </div>
@@ -35,7 +35,7 @@ export default class ContactsPopup extends Component<any,any> {
                                 return(<ContactsListing data = {`${key}(${parsed_data[key]})`} />);
                             })}
                         </div>
-                        
+                        <button id = "add-contact-button" onClick ={()=>{this.props.set({server_contacts_showing:false, add_contacts_showing:true})}}>Add</button>
                     </div>
                 </div>
             )

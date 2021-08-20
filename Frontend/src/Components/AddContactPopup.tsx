@@ -11,9 +11,9 @@ export default class AddContactPopup extends Component<any,any> {
 
     render() {
         return (
-            <div id = "add-contact-popup" className = "popup-wrapper">
+            <div id = "add-contact-popup" className = "popup-wrapper" style = {{display:(this.props.state? "block":"none")}}>
                 <div id = "add-contact-inputs">
-                    <button >X</button>
+                    <button id = "close-add-contact"  onClick ={()=>{this.props.set({add_contacts_showing:false})}}>X</button>
                     <h1>Add Contact</h1>
                     
                     <input placeholder = "Name"onInput = 
@@ -23,7 +23,7 @@ export default class AddContactPopup extends Component<any,any> {
                         {
                             (event:React.FormEvent<HTMLInputElement>)=>{this.setState({number:event.currentTarget.value})}}></input>
                 </div>
-                <button>Confirm</button>
+                <button id = "confirm-add-contact">Confirm</button>
             </div>
         )
     }
