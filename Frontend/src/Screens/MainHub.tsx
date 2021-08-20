@@ -108,6 +108,7 @@ export default class MainHub extends Component<any,any> {
                     state = {this.state.server_contacts_showing}
                     data = {this.state.servers_contacts}
                     selected_server = {this.state.selected_server}
+                    set = {this.setState}
                 />
             </div>
         )
