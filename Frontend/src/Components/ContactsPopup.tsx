@@ -32,7 +32,7 @@ export default class ContactsPopup extends Component<any,any> {
                         <button  id = "close-contact-state" onClick = {()=>{this.props.set({server_contacts_showing:false})}}>X</button>
                         <div id = "contact-listing-wrapper">
                             {keys.map((key:any)=>{
-                                return(<ContactsListing data = {`${key}(${parsed_data[key]})`} />);
+                                return(<ContactsListing  selected_server = {this.props.selected_server} set = {this.props.set} client = {this.props.client} name = {key} number = {parsed_data[key]} />);
                             })}
                         </div>
                         <button id = "add-contact-button" onClick ={()=>{this.props.set({server_contacts_showing:false, add_contacts_showing:true})}}>Add</button>

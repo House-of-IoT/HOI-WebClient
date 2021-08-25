@@ -111,6 +111,7 @@ export default class MainHub extends Component<any,any> {
                     data = {this.state.servers_contacts}
                     selected_server = {this.state.selected_server}
                     set = {this.setState}
+                    client = {this.client}
                 />
                 <AddContactPopup
                     state ={this.state.add_contacts_showing}
