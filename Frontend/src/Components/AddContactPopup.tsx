@@ -23,7 +23,9 @@ export default class AddContactPopup extends Component<any,any> {
                         {
                             (event:React.FormEvent<HTMLInputElement>)=>{this.setState({number:event.currentTarget.value})}}></input>
                 </div>
-                <button id = "confirm-add-contact">Confirm</button>
+                <button id = "confirm-add-contact" onClick = {()=>{ 
+                    this.props.set({add_contacts_showing:false});
+                    this.props.client.request_server_edit(this.props.selected_server,"add-contact",JSON.stringify({"name":this.state.name,"number":this.state.number}));}}>Confirm</button>
             </div>
         )
     }
