@@ -17,6 +17,7 @@ import Loading from '../Components/Loading';
 import BasicStateListPopup from '../Components/BasicStateListPopup';
 import ContactsPopup from '../Components/ContactsPopup';
 import AddContactPopup from '../Components/AddContactPopup';
+import SchedulerAccessBar from '../Components/SchedulerAccessBar';
 
 export default class MainHub extends Component<any,any> {
     audio_handler : AudioHandler;
@@ -119,6 +120,8 @@ export default class MainHub extends Component<any,any> {
                     set = {this.setState}
                     client = {this.client}
                 />
+
+                <SchedulerAccessBar />
             </div>
         )
     }
