@@ -5,10 +5,6 @@ import '../Css/Listinghub.css';
 import look from "../Img/look.svg";
 export default class ListingHub extends Component<any, any> {
 
-    componentDidMount(){
-            
-    }
-
     render() {
         if(this.props.bots.length > 0){
             return (
