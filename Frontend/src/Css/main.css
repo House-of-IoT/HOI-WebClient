@@ -130,6 +130,7 @@
 #add-connections:hover{
 opacity: .5;
 }
+
 #snap-shot h2{
     color: rgb(194, 194, 194);
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -139,6 +140,7 @@ opacity: .5;
     font-size: 1.3em;
     
 }
+
 #snap-shot h3{
     color: rgb(71, 126, 9);
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -153,7 +155,7 @@ opacity: .5;
     height: 20%;
     border-radius: 12px;
     left: 82%;
-    top: 14%;
+    top: 15.5%;
     padding: 1%;
     overflow: hidden;
 }
@@ -721,7 +723,6 @@ overflow-y: auto;
     position: absolute;
 
 }
-
 #scheduler-access{
     background-color: #242c37;
     border-radius: 12px;

@@ -5,10 +5,8 @@ export default class SchedulerPopup extends Component<any,any> {
     constructor(props:{}){
         super(props);
         this.state = {
-            selected_capabilties:[],
-            different_capabilities:{
-
-            }
+            selected_capabilities:[],
+            different_capabilities:{}
         }
     }
 
