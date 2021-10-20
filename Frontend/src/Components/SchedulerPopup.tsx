@@ -17,7 +17,7 @@ export default class SchedulerPopup extends Component<any,any> {
                     <button id = "close-scheduler-popup">X</button>
                     <h1 id = "Select-label"> Select Bot For Scheduling</h1>
                     <select name="" id="">
-                        <option  selected disabled hidden >Choose Bot</option>
+                        <option  selected  disabled >Choose Bot</option>
                         {Object.keys(this.props.bots).map((key)=>{
                             return <option onSelect = {()=>{this.setState({selected_capabilities:this.state.different_capabilities[key]})}}>{key}</option>
                         })}
