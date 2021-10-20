@@ -757,9 +757,9 @@ overflow-y: auto;
 #scheduler-popup-inner{
     background-color: #1a2029;
     border-radius: 12px;
-    width: 50%;
+    width: 40%;
     height: 65%;
-    left: 27%;
+    left: 32%;
     top: 20%;
    
     justify-self: center;
@@ -769,7 +769,8 @@ overflow-y: auto;
 
 #scheduler-popup-inner select{
     position: relative;
-    top: 10%;
+    top: -3%;
+    left: 36%;
     width: 10vw;
     font-size: 1em;
     font-weight: bold;
@@ -788,10 +789,15 @@ overflow-y: auto;
     border-radius: 4px;
     padding: 10px;
     outline: none;
+    position: relative;
+    left: 3%;
+    top: 15%;
     border: none;
 }
 #Select-label{
     color: #fff;
+    position: relative;
+    left: 27%;
 }
 #close-scheduler-popup{
     background :none;
@@ -800,4 +806,8 @@ overflow-y: auto;
     font-size: 1.8em;
     font-weight: 800;
     position: relative;
+    left: 93%;
+    top: 2%;
 }
+
+
