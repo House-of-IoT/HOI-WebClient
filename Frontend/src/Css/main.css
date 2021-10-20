@@ -753,3 +753,16 @@ overflow-y: auto;
    left: 16%;
    top: -2%;
 }
+
+#scheduler-popup-inner{
+    background-color: #1a2029;
+    border-radius: 12px;
+    width: 50%;
+    height: 65%;
+    left: 27%;
+    top: 20%;
+   
+    justify-self: center;
+    position: relative;
+
+}
