@@ -12,7 +12,7 @@ export default class SchedulerPopup extends Component<any,any> {
 
     render() {
         return (
-            <div className = "popup-wrapper" id = "scheduler-popup">
+            <div className = "popup-wrapper" id = "scheduler-popup"  style = {{display:(this.props.state? "block":"none")}}>
                 <div id = "scheduler-popup-inner"> 
                     <button id = "close-scheduler-popup">X</button>
                     <h1 id = "Select-label"> Select Bot For Scheduling</h1>

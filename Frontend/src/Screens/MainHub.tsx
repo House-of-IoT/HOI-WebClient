@@ -19,6 +19,7 @@ import ContactsPopup from '../Components/ContactsPopup';
 import AddContactPopup from '../Components/AddContactPopup';
 import SchedulerAccessBar from '../Components/SchedulerAccessBar';
 import SchedulerPopup from '../Components/SchedulerPopup';
+import VideoPlayer from '../Components/VideoPlayer';
 
 export default class MainHub extends Component<any,any> {
     audio_handler : AudioHandler;
@@ -43,6 +44,7 @@ export default class MainHub extends Component<any,any> {
             server_settings_showing:false,
             server_contacts_showing:false,
             add_contacts_showing:false,
+            scheduler_popup_showing:false,
             servers_configs : new Map<string,string>(),
             type_of_basic_state : "",
             basic_state_data : "",
@@ -123,7 +125,8 @@ export default class MainHub extends Component<any,any> {
                 />
 
                 <SchedulerAccessBar />
-                <SchedulerPopup bots = {this.state.selected_bots}/>
+                <SchedulerPopup bots = {this.state.selected_bots} state = {this.state.scheduler_popup_showing}/>
+                <VideoPlayer/>
             </div>
         )
     }
