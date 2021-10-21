@@ -832,7 +832,7 @@ overflow-y: auto;
     align-content: center;
 }
 #video_player video{
-    height: 90%;
+    height: 80%;
     position: relative;
     top: 5%;
 }
