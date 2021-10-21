@@ -758,9 +758,9 @@ overflow-y: auto;
     background-color: #1a2029;
     border-radius: 12px;
     width: 40%;
-    height: 65%;
+    height: 80%;
     left: 32%;
-    top: 20%;
+    top: 10%;
    
     justify-self: center;
     position: relative;
@@ -810,4 +810,19 @@ overflow-y: auto;
     top: 2%;
 }
 
+#select-action-label-for-scheduling{
+    color: white;
+    position: relative;
+    top: 20%;
+    left: 30%;
+}
 
+#scheduling-capabilities{
+    background-color:#0d1015 ;
+    width: 80%;
+    height: 40%;
+    position: relative;
+    top: 21%;
+    left: 10%;
+    border-radius: 12px;
+}

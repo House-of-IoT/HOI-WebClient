@@ -25,7 +25,7 @@ export default class SchedulerPopup extends Component<any,any> {
                     </select>
 
                     <input placeholder = "Datetime"></input>
-                    <h2>Select the wanted action</h2>
+                    <h2 id = "select-action-label-for-scheduling">Select the wanted action</h2>
                     <div id = "scheduling-capabilities">
                         {this.state.selected_capabilities.map((capabilitiy)=>{
                             return <CapabilityListing name = {capabilitiy}/>
