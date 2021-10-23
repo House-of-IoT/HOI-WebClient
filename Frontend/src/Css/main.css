@@ -22,6 +22,7 @@
     left: 35%;
 }
 
+
 .Main-Wrapper h1{
     position: relative;
     left: 5.5%;
@@ -30,7 +31,7 @@
     top: -28px;
     color: #fff;
     font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
-
+    
 }
 
 #connections{
@@ -830,9 +831,29 @@ overflow-y: auto;
 #video_player{
     display: flex;
     align-content: center;
+    position: absolute;
+    height: 92%;
+    width: 95%;
+    top: 5%;
+    left: 3%;
+    overflow: hidden;
+
 }
 #video_player video{
     height: 80%;
+    width: 50%;
+    top: 8%;
+    left: -8%;
     position: relative;
-    top: 5%;
+}
+#video_player button{
+    background :none;
+    color: white;
+    border: none;
+    font-size: 2.8em;
+    font-weight: 200;
+    position: relative;
+    left: 65%;
+    top: -47%;
+   
 }
