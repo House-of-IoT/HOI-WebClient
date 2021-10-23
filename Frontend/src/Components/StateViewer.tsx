@@ -17,16 +17,16 @@ export default class StateViewer extends Component<any,any> {
                     <button onClick = {()=>{
                         this.begin_request("Deactivated","servers_deactivated_bots");
                     }} id = "deactivated_bots_button"> Deactivated Bots</button>
-                    <button onClick = {()=>{
+                    <button  className = "StateSeconds" onClick = {()=>{
                           this.begin_request("All Devices","servers_devices");
                     }} id = "all_device_button">All Devices</button>
-                    <button onClick= {()=>{
+                    <button  className = "StateSeconds" onClick= {()=>{
                                 if(this.props.selected_server != "No Server Selected"){
                                     this.props.set({loading_content:true,servers_contacts:""});
                                     this.props.client.request_server_state_or_config(this.props.selected_server, "contact_list");
                                 }
                     }}>Notification Contacts</button>
-                    <button onClick = {()=>{
+                    <button  className = "StateSeconds" onClick = {()=>{
                         this.begin_request("BannedIps","servers_banned_ips");
                     }}>Banned Ips</button>
                 </div>

@@ -190,11 +190,11 @@ opacity: .5;
     background-color: #1a2029;
     position:absolute;
     width: 90%;
-    height: 24%;
+    height: 20%;
 
      padding: 1%;
      border-radius: 12px;
-    top: 44%;
+    top: 40%;
 }
 .config-buttons{
     background-color: #fd4d4d;
@@ -218,12 +218,12 @@ opacity: .5;
     background-color: #1a2029;
     position:relative;
     width: 90%;
-    height: 40%;
+    height: 35%;
     padding: 1%;
     border-radius: 12px;
     position: absolute;
   
-    top: 73%;
+    top: 65%;
 }
 .popup-wrapper{
     position: absolute;
@@ -538,7 +538,6 @@ opacity: .5;
 }
 
 #state-viewer-inner{
-    display: grid;
 
     position: relative;
     height: 100%;
@@ -546,24 +545,28 @@ opacity: .5;
 #all_device_button,#deactivated_bots_button{
     position: relative;
     top: 20%;
+     margin-top: -111vh;
 }
 #state-viewer-inner button{
     border: none;
     background-color: #724fe6;
     border-radius: 4px;
     position: relative;
-    top: -5vh;
-    font-size: medium;
+    top: -1vh;
+    font-size: small;
     margin-left: 2%;
-    padding: 5%;
+    padding: 3%;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
     left: 21%;
-    width: 50%;
+    width: 60%;
     color: #fff; 
     font-weight: 800;
-    margin-top: 1vh;
-    height: 8vh;
+    margin-top: -100vh;
+    height: 5vh;
     
 }
+
 #basic-state-list{
     background-color :#1a2029;
     border-radius: 12px;
@@ -742,11 +745,11 @@ overflow-y: auto;
 #scheduler-access{
     background-color: #242c37;
     border-radius: 12px;
-    width: 17.1%;
-    height: 9vh;
+    width: 90%;
+    height: 25vh;
+    padding: 1%;
     position: relative;
-    left: 82.2%;
-    top: -26vh;
+    top: 68%;
 }
 
 #scheduler-access h3{
@@ -880,10 +883,11 @@ overflow-y: auto;
 
 #right-bar{
     position: absolute;
-    height: 95vh;
+    height: 98vh;
     width: 18vw;
     overflow: hidden;
     top: 2%;
     left: 82%;
+    overflow-y: auto;
   
 }
