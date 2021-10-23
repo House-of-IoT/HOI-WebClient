@@ -11,7 +11,7 @@ export default class VideoPlayer extends Component<any,any> {
 
     render() {
         return (
-            <div className = "popup-wrapper" id = "video_player">
+            <div className = "popup-wrapper" id = "video_player"  style = {{display:(this.props.state? "block":"none")}}>
                 <h2>Test Title Taken 43 mins ago</h2>
                 <button>X</button>
                 <video controls autoPlay loop muted  src = {video}>

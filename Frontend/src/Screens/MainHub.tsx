@@ -45,6 +45,7 @@ export default class MainHub extends Component<any,any> {
             server_contacts_showing:false,
             add_contacts_showing:false,
             scheduler_popup_showing:false,
+            video_player_showing:false,
             servers_configs : new Map<string,string>(),
             type_of_basic_state : "",
             basic_state_data : "",
@@ -76,16 +77,21 @@ export default class MainHub extends Component<any,any> {
                 <ListingHub selected_server = {this.state.selected_server} client = {this.client} bots = {this.state.selected_bots}/>
                 <input id = "bot-search" placeholder = "Search By Name"></input>
                 <Connections set = {this.setState} connections = {this.state.connection_names}/>
-                <SnapShot 
-                    bots = {this.state.selected_bots} 
-                    set_parent_state = {this.setState} 
-                    parent_state = {this.state} 
-                    server = {this.state.selected_server}
-                    client = {this.client}/>
-                <ConfigHandler client = {this.client} set = {this.setState}/>
-                <StateViewer set = {this.setState} client = {this.client} selected_server = {this.state.selected_server}/>
-                <RemovalConfirmPopup state = {this.state.removal_showing} set = {this.setState}/>
+                <div id = "right-bar">
+                    <SnapShot 
+                        bots = {this.state.selected_bots} 
+                        set_parent_state = {this.setState} 
+                        parent_state = {this.state} 
+                        server = {this.state.selected_server}
+                        client = {this.client}/>
+                    <ConfigHandler client = {this.client} set = {this.setState}/>
+                    <StateViewer set = {this.setState} client = {this.client} selected_server = {this.state.selected_server}/>
+                    <RemovalConfirmPopup state = {this.state.removal_showing} set = {this.setState}/>
+                    <SchedulerAccessBar />
+                </div>
+               
                 <NewConnectionPopup state = {this.state.new_showing} set = {this.setState} client = {this.client} />
+
                 <ServerStatus id = "success-action" 
                     text = {this.state.successful_action_message} 
                     status = "Success" 
@@ -124,9 +130,9 @@ export default class MainHub extends Component<any,any> {
                     client = {this.client}
                 />
 
-                <SchedulerAccessBar />
+               
                 <SchedulerPopup bots = {this.state.selected_bots} state = {this.state.scheduler_popup_showing}/>
-                <VideoPlayer/>
+                <VideoPlayer state = {this.state.video_player_showing}/>
             </div>
         )
     }
