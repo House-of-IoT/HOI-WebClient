@@ -189,9 +189,9 @@ opacity: .5;
 #config-handler{
     background-color: #1a2029;
     position:absolute;
-    width: 100%;
-    height: 40%;
-    left: 82%;
+    width: 90%;
+    height: 24%;
+
      padding: 1%;
      border-radius: 12px;
     top: 44%;
@@ -217,12 +217,12 @@ opacity: .5;
 #state-viewer{
     background-color: #1a2029;
     position:relative;
-    width: 100%;
+    width: 90%;
     height: 40%;
     padding: 1%;
     border-radius: 12px;
     position: absolute;
-    left: 82%;
+  
     top: 73%;
 }
 .popup-wrapper{
@@ -539,22 +539,30 @@ opacity: .5;
 
 #state-viewer-inner{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+
     position: relative;
-    height: 75%;
-    top:-20% ;
+    height: 100%;
+}
+#all_device_button,#deactivated_bots_button{
+    position: relative;
+    top: 20%;
 }
 #state-viewer-inner button{
     border: none;
     background-color: #724fe6;
     border-radius: 4px;
     position: relative;
-    margin-top: 10%;
-    margin-left: 10%;
+    top: -5vh;
+    font-size: medium;
+    margin-left: 2%;
     padding: 5%;
+    left: 21%;
+    width: 50%;
     color: #fff; 
     font-weight: 800;
-    height: 80%;
+    margin-top: 1vh;
+    height: 8vh;
+    
 }
 #basic-state-list{
     background-color :#1a2029;
@@ -872,7 +880,7 @@ overflow-y: auto;
 
 #right-bar{
     position: absolute;
-    height: 90vh;
+    height: 95vh;
     width: 18vw;
     overflow: hidden;
     top: 2%;

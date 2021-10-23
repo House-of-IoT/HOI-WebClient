@@ -16,10 +16,10 @@ export default class StateViewer extends Component<any,any> {
                 <div id = "state-viewer-inner">
                     <button onClick = {()=>{
                         this.begin_request("Deactivated","servers_deactivated_bots");
-                    }}> Deactivated Bots</button>
+                    }} id = "deactivated_bots_button"> Deactivated Bots</button>
                     <button onClick = {()=>{
                           this.begin_request("All Devices","servers_devices");
-                    }}>All Devices</button>
+                    }} id = "all_device_button">All Devices</button>
                     <button onClick= {()=>{
                                 if(this.props.selected_server != "No Server Selected"){
                                     this.props.set({loading_content:true,servers_contacts:""});
