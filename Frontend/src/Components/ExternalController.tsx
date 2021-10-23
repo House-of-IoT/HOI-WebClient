@@ -5,9 +5,14 @@ export default class ExternalController extends Component {
         return (
             <div id = "ExternalControllerViewWrapper">
                 <h2>External Controller</h2>
-                <button>Add Connection</button>
+
+                <div id = "external-connections-bar">
+                    <button>+</button>
+                    <h3>Connections</h3>
+                </div>
                 
-                <h3>Connections:</h3>
+
+                
                 <div id = "ExternalControllerConnections">
 
 
