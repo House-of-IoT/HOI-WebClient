@@ -36,6 +36,7 @@ export default class MainHub extends Component<any,any> {
             removal_showing: false,
             new_showing : false,
             selected_server: "No Server Selected",
+            selected_external_controller: "",
             selected_bots : [],
             server_bot_strings : new Map<string,string>(), 
             successful_action_showing:false,
