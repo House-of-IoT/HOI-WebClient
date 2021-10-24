@@ -307,7 +307,7 @@ export class Client{
     }
 
     has_credentials(server_name:string):boolean{
-        if(this.connections.has(server_name) && this.name_and_type != null){
+        if(this.connections.has(server_name) && this.name_and_type.get(server_name) != null){
             return true;
         }
         else{

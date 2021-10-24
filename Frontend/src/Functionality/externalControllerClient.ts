@@ -6,11 +6,13 @@ export class ExternalControllerClient{
     current_relations : string
     set_parent_state:any
     current_server_trying_to_auth :string 
+    names:Map<string,string>
 
     constructor(){
         this.connections = new Map<string,WebSocket>();
         this.connection_strings = new Map<string,string>();
         this.auth_status = new Map<string,string>();
+        this.names = new Map<string,string>();
     }
 
     setup_connection(server_name:string,connectionString:string,password:string):boolean{
@@ -34,7 +36,6 @@ export class ExternalControllerClient{
             connection.onmessage = (event)=>{this.handle_auth_response(event)};
             this.connections.set(server_name,connection);
             this.connection_strings.set(server_name,connectionString);
-     
             return true;
         }
     }
@@ -44,6 +45,7 @@ export class ExternalControllerClient{
         this.auth_status.set(server_name,"unknown");
         this.current_server_trying_to_auth = server_name; 
         connection.send(password);
+        connection.send(this.names.get(server_name))
     }
 
     handle_auth_response(event:MessageEvent){
@@ -57,5 +59,9 @@ export class ExternalControllerClient{
             this.connections.delete(this.current_server_trying_to_auth);
             this.connection_strings.delete(this.current_server_trying_to_auth);
         }
+    }
+
+    set_name(server_name:string,name:string){
+        this.names.set(server_name,name);
     }
 }
