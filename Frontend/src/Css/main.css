@@ -749,7 +749,7 @@ overflow-y: auto;
     height: 15vh;
     padding: 1%;
     position: relative;
-    top: 68%;
+    top: 71%;
 }
 
 #scheduler-access h3{
@@ -908,3 +908,49 @@ overflow-y: auto;
     border: 1px solid #000;
   }
   
+  #ExternalControllerViewWrapper{
+    background-color: #242c37;
+    border-radius: 12px;
+    width: 90%;
+    height: 35vh;
+    padding: 1%;
+    position: relative;
+    top: 76%;
+  }
+
+  #ExternalControllerViewWrapper h2,h3{
+    color: white;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  #ExternalControllerViewWrapper h3{
+      font-size: 1.6em;
+  }
+
+  #ExternalControllerViewWrapper h2{
+    margin-left: 13%;
+}
+
+  #external-connections-bar{
+    background-color: #12151c;
+    width: 74%;
+    margin-left: 12%;
+    height: 15%;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  #external-connections-bar button{
+    background: none;
+    border: none;
+    color: #724fe6;
+    position: relative;
+    font-weight: 700;
+    left: 73%;
+    top: -1%;
+    font-size: 2.6em;
+  }
+  #external-connections-bar h3{
+      position: relative;
+      top: -135%;
+      left: 12%;
+  } 

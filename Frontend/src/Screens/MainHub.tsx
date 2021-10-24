@@ -20,6 +20,7 @@ import AddContactPopup from '../Components/AddContactPopup';
 import SchedulerAccessBar from '../Components/SchedulerAccessBar';
 import SchedulerPopup from '../Components/SchedulerPopup';
 import VideoPlayer from '../Components/VideoPlayer';
+import ExternalController from '../Components/ExternalController';
 
 export default class MainHub extends Component<any,any> {
     audio_handler : AudioHandler;
@@ -88,6 +89,7 @@ export default class MainHub extends Component<any,any> {
                     <StateViewer set = {this.setState} client = {this.client} selected_server = {this.state.selected_server}/>
                     <RemovalConfirmPopup state = {this.state.removal_showing} set = {this.setState}/>
                     <SchedulerAccessBar />
+                    <ExternalController/>
                 </div>
                
                 <NewConnectionPopup state = {this.state.new_showing} set = {this.setState} client = {this.client} />
