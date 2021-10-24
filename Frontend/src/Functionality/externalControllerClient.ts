@@ -3,9 +3,10 @@ export class ExternalControllerClient{
     connections : Map<string,WebSocket>
     connection_strings : Map<string,string>
     auth_status : Map<string,string>
-    relations : Map<string,string>
+    current_relations : string
     set_parent_state:any
-    
+    current_server_trying_to_auth :string 
+
     constructor(){
         this.connections = new Map<string,WebSocket>();
         this.connection_strings = new Map<string,string>();
@@ -39,10 +40,22 @@ export class ExternalControllerClient{
     }
 
     authenticate(server_name:string, password:string){
-
+        let connection :WebSocket = this.connections.get(server_name);
+        this.auth_status.set(server_name,"unknown");
+        this.current_server_trying_to_auth = server_name; 
+        connection.send(password);
     }
 
     handle_auth_response(event:MessageEvent){
-
+        if(event.data == "success"){
+            this.set_parent_state({successful_action_showing:true,successful_action_message:"Successfully Authenticated! Select the server to see the relational data!"});
+        }
+        else{
+            this.set_parent_state({failed_action_showing:true,failed_action_message:"Failed Authetication!! Check Your Credentials."});
+            this.auth_status.set(this.current_server_trying_to_auth,"failure")
+            this.connections.get(this.current_server_trying_to_auth).close();
+            this.connections.delete(this.current_server_trying_to_auth);
+            this.connection_strings.delete(this.current_server_trying_to_auth);
+        }
     }
 }
