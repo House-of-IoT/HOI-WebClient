@@ -30,7 +30,6 @@ export class ExternalControllerClient{
                     if(this.connections.has(server_name)){
                         this.connections.delete(server_name);
                         this.connection_strings.delete(server_name);
-                        this.set_parent_state();
                     }
             }
             connection.onmessage = (event)=>{this.handle_auth_response(event)};
@@ -60,8 +59,19 @@ export class ExternalControllerClient{
             this.connection_strings.delete(this.current_server_trying_to_auth);
         }
     }
+    
+    handle_request_response(event:MessageEvent){
+        if(event.data == "success"){
+            this.set_parent_state({successful_action_showing:true,successful_action_message:"Action Successful!"});
+        }
+        else{
+            this.set_parent_state({failed_action_showing:true,failed_action_message:"Failed Request! Please try to execute this action again."});
+        }
+    }
 
     set_name(server_name:string,name:string){
         this.names.set(server_name,name);
     }
+
+    
 }
