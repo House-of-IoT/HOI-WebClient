@@ -1,5 +1,3 @@
-import { Console } from "console";
-import { timingSafeEqual } from "crypto";
 import { BasicResponse } from "./BasicResponse";
 
 export class Client{

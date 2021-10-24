@@ -21,12 +21,14 @@ import SchedulerAccessBar from '../Components/SchedulerAccessBar';
 import SchedulerPopup from '../Components/SchedulerPopup';
 import VideoPlayer from '../Components/VideoPlayer';
 import ExternalController from '../Components/ExternalController';
+import { ExternalControllerClient } from '../Functionality/externalControllerClient';
 
 export default class MainHub extends Component<any,any> {
     audio_handler : AudioHandler;
     state : any;
     client:Client
     test:Test
+    external_controller_client:ExternalControllerClient
 
     constructor(props:{}){
         super(props);
@@ -60,6 +62,7 @@ export default class MainHub extends Component<any,any> {
         this.setState = this.setState.bind(this);
         this.test = new Test(this.setState,this.state);
         this.client = new Client();
+        this.external_controller_client = new ExternalControllerClient();
     }
 
     componentDidMount(){
