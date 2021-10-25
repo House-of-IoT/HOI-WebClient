@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 
-export default class ExternalControllerListing extends Component {
+export default class ExternalControllerListing extends Component<any,any> {
     render() {
         return (
-            <div>
-                
+            <div className = "external-controller-server-listing">
+                <h1>{this.props.name}</h1>
+                <button>View</button>
+                <button>Disconnect</button>    
             </div>
         )
     }
