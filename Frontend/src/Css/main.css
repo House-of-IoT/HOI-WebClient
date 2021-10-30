@@ -948,18 +948,18 @@ overflow-y: auto;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
   #ExternalControllerViewWrapper h3{
-      font-size: 1.6em;
+      font-size: 1.35vw;
   }
 
   #ExternalControllerViewWrapper h2{
-    margin-left: 13%;
+    margin-left: 2vw;
 }
 
   #external-connections-bar{
     background-color: #12151c;
-    width: 74%;
-    margin-left: 12%;
-    height: 15%;
+    width: 11.5vw;
+    margin-left: 1.8vw;
+    height: 5vh;
     border-radius: 12px;
     overflow: hidden;
   }
@@ -970,12 +970,12 @@ overflow-y: auto;
     color: #724fe6;
     position: relative;
     font-weight: 700;
-    left: 73%;
+    left: 8.5vw;
     top: -1%;
-    font-size: 2.6em;
+    font-size: 2.3vw;
   }
   #external-connections-bar h3{
       position: relative;
-      top: -135%;
-      left: 12%;
+      top: -7.3vh;
+      left: 1.2vw;
   } 
