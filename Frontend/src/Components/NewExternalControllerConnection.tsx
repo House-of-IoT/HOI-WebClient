@@ -4,11 +4,13 @@ export default class NewExternalControllerConnection extends Component {
     render() {
         return (
             <div>
+                <button>X</button>
                 <h1>Add External Controller Connection</h1>
-                <input placeholder= "host"></input>
-                <input placeholder= "port"></input>
-                <input placeholder= "display name"></input>
-                <input placeholder = "name on server"></input>
+                <input placeholder= "Host"></input>
+                <input placeholder= "Port"></input>
+                <input placeholder= "Server's Name"></input>
+                <input placeholder = "Name On Server"></input>
+                <button>Connect</button>
             </div>
         )
     }
