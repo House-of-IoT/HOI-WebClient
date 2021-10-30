@@ -37,6 +37,8 @@
 
 #config-handler h1{
     font-size: 1.5vw;
+    position: relative;
+    top: -.9vh;
 }
 #connections{
     width: 12vw;
@@ -234,6 +236,11 @@ opacity: .5;
     position: absolute;
   
     top: 65%;
+}
+
+#state-viewer h1{
+    position: relative;
+    top: -1.7vh;
 }
 .popup-wrapper{
     position: absolute;
