@@ -5,8 +5,7 @@ export default class ExternalControllerListing extends Component<any,any> {
         return (
             <div className = "external-controller-server-listing">
                 <h1>{this.props.name}</h1>
-                <button className = "external-controller-server-listing-view-button">View</button>
-                <button className = "external-controller-server-listing-disconnect-button">Disconnect</button>    
+                <button >Open</button>
             </div>
         )
     }
