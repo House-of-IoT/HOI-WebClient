@@ -35,7 +35,7 @@ export default class MainHub extends Component<any,any> {
         this.audio_handler = new AudioHandler();
         this.state = {
             connection_names : [],
-            external_controller_connection_names : ["test1","test2","test3"],
+            external_controller_connection_names : ["test1","test2","test3","LongerNameExample"],
             removal_showing: false,
             new_showing : false,
             selected_server: "No Server Selected",
