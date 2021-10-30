@@ -31,7 +31,8 @@ export class Client{
             }
             connection.onerror = ()=>{
                 this.set_parent_state(
-                    {failed_action_showing:true,failed_action_message:"Connection Closed!! If you didn't manually disconnect, please check your network connection."});
+                    {failed_action_showing:true,failed_action_message:
+                        "Connection Closed!! If you didn't manually disconnect, please check your network connection."});
                     if(this.connections.has(server_name)){
                         this.connections.delete(server_name);
                         this.connection_strings.delete(server_name);
@@ -63,7 +64,8 @@ export class Client{
         }
         catch{
             console.log("exception in authentication");
-            this.set_parent_state({failed_action_showing:true,failed_action_message:"Issue with authenticating!"});
+            this.set_parent_state({failed_action_showing:true,
+                failed_action_message:"Issue with authenticating!"});
         }
     }
 
@@ -133,11 +135,14 @@ export class Client{
         else if (response.action == "viewing"){
             response.bot_name = "";
             this.change_basic_response_component_state(response, 
-                " You have successfully gathered server state data!","You have failed gathering server state data!");
+                " You have successfully gathered server state data!",
+                "You have failed gathering server state data!");
             this.populate_viewing_target_if_successful(response);
         }
         else if (response.action == "editing"){
-            this.change_basic_response_component_state(response,"You have successfully edited the server!", "You have failed to edit the server's state");
+            this.change_basic_response_component_state(response,
+                "You have successfully edited the server!",
+                 "You have failed to edit the server's state");
         }
     }
 
@@ -172,11 +177,13 @@ export class Client{
         if(event.data == "success"){
             this.auth_status.set(this.current_server_trying_to_auth,"success");
             this.set_parent_state({connection_names:Array.from(this.connections.keys())});
-            this.set_parent_state({successful_action_showing:true,successful_action_message:"Successfully Authenticated! Select the server to see the bot(s) data!"});
+            this.set_parent_state({successful_action_showing:true,
+                successful_action_message:"Successfully Authenticated! Select the server to see the bot(s) data!"});
             this.begin_gathering_bot_data(this.current_server_trying_to_auth);
         }
         else{
-            this.set_parent_state({failed_action_showing:true,failed_action_message:"Failed Authetication!! Check Your Credentials."});
+            this.set_parent_state({failed_action_showing:true,
+                failed_action_message:"Failed Authetication!! Check Your Credentials."});
             this.auth_status.set(this.current_server_trying_to_auth,"failure")
             this.connections.get(this.current_server_trying_to_auth).close();
             this.connections.delete(this.current_server_trying_to_auth);
@@ -191,7 +198,7 @@ export class Client{
                let intervalId = setInterval(
                    ()=>{
                        connection.send("passive_data")
-                   },3000);
+                   },5000);
                 this.passive_data_interval_ids.set(server_name,intervalId);
                connection.onmessage = (event)=>{this.gather_bot_data(event)};
             }
@@ -266,15 +273,21 @@ export class Client{
             console.log(response.target);
 
             this.set_parent_state({loading_content:false});
-            if (response.target == "servers_banned_ips" || response.target == "servers_devices" || response.target == "servers_deactivated_bots"){
+            if (response.target == "servers_banned_ips"
+             || response.target == "servers_devices" 
+             || response.target == "servers_deactivated_bots"){
                 this.set_parent_state({basic_state_data:response.target_value,basic_state_showing:true});
             }
             else if (response.target == "server_config"){
-                this.set_viewing_state(response.server_name,"servers_configs",response.target_value);
+                this.set_viewing_state(
+                    response.server_name,
+                    "servers_configs",
+                    response.target_value);
                 this.set_parent_state({server_settings_showing:true});
             }
             else if(response.target == "contact_list"){
-                this.set_parent_state({servers_contacts:response.target_value,server_contacts_showing:true});
+                this.set_parent_state({
+                    servers_contacts:response.target_value,server_contacts_showing:true});
             }
             else{
             
