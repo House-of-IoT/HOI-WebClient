@@ -6,8 +6,11 @@ export default class SchedulerAccessBar extends Component {
         return (
             <div id = "scheduler-access">
                 <h3>Scheduling</h3>
-                <button>Schedule Task</button>
-                <button>View Tasks</button>
+                <div id = "scheduler-button-wrapper">
+                    <button className = "scheduler-access-buttons" id = "schedule-task-button">Schedule Task</button>
+                    <button className = "scheduler-access-buttons">View Tasks</button>
+                </div>
+   
             </div>
         )
     }
