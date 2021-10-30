@@ -9,7 +9,7 @@
     left: 40%;
     border: none;
     background-color: rgb(36, 44, 55);
-    padding-left: 1%;
+
     width: 22.3vw;
     height: 5.0vh;
     border-radius: 12px;
@@ -19,6 +19,7 @@
     color: #fff;
     font-weight: 800;
     position: relative;
+    font-size: 0.8vw;
     left: 35%;
 }
 
@@ -165,11 +166,12 @@ opacity: .5;
 }
 #settings-button{
     background-color: #3d485a;
-    width: 80%;
-    height: 15%;
+    width: 13vw;
+    height: 4.8vh;
     position: relative;
     top: 5%;
     left: 9%;
+
     border-radius: 4px;
 }
 
@@ -178,18 +180,20 @@ opacity: .5;
 }
 
 #settings-button img{
-    width: 18%;
+    width: 2.3vw;
     position: relative;
     top: 8%;
     left: 2%;
 }
 #settings-button h4{
-    position: relative;
-    top: -110%;
+    position: absolute;
+    top: -25%;
+    display: flex;
+    align-self: center;
     color: #fff;
     left: 20%;
     overflow: hidden;
-    font-size: 1vw;
+    font-size: 0.8vw;
 }
 #config-handler{
     background-color: #1a2029;
@@ -206,10 +210,11 @@ opacity: .5;
     border-radius: 4px;
     margin-left: 6%;
     padding: .8vw;
-    padding-bottom: 10%;
+    padding-bottom: 3.8vh;
     position: relative;
     top: -2%;
     height: 1vh;
+    width: 4.2vw;
     border: none;
     color: #fff;
 }
@@ -558,7 +563,7 @@ opacity: .5;
     border-radius: 4px;
     position: relative;
     top: -1vh;
-    font-size: small;
+    font-size: 1vh;
     margin-left: 2%;
     padding: 3%;
     margin-top: 3vh;
