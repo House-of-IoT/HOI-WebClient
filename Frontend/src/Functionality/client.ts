@@ -169,7 +169,6 @@ export class Client{
                     says that ${response.bot_name}`+ failure_message})
             this.set_parent_state({failed_action_showing:true});
         }
-        //checks to see if we should gather passive data again and executes
         this.check_and_begin_gathering_passive_data(response);
     }
     
@@ -191,6 +190,7 @@ export class Client{
         }
     }
 
+    /* Begin gathering passive bot data every 5 seconds */
     begin_gathering_bot_data(server_name:string){
         try{
             if(this.connections.has(server_name)){
@@ -215,6 +215,7 @@ export class Client{
         }
     }
 
+    /*Grab bot data from event and update parent state with the data */
     gather_bot_data(event:MessageEvent){
         try{
             let bot_string = event.data;
@@ -267,6 +268,7 @@ export class Client{
         }
     }
 
+    /* Update parent state if we gathered requested data*/
     populate_viewing_target_if_successful(response:BasicResponse){
         if(response.status == "success"){
             console.log(response.target_value);
@@ -333,8 +335,8 @@ export class Client{
         this.set_parent_state = fun;
     }
 
+    //clear and delete the server interval timeout that we stored
     clear_server_passive_interval(server_name:string){
-        //clear and delete the server interval timeout that we stored
         let interval_id = this.passive_data_interval_ids.get(server_name)
         clearInterval(interval_id);
         this.passive_data_interval_ids.delete(server_name);
