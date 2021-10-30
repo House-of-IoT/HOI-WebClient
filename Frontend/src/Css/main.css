@@ -284,6 +284,7 @@ opacity: .5;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     position: relative;
     left: 22%;
+    font-size: 1.5vw;
     top: 1%;
 }
 #new-connection input{
@@ -309,8 +310,9 @@ opacity: .5;
     padding: 5.3%;
     padding-bottom: 10%;
     position: relative;
-    height: 10%;
-    width: 40%;
+    height: 2vh;
+    width: 7.5vw;
+    font-size: 0.8vw;
     border: none;
     color: #fff;
 }

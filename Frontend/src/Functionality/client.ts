@@ -235,7 +235,8 @@ export class Client{
                         previous.selected_bots = bot_object.bots;
                     }                 
                     return previous;
-                })
+                });
+                this.update_last_updated_datetime();
             }
         }
         catch{
@@ -319,6 +320,17 @@ export class Client{
         }
     }
 
+    //clear and delete the server interval timeout that we stored
+    clear_server_passive_interval(server_name:string){
+        let interval_id = this.passive_data_interval_ids.get(server_name)
+        clearInterval(interval_id);
+        this.passive_data_interval_ids.delete(server_name);
+    }
+
+    update_last_updated_datetime(){
+        this.set_parent_state()
+    }
+
     has_credentials(server_name:string):boolean{
         if(this.connections.has(server_name) && this.name_and_type.get(server_name) != null){
             return true;
@@ -335,10 +347,5 @@ export class Client{
         this.set_parent_state = fun;
     }
 
-    //clear and delete the server interval timeout that we stored
-    clear_server_passive_interval(server_name:string){
-        let interval_id = this.passive_data_interval_ids.get(server_name)
-        clearInterval(interval_id);
-        this.passive_data_interval_ids.delete(server_name);
-    }
+
 }

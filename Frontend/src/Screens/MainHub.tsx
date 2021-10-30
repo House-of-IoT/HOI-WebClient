@@ -54,6 +54,7 @@ export default class MainHub extends Component<any,any> {
             type_of_basic_state : "",
             basic_state_data : "",
             servers_contacts :"",
+            last_updated_passive_data_date: new Date(),
             //mock values, not really the messages
             failed_action_message:"Server Responded with failure to your authentication request.",
             successful_action_message:"Server Responded with success to your authentication request.",
@@ -88,7 +89,8 @@ export default class MainHub extends Component<any,any> {
                         set_parent_state = {this.setState} 
                         parent_state = {this.state} 
                         server = {this.state.selected_server}
-                        client = {this.client}/>
+                        client = {this.client}
+                        last_date = {this.state.last_updated_passive_data_date}/>
                     <ConfigHandler client = {this.client} set = {this.setState}/>
                     <StateViewer set = {this.setState} client = {this.client} selected_server = {this.state.selected_server}/>
                     <RemovalConfirmPopup state = {this.state.removal_showing} set = {this.setState}/>
