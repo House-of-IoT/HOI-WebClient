@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import ExternalControllerListing from './ExternalControllerListing';
 
-export default class ExternalController extends Component {
+export default class ExternalController extends Component<any,any> {
     render() {
         return (
             <div id = "ExternalControllerViewWrapper">
@@ -11,10 +12,13 @@ export default class ExternalController extends Component {
                     <h3>Connections</h3>
                 </div>
                 
-
                 
                 <div id = "ExternalControllerConnections">
-
+                    {this.props.controllers.map((name:String)=>{
+                        return (
+                            <ExternalControllerListing name = {name}/>
+                        );
+                    })}
 
                 </div>
 

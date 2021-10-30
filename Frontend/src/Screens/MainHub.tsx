@@ -35,6 +35,7 @@ export default class MainHub extends Component<any,any> {
         this.audio_handler = new AudioHandler();
         this.state = {
             connection_names : [],
+            external_controller_connection_names : ["test1","test2","test3"],
             removal_showing: false,
             new_showing : false,
             selected_server: "No Server Selected",
@@ -95,7 +96,7 @@ export default class MainHub extends Component<any,any> {
                     <StateViewer set = {this.setState} client = {this.client} selected_server = {this.state.selected_server}/>
                     <RemovalConfirmPopup state = {this.state.removal_showing} set = {this.setState}/>
                     <SchedulerAccessBar />
-                    <ExternalController/>
+                    <ExternalController set = {this.setState} controllers = {this.state.external_controller_connection_names}/>
                 </div>
                
                 <NewConnectionPopup state = {this.state.new_showing} set = {this.setState} client = {this.client} />
