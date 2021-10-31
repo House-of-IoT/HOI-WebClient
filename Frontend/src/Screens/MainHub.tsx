@@ -142,7 +142,7 @@ export default class MainHub extends Component<any,any> {
                 />
                 <SchedulerPopup bots = {this.state.selected_bots} state = {this.state.scheduler_popup_showing}/>
                 <VideoPlayer state = {this.state.video_player_showing}/>
-                <ExternalControllerServerView relations = {this.state.external_controller_relations}/>
+                <ExternalControllerServerView server_name = {this.state.selected_external_controller} relations = {this.state.external_controller_relations}/>
             </div>
         )
     }
