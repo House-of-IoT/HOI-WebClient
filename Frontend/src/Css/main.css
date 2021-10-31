@@ -1031,13 +1031,14 @@ overflow-y: auto;
     background-color: #242c37;
     border-radius: 12px;
     width: 40vw;
-    height: 65vh;
+    height: 70vh;
+    top: 5vh;
     padding: 1%;
     position: relative;
     left: 30vw;
 }
 
-#add-button-external-controller,#disconnect-button-external-controller{
+#add-button-external-controller,#disconnect-button-external-controller,#close-external-controller-server-view{
     background-color: #fd4d4d;
     color: #fff;
     width: 10vw;
@@ -1050,4 +1051,35 @@ overflow-y: auto;
 #relation-server-view-number{
     color: rgb(175, 175, 175);
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    position: relative;
+    top: -9vh;
+    left: 14vw;
+}
+#close-external-controller-server-view{
+
+    position: relative;
+    top: 5vh;
+    width: 20vw;
+    left: -9.5vw;
+    top: 5vh;
+}
+#external-controller-server-view-relation-holder{
+    width:33vw;
+    position: relative;
+    left: 3.2vw;
+    height: 40vh;
+}
+#disconnect-button-external-controller{
+    position: relative;
+    left: 15vw;
+    top: 2vh;
+}
+#server-view-name{
+    position: relative;
+    left: 13vw;
+}
+#add-button-external-controller{
+    width: 20vw;
+    position: relative;
+    left: 10.5vw;
 }
