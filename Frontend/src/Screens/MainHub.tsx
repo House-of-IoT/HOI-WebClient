@@ -22,6 +22,7 @@ import SchedulerPopup from '../Components/SchedulerPopup';
 import VideoPlayer from '../Components/VideoPlayer';
 import ExternalController from '../Components/ExternalController';
 import { ExternalControllerClient } from '../Functionality/externalControllerClient';
+import ExternalControllerServerView from '../Components/ExternalControllerServerView';
 
 export default class MainHub extends Component<any,any> {
     audio_handler : AudioHandler;
@@ -36,10 +37,11 @@ export default class MainHub extends Component<any,any> {
         this.state = {
             connection_names : [],
             external_controller_connection_names : ["test1","test2","test3","LongerNameExample"],
+            external_controller_relations : [],
             removal_showing: false,
             new_showing : false,
             selected_server: "No Server Selected",
-            selected_external_controller: "",
+            selected_external_controller: "No Server Selected",
             selected_bots : [],
             server_bot_strings : new Map<string,string>(), 
             successful_action_showing:false,
@@ -138,10 +140,9 @@ export default class MainHub extends Component<any,any> {
                     set = {this.setState}
                     client = {this.client}
                 />
-
-               
                 <SchedulerPopup bots = {this.state.selected_bots} state = {this.state.scheduler_popup_showing}/>
                 <VideoPlayer state = {this.state.video_player_showing}/>
+                <ExternalControllerServerView relations = {this.state.external_controller_relations}/>
             </div>
         )
     }
