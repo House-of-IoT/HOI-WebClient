@@ -1102,19 +1102,23 @@ overflow-y: auto;
     position: relative;
     left: 1vw;
 }
-.conditions-box{
+.condition-view{
     background-color: #0a0c10;
     width: 13vw;
     position: relative;
     left: 5vw;
     height: 13vh;
-    border-radius: 4px;
+    border-radius: 12px;
+    margin-top: 3.5vh;
 }
-.conditions-box h3{
+
+.condition-values,.condition-keys {
     position: relative;
     left: 1vw;
-    top: .4vh;
+    top: 1vh;
+    margin-top: -2vh;
 }
+
 
 .condition-modify-buttons{
     color: #fff;
@@ -1128,9 +1132,14 @@ overflow-y: auto;
 #condition-edit-button{
     background-color: #724fe6;
     position: relative;
+    left: 1vw;
+    top: 1vh;
     
 }
+
 #condition-remove-button{
     background-color: #a01717;
     position: relative;
+    left: 2vw;
+    top: 1vh;
 }

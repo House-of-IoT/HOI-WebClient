@@ -4,7 +4,6 @@ import ExternalControllerConditionView from './ExternalControllerConditionView';
 export default class ExternalControllerRelationView extends Component<any,any>{
     render() {
         let conditions: Array<any> = this.props.relation.conditions;
-        
         return (
             <div className = "relation-view-box">
                 <h2>Device name:{this.props.relation.device_name}</h2>
