@@ -37,7 +37,7 @@ export default class MainHub extends Component<any,any> {
         this.state = {
             connection_names : [],
             external_controller_connection_names : ["test1","test2","test3","LongerNameExample"],
-            external_controller_relations : [],
+            external_controller_relations : [{device_name :"test",}],
             removal_showing: false,
             new_showing : false,
             selected_server: "No Server Selected",

@@ -1,3 +1,13 @@
+/*
+This class is the client for the ExternalController,
+this class aims to do 4 different things
+
+1.Connect to multiple different servers and authenticate.
+2.Request passive data for each server on a 5 second interval.
+3.Provides relation request functionality.
+4.Handle all state management that is required for requests.
+*/
+
 export class ExternalControllerClient{
 
     connections : Map<string,WebSocket>

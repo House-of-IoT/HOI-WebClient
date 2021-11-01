@@ -4,7 +4,7 @@ import ExternalControllerRelationView from './ExternalControllerRelationView';
 export default class ExternalControllerServerView extends Component<any,any> {
     render() {
         return (
-            <div className = "popup-wrapper" id = "external-controller-server-view">
+            <div className = "popup-wrapper" id = "external-controller-server-view"  style = {{display:(this.props.state? "block":"none")}}>
                
                 <div id = "inner-external-controller-server-view">
                     <h1 id = "server-view-name">{this.props.server_name}</h1>

@@ -1,5 +1,18 @@
 import { BasicResponse } from "./BasicResponse";
 
+
+/*
+
+This class is the client for the HOI-GeneralServer,
+this class aims to do 4 different things
+
+1.Connect to multiple different servers and authenticate.
+2.Request passive data for each server on a 5 second interval.
+3.Provides bot action and state request(editing and viewing) functionality.
+4.Handle all state management that is required for requests.
+
+*/
+
 export class Client{
     connections : Map<string,WebSocket>
     connection_strings : Map<string,string>
