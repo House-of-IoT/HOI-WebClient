@@ -24,6 +24,12 @@ import ExternalController from '../Components/ExternalController';
 import { ExternalControllerClient } from '../Functionality/externalControllerClient';
 import ExternalControllerServerView from '../Components/ExternalControllerServerView';
 
+
+/*Main page.
+This page holds all of the main components for control.
+This page holds all of the main state data.
+*/
+
 export default class MainHub extends Component<any,any> {
     audio_handler : AudioHandler;
     state : any;
@@ -37,7 +43,8 @@ export default class MainHub extends Component<any,any> {
         this.state = {
             connection_names : [],
             external_controller_connection_names : ["test1","test2","test3","LongerNameExample"],
-            external_controller_relations : [{device_name :"test",}],
+            external_controller_relations : new Map<string,string>(),
+            selected_external_controller_relations : [],
             removal_showing: false,
             new_showing : false,
             selected_server: "No Server Selected",
