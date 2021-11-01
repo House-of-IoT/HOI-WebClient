@@ -26,8 +26,8 @@ import ExternalControllerServerView from '../Components/ExternalControllerServer
 
 
 /*Main page.
-This page holds all of the main components for control.
-This page holds all of the main state data.
+This class holds all of the main components for control.
+This class holds all of the main state data.
 */
 
 export default class MainHub extends Component<any,any> {
@@ -44,7 +44,6 @@ export default class MainHub extends Component<any,any> {
             connection_names : [],
             external_controller_connection_names : ["test1","test2","test3","LongerNameExample"],
             external_controller_relations : new Map<string,string>(),
-            selected_external_controller_relations : [],
             removal_showing: false,
             new_showing : false,
             selected_server: "No Server Selected",
@@ -57,6 +56,7 @@ export default class MainHub extends Component<any,any> {
             basic_state_showing:false,
             server_settings_showing:false,
             server_contacts_showing:false,
+            external_controller_server_view_showing:false,
             add_contacts_showing:false,
             scheduler_popup_showing:false,
             video_player_showing:false,
@@ -149,7 +149,7 @@ export default class MainHub extends Component<any,any> {
                 />
                 <SchedulerPopup bots = {this.state.selected_bots} state = {this.state.scheduler_popup_showing}/>
                 <VideoPlayer state = {this.state.video_player_showing}/>
-                <ExternalControllerServerView server_name = {this.state.selected_external_controller} relations = {this.state.external_controller_relations}/>
+                <ExternalControllerServerView set = {this.setState} state = {this.state.external_controller_server_view_showing} server_name = {this.state.selected_external_controller} relations = {this.state.external_controller_relations}/>
             </div>
         )
     }
