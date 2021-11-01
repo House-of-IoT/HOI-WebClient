@@ -16,7 +16,7 @@ export default class ExternalController extends Component<any,any> {
                 <div id = "ExternalControllerConnections">
                     {this.props.controllers.map((name:String)=>{
                         return (
-                            <ExternalControllerListing name = {name}/>
+                            <ExternalControllerListing set = {this.props.set} name = {name}/>
                         );
                     })}
 
