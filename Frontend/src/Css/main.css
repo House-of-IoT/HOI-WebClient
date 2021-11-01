@@ -1083,3 +1083,54 @@ overflow-y: auto;
     position: relative;
     left: 10.5vw;
 }
+.relation-view-box{
+    border-radius: 12px;
+    background-color: #1a2029;
+    width: 25vw;
+    height: 18vw;
+    position: relative;
+    left: 3.8vw;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.relation-view-box h2{
+    color: #737272;
+    position: relative;
+    left: 1vw;
+}
+
+#relation-view-condition-tag{
+    position: relative;
+    left: 1vw;
+}
+.conditions-box{
+    background-color: #0a0c10;
+    width: 13vw;
+    position: relative;
+    left: 5vw;
+    height: 13vh;
+    border-radius: 4px;
+}
+.conditions-box h3{
+    position: relative;
+    left: 1vw;
+    top: .4vh;
+}
+
+.condition-modify-buttons{
+    color: #fff;
+    font-weight: bold;
+    border:none;
+    border-radius: 4px;
+    width: 5vw;
+    height: 3vh;
+}
+
+#condition-edit-button{
+    background-color: #724fe6;
+    position: relative;
+    
+}
+#condition-remove-button{
+    background-color: #a01717;
+    position: relative;
+}
