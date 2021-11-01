@@ -1091,6 +1091,9 @@ overflow-y: auto;
     position: relative;
     left: 3.8vw;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    overflow-x:hidden;
+    overflow-y: auto;
+    padding-bottom: 1vh;
 }
 .relation-view-box h2{
     color: #737272;
@@ -1143,3 +1146,19 @@ overflow-y: auto;
     left: 2vw;
     top: 1vh;
 }
+
+.relation-view-box::-webkit-scrollbar-track {
+    padding: 2px 0;
+    background-color: #404040;
+  }
+
+.relation-view-box::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+.relation-view-box::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #737272;
+  }
+  
