@@ -24,7 +24,6 @@ import ExternalController from '../Components/ExternalController';
 import { ExternalControllerClient } from '../Functionality/externalControllerClient';
 import ExternalControllerServerView from '../Components/ExternalControllerServerView';
 
-
 /*Main page.
 This class holds all of the main components for control.
 This class holds all of the main state data.
@@ -37,8 +36,8 @@ export default class MainHub extends Component<any,any> {
     test:Test
     external_controller_client:ExternalControllerClient
 
-    constructor(props:{}){
-        super(props);
+    constructor(){
+        super(null);
         this.audio_handler = new AudioHandler();
         this.state = {
             //external controller servers/components state

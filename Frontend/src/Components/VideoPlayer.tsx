@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import video from "../Img/test.mp4";
 
 export default class VideoPlayer extends Component<any,any> {
-    constructor(props:{}){
-        super(props);
+    constructor(){
+        super(null);
         this.state = {
             video : null
         }
