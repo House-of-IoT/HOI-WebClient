@@ -259,7 +259,7 @@ export class Client{
     }
 
     prompt_and_send_admin_auth_password(old_response:BasicResponse){
-        let connection = this.connections.get(old_response.server_name);
+        let connection:WebSocket = this.connections.get(old_response.server_name);
         let password :string= prompt(`${old_response.server_name} is requesting the admin password:`);
         connection.send(password);  
     }

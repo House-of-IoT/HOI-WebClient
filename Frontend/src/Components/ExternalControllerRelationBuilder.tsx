@@ -24,16 +24,38 @@ export default class ExternalControllerRelationBuilder extends Component<any,any
 
                 <div id = "external-controller-relation-builder-inner">
                     <h1>Relation Builder</h1>
-                    <input placeholder = "Action"></input>
-                    <input placeholder = "Device Name"></input>
+                    <input placeholder = "Action" onInput = 
+                        {
+                            (event:React.FormEvent<HTMLInputElement>)=>
+                            {this.setState({current_action:event.currentTarget.value})}}>
+
+                    </input>
+
+                    <input placeholder = "Device Name" onInput = 
+                        {
+                            (event:React.FormEvent<HTMLInputElement>)=>
+                            {this.setState({current_device_name:event.currentTarget.value})}}></input>
                     
                     
                     <div id = "add-relation-condition-wrapper">
-                        <input placeholder = "KEY"></input>
-                        <input placeholder = "VALUE"></input>
+                        <input placeholder = "KEY" onInput = 
+                        {
+                            (event:React.FormEvent<HTMLInputElement>)=>
+                            {this.setState({current_key:event.currentTarget.value})}}>
+                            
+                        </input>
+
+                        <input placeholder = "VALUE" onInput = 
+                        {
+                            (event:React.FormEvent<HTMLInputElement>)=>
+                            {this.setState({current_value:event.currentTarget.value})}}>
+
+                        </input>
+
                         <button onClick = {()=>{this.setState((prev)=>{
                             let new_condition : Condition = {key:this.state.current_key,value:this.state.current_value}
                             prev.added_conditions.push(new_condition);
+                            return prev;
                         })}}
                         
                             >Create Condition</button>
