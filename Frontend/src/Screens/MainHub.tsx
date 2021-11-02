@@ -41,33 +41,50 @@ export default class MainHub extends Component<any,any> {
         super(props);
         this.audio_handler = new AudioHandler();
         this.state = {
-            connection_names : [],
+            //external controller servers/components state
             external_controller_connection_names : ["test1","test2","test3","LongerNameExample"],
             external_controller_relations : new Map<string,string>(),
-            removal_showing: false,
-            new_showing : false,
-            selected_server: "No Server Selected",
+            external_controller_server_view_showing:false,
             selected_external_controller: "No Server Selected",
-            selected_bots : [],
+            relation_builder_showing:false,
+
+            //HOI-GeneralServer servers/components state
+            selected_server: "No Server Selected",
             server_bot_strings : new Map<string,string>(), 
+            server_settings_showing:false,
+            servers_configs : new Map<string,string>(),
+            server_contacts_showing:false,
+            add_contacts_showing:false,
+            servers_contacts :"",
+            connection_names : [],
+            selected_bots : [],
+
+            //HOI-GeneralServer AutoScheduling components state
+            scheduler_popup_showing:false,
+
+            //Request response popups state
             successful_action_showing:false,
             failed_action_showing:false,
-            loading_content:false,
-            basic_state_showing:false,
-            server_settings_showing:false,
-            server_contacts_showing:false,
-            external_controller_server_view_showing:false,
-            add_contacts_showing:false,
-            scheduler_popup_showing:false,
-            video_player_showing:false,
-            servers_configs : new Map<string,string>(),
-            type_of_basic_state : "",
-            basic_state_data : "",
-            servers_contacts :"",
-            last_updated_passive_data_date: new Date(),
-            //mock values, not really the messages
             failed_action_message:"Server Responded with failure to your authentication request.",
             successful_action_message:"Server Responded with success to your authentication request.",
+
+            //state viewing component control state
+            type_of_basic_state : "",
+            basic_state_data : "",
+            basic_state_showing:false,
+    
+            //general component state
+            video_player_showing:false,
+            loading_content:false,
+            removal_showing: false,
+            new_showing : false,
+
+            //data gather pausing state
+            paused_data_gathering:false,
+            data_gathering_paused_time: new Date(),
+
+            //timestamp state
+            last_updated_passive_data_date: new Date(),
         }    
 
         this.setState = this.setState.bind(this);
