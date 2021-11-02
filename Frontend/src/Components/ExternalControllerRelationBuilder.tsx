@@ -4,7 +4,9 @@ export default class ExternalControllerRelationBuilder extends Component<any,any
 
     constructor(){
         super(null);
-        
+        this.state = {
+            added_relations:[]
+        }
     }
 
     render() {
@@ -25,7 +27,17 @@ export default class ExternalControllerRelationBuilder extends Component<any,any
 
                     <h3>Conditions Added So Far:</h3>
                     <div id = "added-conditions-relation-builder">
-                        {}
+                        {this.state.added_relations.map((relation)=>{
+                            return(
+
+                                <div className = "added-conditions">
+                                    <h3>KEY:{relation.key}</h3>
+                                    <h3>VALUE:{relation.value}</h3>
+                                    <button>Remove</button>
+                                </div>
+                            );
+
+                        })}
                     </div>
                 
                 </div>                
