@@ -1061,27 +1061,43 @@ overflow-y: auto;
     top: 5vh;
     width: 20vw;
     left: -9.5vw;
-    top: 5vh;
+    top: 7vh;
+    opacity: 0.5;
+    background-color: black;
+}
+#close-external-controller-server-view:hover{
+    opacity: 1;
 }
 #external-controller-server-view-relation-holder{
     width:33vw;
     position: relative;
     left: 3.2vw;
     height: 40vh;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 #disconnect-button-external-controller{
     position: relative;
     left: 15vw;
     top: 2vh;
+    background-color: black;
+    color: red;
 }
 #server-view-name{
     position: relative;
-    left: 13vw;
+    left: 8.5vw;
+    text-align: center;
+    width: 23vw;
+    overflow-x: hidden;
 }
 #add-button-external-controller{
     width: 20vw;
     position: relative;
     left: 10.5vw;
+    top: 2vh;
+    color: green;
+    background: black;
+    font-weight: bolder;
 }
 .relation-view-box{
     border-radius: 12px;
@@ -1094,6 +1110,7 @@ overflow-y: auto;
     overflow-x:hidden;
     overflow-y: auto;
     padding-bottom: 1vh;
+    margin-top: 2vh;
 }
 .relation-view-box h2{
     color: #737272;
@@ -1156,6 +1173,21 @@ overflow-y: auto;
     width: 10px;
   }
   
+  #external-controller-server-view-relation-holder::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #737272;
+  }
+  
+  
+  #external-controller-server-view-relation-holder::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  #external-controller-server-view-relation-holder::-webkit-scrollbar-track {
+    padding: 2px 0;
+    background-color: #404040;
+  }
 .relation-view-box::-webkit-scrollbar-thumb {
     border-radius: 10px;
     box-shadow: inset 0 0 6px rgba(0,0,0,.3);
