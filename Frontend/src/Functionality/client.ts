@@ -1,6 +1,5 @@
 import { BasicResponse } from "./BasicResponse";
 
-
 /*
 
 This class is the client for the HOI-GeneralServer,
@@ -244,6 +243,8 @@ export class Client{
                 this.set_parent_state(prevState => {
                     let previous = Object.assign({}, prevState);
                     previous.server_bot_strings.set(server_name, bot_string);
+
+                    // if the server is selected then update selected bots
                     if(server_name == previous.selected_server){
                         previous.selected_bots = bot_object.bots;
                     }                 

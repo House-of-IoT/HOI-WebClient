@@ -1,11 +1,20 @@
 import React, { Component } from 'react'
 
+interface Condition{
+    key:String,
+    value:String
+}
+
 export default class ExternalControllerRelationBuilder extends Component<any,any> {
 
     constructor(){
         super(null);
         this.state = {
-            added_relations:[]
+            added_conditions: new Array<Condition>(),
+            current_action :"",
+            current_device_name:"",
+            current_key :"",
+            current_value:""
         }
     }
 
@@ -22,7 +31,12 @@ export default class ExternalControllerRelationBuilder extends Component<any,any
                     <div id = "add-relation-condition-wrapper">
                         <input placeholder = "KEY"></input>
                         <input placeholder = "VALUE"></input>
-                        <button>Create Condition</button>
+                        <button onClick = {()=>{this.setState((prev)=>{
+                            let new_condition : Condition = {key:this.state.current_key,value:this.state.current_value}
+                            prev.added_conditions.push(new_condition);
+                        })}}
+                        
+                            >Create Condition</button>
                     </div>
 
                     <h3>Conditions Added So Far:</h3>

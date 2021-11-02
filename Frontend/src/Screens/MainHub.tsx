@@ -54,7 +54,7 @@ export default class MainHub extends Component<any,any> {
             servers_configs : new Map<string,string>(),
             server_contacts_showing:false,
             add_contacts_showing:false,
-            servers_contacts :"",
+            servers_contacts :new String(),
             connection_names : [],
             selected_bots : [],
 
@@ -68,8 +68,8 @@ export default class MainHub extends Component<any,any> {
             successful_action_message:"Server Responded with success to your authentication request.",
 
             //state viewing component control state
-            type_of_basic_state : "",
-            basic_state_data : "",
+            type_of_basic_state : new String(),
+            basic_state_data : new String(),
             basic_state_showing:false,
     
             //general component state
