@@ -16,6 +16,7 @@ export default class ExternalControllerRelationBuilder extends Component<any,any
     }
 
     render() {
+        console.log( "data" + Array.from(this.state.added_conditions.keys()));
         return (
             <div className = "popup-wrapper"  id = "external-controller-relation-builder">
 
@@ -52,6 +53,7 @@ export default class ExternalControllerRelationBuilder extends Component<any,any
                         </input>
 
                         <button onClick = {()=>{this.setState((prev)=>{
+                            console.log(this.state)
                             let previous = Object.assign({}, prev);
                             previous.added_conditions.set(this.state.current_key,this.state.current_value)
                             return previous;
@@ -63,7 +65,7 @@ export default class ExternalControllerRelationBuilder extends Component<any,any
                     <h3>Conditions Added So Far:</h3>
                     
                     <div id = "added-conditions-relation-builder">
-                        {Object.keys(this.state.added_relations).map((key)=>{
+                        {Array.from(this.state.added_conditions.keys()).map((key)=>{
                             return(
 
                                 <div className = "added-conditions">

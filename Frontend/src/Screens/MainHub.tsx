@@ -23,6 +23,7 @@ import VideoPlayer from '../Components/VideoPlayer';
 import ExternalController from '../Components/ExternalController';
 import { ExternalControllerClient } from '../Functionality/externalControllerClient';
 import ExternalControllerServerView from '../Components/ExternalControllerServerView';
+import ExternalControllerRelationBuilder from '../Components/ExternalControllerRelationBuilder';
 
 /*Main page.
 This class holds all of the main components for control.
@@ -166,6 +167,7 @@ export default class MainHub extends Component<any,any> {
                 <SchedulerPopup bots = {this.state.selected_bots} state = {this.state.scheduler_popup_showing}/>
                 <VideoPlayer state = {this.state.video_player_showing}/>
                 <ExternalControllerServerView set = {this.setState} state = {this.state.external_controller_server_view_showing} server_name = {this.state.selected_external_controller} relations = {this.state.external_controller_relations}/>
+                <ExternalControllerRelationBuilder/>
             </div>
         )
     }
