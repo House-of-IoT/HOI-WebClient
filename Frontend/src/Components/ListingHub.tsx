@@ -21,7 +21,7 @@ export default class ListingHub extends Component<any, any> {
             return (
                 <div id = "List-Hub" style= {{overflowY:"hidden"}}>
                     <img  id = "empty-placeholder"src = {look}/>
-                    <h3 id = "empty-placeholder-text">No bots connected!</h3>
+                    <h3 id = "empty-placeholder-text">No bots connecte333d!</h3>
 
                 </div>
             )
