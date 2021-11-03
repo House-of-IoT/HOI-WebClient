@@ -1206,7 +1206,7 @@ overflow-y: auto;
   #add-relation-condition-wrapper{
     background-color:#000;
     height: 7vh;
-    width: 34vw;
+    width: 38vw;
     position: relative;
     top: 1vh;
     border-radius: 12px;
@@ -1218,7 +1218,8 @@ overflow-y: auto;
       margin-left: 1vw;
       width: 9vw;
       position: relative;
-      top: 1.5vh;
+      top: -7.5vh;
+      left: 2vw;
   }
   #add-relation-condition-wrapper input::placeholder{
       position: relative;
@@ -1233,9 +1234,77 @@ overflow-y: auto;
       border: none;
       height: 4vh;
       position: relative;
-      top: 1.5vh;
-      left: 2.1vw;
+      top: -7.3vh;
+      left: 5.1vw;
       font-size: small;
       font-weight: bold;
       width: 10vw;
   }
+
+
+  #external-controller-relation-builder-outer-names input{
+
+    border:none;
+    border-radius: 4px;
+    height: 3vh;
+    margin-left: 1vw;
+    width: 9vw;
+    position: relative;
+    top: -7.3vh;
+    left: 1.8vw;
+  }
+  #external-controller-relation-builder-outer-names h3,  #add-relation-condition-wrapper h3{
+      font-size: 2vw;
+      position: relative;
+      left: 0.5vw;
+  }
+
+  #add-relation-condition-wrapper h3{
+      top: 0.5vh;
+
+  }
+
+  #external-controller-relation-builder-outer-names{
+    background-color:#000;
+    height: 6vh;
+    width: 25vw;
+    border-radius: 12px;
+  }
+
+  #external-controller-builder-bottom-buttons{
+      width: 30vw;
+      height: 13vh;
+      position: relative;
+      top: 10vh;
+      left: 5vw;
+  }
+
+  #external-controller-builder-bottom-buttons button{
+      height: 5vh;
+      border-radius: 4px;
+      border:none;
+      width: 10vw;
+      margin-left: 2vw;
+      font-size: large;
+      font-weight: bold;
+      background-color: #000;
+  }
+
+  #added-conditions-relation-builder{
+    width: 38vw;
+    border-radius: 12px;
+    background-color: #000;
+    height: 30vh;
+  }
+
+#external-controller-add-relation-button,#external-controller-add-close-builder{
+
+}
+
+#external-controller-add-close-builder{
+    color: red;
+}
+
+#external-controller-add-relation-button{
+    color: green;
+}

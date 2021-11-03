@@ -22,8 +22,8 @@ export default class ExternalControllerRelationBuilder extends Component<any,any
 
                 <div id = "external-controller-relation-builder-inner">
                     <h1>Relation Builder</h1>
-                    <div>
-
+                    <div id = "external-controller-relation-builder-outer-names">
+                        <h3>1.</h3>
                         <input placeholder = "Action" onInput = 
                             {
                                 (event:React.FormEvent<HTMLInputElement>)=>
@@ -42,6 +42,7 @@ export default class ExternalControllerRelationBuilder extends Component<any,any
 
                     
                     <div id = "add-relation-condition-wrapper">
+                    <h3>2.</h3>
                         <input placeholder = "KEY" onInput = 
                         {
                             (event:React.FormEvent<HTMLInputElement>)=>
@@ -87,8 +88,12 @@ export default class ExternalControllerRelationBuilder extends Component<any,any
 
                         })}
                     </div>
-                    <button>Add Relation</button>
-                    <button>Close</button>
+
+                    <div id = "external-controller-builder-bottom-buttons">
+                        <button id = "external-controller-add-relation-button">Add Relation</button>
+                        <button id = "external-controller-add-close-builder">Close</button>
+                    </div>
+                    
                 </div>                
             </div>
         )
