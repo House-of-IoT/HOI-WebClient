@@ -22,20 +22,24 @@ export default class ExternalControllerRelationBuilder extends Component<any,any
 
                 <div id = "external-controller-relation-builder-inner">
                     <h1>Relation Builder</h1>
-                    <input placeholder = "Action" onInput = 
-                        {
-                            (event:React.FormEvent<HTMLInputElement>)=>
-                            {this.setState({current_action:event.currentTarget.value})}}>
+                    <div>
 
-                    </input>
+                        <input placeholder = "Action" onInput = 
+                            {
+                                (event:React.FormEvent<HTMLInputElement>)=>
+                                {this.setState({current_action:event.currentTarget.value})}}>
 
-                    <input placeholder = "Device Name" onInput = 
-                        {
-                            (event:React.FormEvent<HTMLInputElement>)=>
-                            {this.setState({current_device_name:event.currentTarget.value})}}>
+                        </input>
 
-                    </input>
+                        <input placeholder = "Device Name" onInput = 
+                            {
+                                (event:React.FormEvent<HTMLInputElement>)=>
+                                {this.setState({current_device_name:event.currentTarget.value})}}>
+
+                        </input>
                     
+                    </div>
+
                     
                     <div id = "add-relation-condition-wrapper">
                         <input placeholder = "KEY" onInput = 
