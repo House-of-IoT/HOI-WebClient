@@ -21,7 +21,7 @@ export default class ExternalControllerRelationBuilder extends Component<any,any
             <div className = "popup-wrapper"  id = "external-controller-relation-builder">
 
                 <div id = "external-controller-relation-builder-inner">
-                    <h1>Relation Builder</h1>
+                    <h1 id = "relation-builder-title">Relation Builder</h1>
                     <div id = "external-controller-relation-builder-outer-names">
                         <h3>1.</h3>
                         <input placeholder = "Action" onInput = 

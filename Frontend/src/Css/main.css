@@ -1173,37 +1173,39 @@ overflow-y: auto;
     width: 10px;
   }
   
-  #external-controller-server-view-relation-holder::-webkit-scrollbar-thumb {
+#external-controller-server-view-relation-holder::-webkit-scrollbar-thumb {
     border-radius: 10px;
     box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: #737272;
   }
   
   
-  #external-controller-server-view-relation-holder::-webkit-scrollbar {
+#external-controller-server-view-relation-holder::-webkit-scrollbar {
     width: 10px;
   }
 
-  #external-controller-server-view-relation-holder::-webkit-scrollbar-track {
+#external-controller-server-view-relation-holder::-webkit-scrollbar-track {
     padding: 2px 0;
     background-color: #404040;
   }
-
 .relation-view-box::-webkit-scrollbar-thumb {
     border-radius: 10px;
     box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: #737272;
   }
 
-  #external-controller-relation-builder-inner{
+#external-controller-relation-builder-inner{
     background-color :#1a2029;
     border-radius: 12px;
     padding: 1%;
     width: 42vw;
     height: 80vh;
+    position: relative;
+    left: 30vw;
+    top: 3vh;
   }
 
-  #add-relation-condition-wrapper{
+#add-relation-condition-wrapper{
     background-color:#000;
     height: 7vh;
     width: 38vw;
@@ -1211,7 +1213,7 @@ overflow-y: auto;
     top: 1vh;
     border-radius: 12px;
   }
-  #add-relation-condition-wrapper input{
+#add-relation-condition-wrapper input{
       border:none;
       border-radius: 4px;
       height: 3vh;
@@ -1221,13 +1223,13 @@ overflow-y: auto;
       top: -7.5vh;
       left: 2vw;
   }
-  #add-relation-condition-wrapper input::placeholder{
+#add-relation-condition-wrapper input::placeholder{
       position: relative;
       left: 0.3vw;
       font-size: large;
   }
   
-  #add-relation-condition-wrapper button{
+#add-relation-condition-wrapper button{
       color: green;
       background-color: #1a2029;
       border-radius: 4px;
@@ -1242,7 +1244,7 @@ overflow-y: auto;
   }
 
 
-  #external-controller-relation-builder-outer-names input{
+#external-controller-relation-builder-outer-names input{
 
     border:none;
     border-radius: 4px;
@@ -1253,33 +1255,31 @@ overflow-y: auto;
     top: -7.3vh;
     left: 1.8vw;
   }
-  #external-controller-relation-builder-outer-names h3,  #add-relation-condition-wrapper h3{
+#external-controller-relation-builder-outer-names h3,  #add-relation-condition-wrapper h3{
       font-size: 2vw;
       position: relative;
       left: 0.5vw;
   }
-
-  #add-relation-condition-wrapper h3{
+#add-relation-condition-wrapper h3{
       top: 0.5vh;
 
   }
-
-  #external-controller-relation-builder-outer-names{
+#external-controller-relation-builder-outer-names{
     background-color:#000;
     height: 6vh;
     width: 25vw;
     border-radius: 12px;
   }
 
-  #external-controller-builder-bottom-buttons{
+#external-controller-builder-bottom-buttons{
       width: 30vw;
       height: 13vh;
       position: relative;
       top: 10vh;
-      left: 5vw;
+      left: 7.5vw;
   }
 
-  #external-controller-builder-bottom-buttons button{
+#external-controller-builder-bottom-buttons button{
       height: 5vh;
       border-radius: 4px;
       border:none;
@@ -1290,16 +1290,17 @@ overflow-y: auto;
       background-color: #000;
   }
 
-  #added-conditions-relation-builder{
+#added-conditions-relation-builder{
     width: 38vw;
     border-radius: 12px;
     background-color: #000;
     height: 30vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0.5vw;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
-
-#external-controller-add-relation-button,#external-controller-add-close-builder{
-
-}
 
 #external-controller-add-close-builder{
     color: red;
@@ -1308,3 +1309,40 @@ overflow-y: auto;
 #external-controller-add-relation-button{
     color: green;
 }
+
+#external-controller-add-close-builder:hover{
+    color: #000;
+    background-color: red;
+}
+
+#external-controller-add-relation-button:hover{
+    color: #000;
+    background-color: green;
+}
+
+.added-conditions{
+    position: relative;
+    left: 2.8vw;
+    width: 11vw;
+    background-color: #202329;
+    height: 17.5vh;
+    border-radius: 12px;
+    padding: 1vw;
+    top: 1vh;
+    overflow-x: auto;
+    margin-bottom: 2vh;
+}
+
+.added-conditions button{
+    border-radius: 4px;
+    background-color: #000;
+    color: red;
+    border: none;
+    height: 3vh;
+    width: 6vw;
+    position: relative;
+    top: 4vh;
+    left: 2.4vw;
+}
+
+ 
