@@ -14,7 +14,7 @@ export default class ExternalControllerServerView extends Component<any,any> {
 
         return (
             <div className = "popup-wrapper" id = "external-controller-server-view"  
-                style = {{display:(this.props.state? "block":"none")}}>
+               style = { {display:(this.props.state? "block":"none")}}>
                
                 <div id = "inner-external-controller-server-view">
                     <h1 id = "server-view-name">{this.props.server_name}</h1>
@@ -28,7 +28,11 @@ export default class ExternalControllerServerView extends Component<any,any> {
                         })}
 
                     </div>
-                    <button id = "add-button-external-controller">Add Relation</button>
+                    <button id = "add-button-external-controller"
+                         onClick = {()=>{this.props.set({relation_builder_showing:true,
+                            external_controller_server_view_showing:false})}}
+                    >Add Relation</button>
+                    
                     <button id  = "close-external-controller-server-view"
                         onClick = {()=>{this.props.set({external_controller_server_view_showing:false})}}
                         >Close Dialog</button>

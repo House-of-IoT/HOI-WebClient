@@ -18,7 +18,8 @@ export default class ExternalControllerRelationBuilder extends Component<any,any
     render() {
         console.log( "data" + Array.from(this.state.added_conditions.keys()));
         return (
-            <div className = "popup-wrapper"  id = "external-controller-relation-builder">
+            <div className = "popup-wrapper"  id = "external-controller-relation-builder" 
+                style = { {display:(this.props.state? "block":"none")}}>
 
                 <div id = "external-controller-relation-builder-inner">
                     <h1 id = "relation-builder-title">Relation Builder</h1>
@@ -91,7 +92,9 @@ export default class ExternalControllerRelationBuilder extends Component<any,any
 
                     <div id = "external-controller-builder-bottom-buttons">
                         <button id = "external-controller-add-relation-button">Add Relation</button>
-                        <button id = "external-controller-add-close-builder">Close</button>
+                        <button id = "external-controller-add-close-builder"
+                            onClick = {()=>{this.props.set({relation_builder_showing:false,external_controller_server_view_showing:true})}}
+                        >Close</button>
                     </div>
                     
                 </div>                
