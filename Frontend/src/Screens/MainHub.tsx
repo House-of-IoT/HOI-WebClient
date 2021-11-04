@@ -121,7 +121,7 @@ export default class MainHub extends Component<any,any> {
                     <ConfigHandler client = {this.client} set = {this.setState}/>
                     <StateViewer set = {this.setState} client = {this.client} selected_server = {this.state.selected_server}/>
                     <RemovalConfirmPopup state = {this.state.removal_showing} set = {this.setState}/>
-                    <SchedulerAccessBar />
+                    <SchedulerAccessBar set = {this.setState}/>
                     <ExternalController set = {this.setState} controllers = {this.state.external_controller_connection_names}/>
                 </div>
                

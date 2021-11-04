@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import CapabilityListing from './CapabilityListing';
-
+import { ActionCapabilities } from '../Functionality/capabilities';
 export default class SchedulerPopup extends Component<any,any> {
     constructor(props:{}){
         super(props);
         this.state = {
             selected_capabilities:[],
-            different_capabilities:{}
+            different_capabilities:ActionCapabilities
         }
     }
 
@@ -18,8 +18,8 @@ export default class SchedulerPopup extends Component<any,any> {
                     <h1 id = "Select-label"> Select Bot For Scheduling</h1>
                     <select name="" id="">
                         <option  selected  disabled >Choose Bot</option>
-                        {Object.keys(this.props.bots).map((key)=>{
-                            return <option onSelect = {()=>{this.setState({selected_capabilities:this.state.different_capabilities[key]})}}>{key}</option>
+                        {Object.keys(this.props.bots).map((bot)=>{
+                            return <option onSelect = {()=>{this.setState({selected_capabilities:this.state.capabilities[bot["type"]]})}}>{bot["device_name"]}</option>
                         })}
 
                     </select>
