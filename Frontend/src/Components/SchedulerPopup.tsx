@@ -13,6 +13,15 @@ export default class SchedulerPopup extends Component<any,any> {
         }
     }
 
+    convertDateToUTC(date) { 
+        return new Date(
+            date.getUTCFullYear(), 
+            date.getUTCMonth(), 
+            date.getUTCDate(), 
+            date.getUTCHours(), 
+            date.getUTCMinutes(), 
+            date.getUTCSeconds()); } 
+
     render() {
         return (
             <div className = "popup-wrapper" id = "scheduler-popup"  style = {{display:(this.props.state? "block":"none")}}>
@@ -29,6 +38,7 @@ export default class SchedulerPopup extends Component<any,any> {
 
                         <DateTimePicker className = "date-picker-comp" 
                         value = {this.state.value_date} 
+                        onChange = {(date)=>{this.setState({value_date:date})}}
                     />
                   
                     <h2 id = "select-action-label-for-scheduling">Select the wanted action</h2>
