@@ -1031,14 +1031,14 @@ overflow-y: auto;
     background-color: #242c37;
     border-radius: 12px;
     width: 40vw;
-    height: 70vh;
+    height: 72vh;
     top: 5vh;
     padding: 1%;
     position: relative;
     left: 30vw;
 }
 
-#add-button-external-controller,#disconnect-button-external-controller,#close-external-controller-server-view{
+#add-button-external-controller, #edit-button-external-contorller-server-view,#disconnect-button-external-controller,#close-external-controller-server-view{
     background-color: #fd4d4d;
     color: #fff;
     width: 10vw;
@@ -1060,7 +1060,7 @@ overflow-y: auto;
     position: relative;
     top: 5vh;
     width: 20vw;
-    left: -9.5vw;
+    left: 10.5vw;
     top: 7vh;
     opacity: 0.5;
     background-color: black;
@@ -1345,4 +1345,15 @@ overflow-y: auto;
     left: 2.4vw;
 }
 
- 
+ #edit-button-external-contorller-server-view{
+    width: 20vw;
+    border: none;
+    border-radius: 4px;
+    position: relative;
+    color: #724fe6;
+    position: relative;
+    top: 6vh;
+    left: -9.5vw;
+    background: black;
+    font-weight: bolder;
+ }

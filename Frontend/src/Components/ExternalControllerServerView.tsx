@@ -32,7 +32,7 @@ export default class ExternalControllerServerView extends Component<any,any> {
                          onClick = {()=>{this.props.set({relation_builder_showing:true,
                             external_controller_server_view_showing:false})}}
                     >Add Relation</button>
-                    
+                    <button id = "edit-button-external-contorller-server-view" >Edit Relation</button>
                     <button id  = "close-external-controller-server-view"
                         onClick = {()=>{this.props.set({external_controller_server_view_showing:false})}}
                         >Close Dialog</button>
